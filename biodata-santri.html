@@ -110,7 +110,7 @@
 
           <form id="formBiodata" class="space-y-6">
             
-            <!-- Data Santri -->
+            <!-- DATA SANTRI -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nama Lengkap Santri</label>
@@ -142,7 +142,7 @@
               </div>
             </div>
 
-            <!-- Data Orang Tua -->
+            <!-- DATA ORANG TUA / WALI -->
             <hr class="my-6">
             <h4 class="font-bold text-gray-800 text-sm uppercase tracking-wide">Data Orang Tua / Wali</h4>
 
@@ -158,8 +158,8 @@
               </div>
 
               <div class="md:col-span-2">
-                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">No. WhatsApp Orang Tua / Wali</label>
-                <input type="tel" id="inputWaOrtu" placeholder="08xxxxxxxxxx" required class="w-full p-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gold">
+                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">No. HP Wali / Ortu</label>
+                <input type="tel" id="inputNoHpWali" placeholder="08xxxxxxxxxx" required class="w-full p-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-gold">
               </div>
 
               <div class="md:col-span-2">
@@ -179,10 +179,10 @@
   </main>
 
   <script>
-    // URL Web App Google Apps Script Terbaru Untuk Biodata
+    // URL Web App Google Apps Script Khusus Biodata
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwsLv17fXsxCRsYOmwoAhOMYqxFcgnDuhV-j65yTHDkaMoJ8J53hWny_2HHNjCvODCG2A/exec";
 
-    // 1. Tampilkan Nama & No Pendaftaran di Header
+    // 1. Load Data dari localStorage ke Header & Form Input
     const noPendaftar = localStorage.getItem('noPendaftaran') || 'SPMB-27-001';
     if (document.getElementById('teksNoPendaftaran')) {
       document.getElementById('teksNoPendaftaran').innerText = 'No: ' + noPendaftar;
@@ -203,7 +203,7 @@
       document.getElementById('teksInisial').innerText = inisial.toUpperCase();
     }
 
-    // 2. Kirim Data Biodata ke Google Sheets via Apps Script
+    // 2. Kirim Data Biodata Pas dengan Kolom Google Sheets
     document.getElementById('formBiodata').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -213,22 +213,22 @@
 
       const payload = {
         noPendaftaran: noPendaftar,
-        namaSantri: document.getElementById('inputNama').value,
+        namaLengkap: document.getElementById('inputNama').value,
         nisn: document.getElementById('inputNisn').value,
         jenisKelamin: document.getElementById('inputJenisKelamin').value,
         tempatLahir: document.getElementById('inputTempatLahir').value,
         tanggalLahir: document.getElementById('inputTanggalLahir').value,
         namaAyah: document.getElementById('inputNamaAyah').value,
         namaIbu: document.getElementById('inputNamaIbu').value,
-        waOrtu: document.getElementById('inputWaOrtu').value,
+        noHpWali: document.getElementById('inputNoHpWali').value,
         alamat: document.getElementById('inputAlamat').value
       };
 
-      // Simpan juga ke localStorage
-      localStorage.setItem('namaCalonSantri', payload.namaSantri);
+      // Simpan ke LocalStorage
+      localStorage.setItem('namaCalonSantri', payload.namaLengkap);
       localStorage.setItem('biodataSelesai', 'true');
 
-      // Kirim data ke Google Sheets
+      // Kirim ke Apps Script
       fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -238,12 +238,12 @@
         body: JSON.stringify(payload)
       })
       .then(() => {
-        alert('Data Biodata Berhasil Disimpan ke Database!');
+        alert('Data Biodata Berhasil Disimpan!');
         window.location.href = 'upload-berkas.html';
       })
       .catch(error => {
         console.error('Error:', error);
-        alert('Terjadi kesalahan saat menyimpan data. Coba lagi.');
+        alert('Gagal menyimpan biodata, silakan coba lagi.');
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-save"></i> Simpan & Lanjutkan';
       });
