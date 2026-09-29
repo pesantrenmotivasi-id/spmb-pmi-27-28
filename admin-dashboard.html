@@ -155,7 +155,7 @@
 
   <!-- LOGIKA SCRIPT ADMIN LIVE DARI GOOGLE SHEETS -->
   <script>
-    // MASUKKAN URL WEB APP GOOGLE APPS SCRIPT KAMU DI SINI
+    // URL WEB APP GOOGLE APPS SCRIPT
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNqYqoiiVe1EPurAvCDDUVlgVU98hhcfJIHniUt9WgeCwuTd_0Cw3HB5oYyz6-iwf6BQ/exec";
 
     let dataPendaftarGlobal = [];
@@ -184,7 +184,7 @@
         tbody.innerHTML = `
           <tr>
             <td colspan="6" class="p-8 text-center text-red-500 text-xs">
-              Gagal memuat data dari Google Sheets. Pastikan SCRIPT_URL sudah terisi dengan benar.
+              Gagal memuat data dari Google Sheets. Pastikan ketersediaan jaringan atau konfigurasi Apps Script sudah benar.
             </td>
           </tr>
         `;
@@ -246,10 +246,10 @@
             </td>
             <td class="p-4">${statusBadge}</td>
             <td class="p-4 pr-6 text-center space-x-2">
-              <button onclick="alert('Pembaruan status langsung ke Sheets bisa disesuaikan nanti!')" class="bg-green-600 hover:bg-green-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold shadow-sm transition-all">
+              <button onclick="alert('Verifikasi pendaftar')" class="bg-green-600 hover:bg-green-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold shadow-sm transition-all">
                 <i class="fas fa-check mr-1"></i> Terima
               </button>
-              <button onclick="alert('Pembaruan status langsung ke Sheets bisa disesuaikan nanti!')" class="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold shadow-sm transition-all">
+              <button onclick="alert('Verifikasi pendaftar')" class="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold shadow-sm transition-all">
                 <i class="fas fa-times mr-1"></i> Tolak
               </button>
             </td>
