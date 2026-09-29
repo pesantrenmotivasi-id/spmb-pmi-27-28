@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[Nama Halaman] | Pesantren Motivasi Indonesia</title>
+  <title>Admin Dashboard | Pesantren Motivasi Indonesia</title>
   <link rel="icon" type="image/png" href="1.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -68,6 +68,9 @@
     <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
       <h2 class="text-xl font-bold text-gray-800">Panel Kelola Pendaftar Santri Baru</h2>
       <div class="flex items-center gap-3">
+        <button onclick="loadDataFromSheets()" class="bg-gold/10 hover:bg-gold/20 text-gold font-semibold text-xs px-3 py-2 rounded-xl transition-all flex items-center gap-2 mr-2">
+          <i class="fas fa-sync-alt"></i> Refresh Data
+        </button>
         <div class="text-right">
           <p class="text-sm font-bold text-gray-800">Administrator SPMB</p>
           <p class="text-xs text-green-600 font-semibold">● Online</p>
@@ -150,36 +153,60 @@
     </div>
   </main>
 
-  <!-- LOGIKA SCRIPT ADMIN OTOMATIS & MULTI-DATA -->
+  <!-- LOGIKA SCRIPT ADMIN LIVE DARI GOOGLE SHEETS -->
   <script>
-    // 1. Ambil Array Pendaftar dari localStorage (atau fallback jika masih kosong)
-    function getPendaftar() {
-      let data = JSON.parse(localStorage.getItem('pendaftar')) || [];
-      
-      // Jika localStorage array kosong tapi ada data pendaftar tunggal lama
-      if (data.length === 0 && localStorage.getItem('namaCalonSantri')) {
-        data.push({
-          noPendaftaran: localStorage.getItem('noPendaftaran') || 'SPMB-27-001',
-          nama: localStorage.getItem('namaCalonSantri'),
-          jenjang: localStorage.getItem('jenjangSantri') || 'SMP',
-          wa: localStorage.getItem('noWaSantri') || '08123456789',
-          status: 'Perlu Verifikasi'
-        });
-        localStorage.setItem('pendaftar', JSON.stringify(data));
+    // MASUKKAN URL WEB APP GOOGLE APPS SCRIPT KAMU DI SINI
+    const SCRIPT_URL = "ISI_DENGAN_URL_WEB_APP_APPS_SCRIPT_KAMU";
+
+    let dataPendaftarGlobal = [];
+
+    // 1. Ambil Data Live dari Google Sheets
+    async function loadDataFromSheets() {
+      const tbody = document.getElementById('tabelPendaftar');
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="6" class="p-8 text-center text-gray-500 text-xs">
+            <i class="fas fa-spinner fa-spin text-gold text-lg mr-2"></i> Mengambil data pendaftar dari Google Sheets...
+          </td>
+        </tr>
+      `;
+
+      try {
+        const response = await fetch(SCRIPT_URL);
+        const result = await response.json();
+
+        // Ambil array data dari Apps Script
+        dataPendaftarGlobal = Array.isArray(result) ? result : (result.data || []);
+        renderTabel(dataPendaftarGlobal);
+
+      } catch (error) {
+        console.error("Gagal mengambil data:", error);
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="p-8 text-center text-red-500 text-xs">
+              Gagal memuat data dari Google Sheets. Pastikan SCRIPT_URL sudah terisi dengan benar.
+            </td>
+          </tr>
+        `;
       }
-      return data;
     }
 
     // 2. Tampilkan Data ke Tabel & Hitung Statistik
-    function renderTabel(dataList) {
+    function renderTabel(listData) {
       const tbody = document.getElementById('tabelPendaftar');
-      const allData = getPendaftar();
-      const list = dataList || allData;
+      const list = listData || dataPendaftarGlobal;
 
       // Update Kartu Statistik
-      document.getElementById('statTotal').innerText = allData.length;
-      document.getElementById('statPending').innerText = allData.filter(d => !d.status || d.status === 'Perlu Verifikasi').length;
-      document.getElementById('statLulus').innerText = allData.filter(d => d.status === 'LULUS').length;
+      document.getElementById('statTotal').innerText = list.length;
+      document.getElementById('statPending').innerText = list.filter(d => {
+        const st = (d.status || d["Status"] || '').toString().toUpperCase();
+        return st === '' || st === 'PERLU VERIFIKASI' || st === 'PENDING';
+      }).length;
+      
+      document.getElementById('statLulus').innerText = list.filter(d => {
+        const st = (d.status || d["Status"] || '').toString().toUpperCase();
+        return st === 'LULUS' || st === 'DITERIMA';
+      }).length;
 
       if (list.length === 0) {
         tbody.innerHTML = `
@@ -190,33 +217,39 @@
         return;
       }
 
-      tbody.innerHTML = list.map((item, index) => {
+      tbody.innerHTML = list.map((item) => {
+        // Toleransi pembacaan nama kolom header di Google Sheets
+        const noPendaftaran = item.noPendaftaran || item["No Pendaftaran"] || item.no_pendaftaran || '-';
+        const namaSantri = item.namaSantri || item["Nama Santri"] || item.nama || item["Nama Lengkap"] || '-';
+        const jenjangSantri = item.jenjang || item["Jenjang"] || 'SMP';
+        const rawWa = item.noWhatsapp || item["No Whatsapp"] || item.wa || item["No WA"] || '';
+        const waClean = rawWa.toString().replace(/[^0-9]/g, '');
+        const status = (item.status || item["Status"] || 'Perlu Verifikasi').toString();
+
         let statusBadge = `<span class="bg-yellow-100 text-yellow-800 text-[11px] font-bold px-3 py-1 rounded-full"><i class="fas fa-clock mr-1"></i> Perlu Verifikasi</span>`;
         
-        if (item.status === 'LULUS') {
+        if (status.toUpperCase() === 'LULUS' || status.toUpperCase() === 'DITERIMA') {
           statusBadge = `<span class="bg-green-100 text-green-700 text-[11px] font-bold px-3 py-1 rounded-full"><i class="fas fa-check-circle mr-1"></i> LULUS / DITERIMA</span>`;
-        } else if (item.status === 'DITOLAK') {
+        } else if (status.toUpperCase() === 'DITOLAK' || status.toUpperCase() === 'TIDAK LULUS') {
           statusBadge = `<span class="bg-red-100 text-red-700 text-[11px] font-bold px-3 py-1 rounded-full"><i class="fas fa-times-circle mr-1"></i> TIDAK LULUS</span>`;
         }
 
-        const waClean = (item.wa || '').replace(/[^0-9]/g, '');
-
         return `
           <tr class="hover:bg-gray-50/80 transition-colors">
-            <td class="p-4 pl-6 font-bold text-coklat-logo">${item.noPendaftaran || '-'}</td>
-            <td class="p-4 font-semibold text-gray-800">${item.nama}</td>
-            <td class="p-4"><span class="bg-gold/10 text-gold text-xs font-bold px-2.5 py-0.5 rounded">${item.jenjang || 'SMP'}</span></td>
+            <td class="p-4 pl-6 font-bold text-coklat-logo">${noPendaftaran}</td>
+            <td class="p-4 font-semibold text-gray-800">${namaSantri}</td>
+            <td class="p-4"><span class="bg-gold/10 text-gold text-xs font-bold px-2.5 py-0.5 rounded">${jenjangSantri}</span></td>
             <td class="p-4">
               <a href="https://wa.me/${waClean}" target="_blank" class="text-green-600 font-semibold text-xs hover:underline inline-flex items-center gap-1">
-                <i class="fab fa-whatsapp"></i> ${item.wa || '-'}
+                <i class="fab fa-whatsapp"></i> ${waClean || '-'}
               </a>
             </td>
             <td class="p-4">${statusBadge}</td>
             <td class="p-4 pr-6 text-center space-x-2">
-              <button onclick="ubahStatus(${index}, 'LULUS')" class="bg-green-600 hover:bg-green-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold shadow-sm transition-all">
+              <button onclick="alert('Pembaruan status langsung ke Sheets bisa disesuaikan nanti!')" class="bg-green-600 hover:bg-green-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold shadow-sm transition-all">
                 <i class="fas fa-check mr-1"></i> Terima
               </button>
-              <button onclick="ubahStatus(${index}, 'DITOLAK')" class="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold shadow-sm transition-all">
+              <button onclick="alert('Pembaruan status langsung ke Sheets bisa disesuaikan nanti!')" class="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold shadow-sm transition-all">
                 <i class="fas fa-times mr-1"></i> Tolak
               </button>
             </td>
@@ -225,27 +258,19 @@
       }).join('');
     }
 
-    // 3. Fungsi Ubah Status (Terima / Tolak)
-    function ubahStatus(index, statusBaru) {
-      let data = getPendaftar();
-      data[index].status = statusBaru;
-      localStorage.setItem('pendaftar', JSON.stringify(data));
-      renderTabel();
-    }
-
-    // 4. Fitur Pencarian Real-time
+    // 3. Fitur Pencarian Real-time
     function cariData() {
       const keyword = document.getElementById('inputSearch').value.toLowerCase();
-      const allData = getPendaftar();
-      const filtered = allData.filter(item => 
-        (item.nama && item.nama.toLowerCase().includes(keyword)) ||
-        (item.noPendaftaran && item.noPendaftaran.toLowerCase().includes(keyword))
-      );
+      const filtered = dataPendaftarGlobal.filter(item => {
+        const nama = (item.namaSantri || item["Nama Santri"] || item.nama || '').toString().toLowerCase();
+        const no = (item.noPendaftaran || item["No Pendaftaran"] || '').toString().toLowerCase();
+        return nama.includes(keyword) || no.includes(keyword);
+      });
       renderTabel(filtered);
     }
 
-    // Load data saat halaman dibuka
-    document.addEventListener('DOMContentLoaded', () => renderTabel());
+    // Jalankan otomatis saat halaman dibuka
+    document.addEventListener('DOMContentLoaded', loadDataFromSheets);
   </script>
 </body>
 </html>
