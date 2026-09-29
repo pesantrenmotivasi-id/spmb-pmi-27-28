@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kartu Ujian Seleksi | Pesantren Motivasi Indonesia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+    
+    :root {
+      --coklat-logo: #4A2B12; 
+      --gold-logo: #C29B57;   
+      --bg-krem: #FAF8F5;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-krem);
+      color: #2C2A29;
+    }
+    .font-serif-custom { font-family: 'Playfair Display', serif; }
+    
+    .bg-coklat-logo { background-color: var(--coklat-logo); }
+    .text-coklat-logo { color: var(--coklat-logo); }
+    .border-coklat-logo { border-color: var(--coklat-logo); }
+    
+    .bg-gold { background-color: var(--gold-logo); }
+    .text-gold { color: var(--gold-logo); }
+    .border-gold { border-color: var(--gold-logo); }
+
+    /* CSS KHUSUS PRINT CETAK */
+    @media print {
+      body { background-color: white !important; }
+      aside, header, .no-print { display: none !important; }
+      main { padding: 0 !important; overflow: visible !important; }
+      .print-area {
+        box-shadow: none !important;
+        border: 2px solid #4A2B12 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-[#FAF8F5]">
+
+  <!-- SIDEBAR (Kiri) -->
+  <aside class="w-64 bg-coklat-logo text-white flex flex-col shadow-2xl hidden md:flex relative z-20 no-print">
+    <div class="p-6 flex items-center gap-4 border-b border-white/10">
+      <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain">
+      <div>
+        <h1 class="font-bold font-serif-custom text-gold leading-tight">SPMB PMI</h1>
+        <p class="text-[10px] text-gray-300">Tahun Ajaran 2027/2028</p>
+      </div>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+      <a href="dashboard-santri.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-home w-5 text-center"></i> Beranda
+      </a>
+      <a href="biodata-santri.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-user-edit w-5 text-center"></i> Biodata Diri
+      </a>
+      <a href="upload-berkas.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-file-upload w-5 text-center"></i> Upload Berkas
+      </a>
+      <a href="pembayaran.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-wallet w-5 text-center"></i> Pembayaran
+      </a>
+      <a href="pengumuman.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-bullhorn w-5 text-center"></i> Pengumuman
+      </a>
+    </nav>
+
+    <div class="p-4 border-t border-white/10">
+      <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-all">
+        <i class="fas fa-sign-out-alt w-5 text-center"></i> Keluar
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+    
+    <!-- HEADER -->
+    <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10 no-print">
+      <h2 class="text-xl font-bold text-gray-800">Kartu Ujian Seleksi</h2>
+      <div class="flex items-center gap-3">
+        <div class="text-right hidden sm:block">
+          <p id="teksHeader" class="text-sm font-bold text-gray-800">Ahmad Fathan</p>
+          <p class="text-xs text-gray-500">No: SPMB-27-001</p>
+        </div>
+        <div id="teksInisial" class="w-10 h-10 rounded-full bg-coklat-logo text-white flex items-center justify-center font-bold font-serif-custom shadow-md border-2 border-gold">
+          AF
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT AREA -->
+    <div class="flex-1 overflow-y-auto p-4 md:p-8">
+      <div class="max-w-3xl mx-auto space-y-6">
+
+        <!-- KONTROL CETAK -->
+        <div class="no-print bg-amber-50 border border-amber-200 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3 text-amber-900 text-xs sm:text-sm">
+            <i class="fas fa-info-circle text-xl text-gold shrink-0"></i>
+            <p>Cetak atau simpan kartu ujian ini dalam format PDF. Bawa kartu ini saat pelaksanaan tes seleksi.</p>
+          </div>
+          <button onclick="window.print()" class="w-full sm:w-auto bg-coklat-logo hover:bg-[#2C2A29] text-white px-6 py-2.5 rounded-xl font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 shrink-0">
+            <i class="fas fa-print"></i> Cetak Kartu
+          </button>
+        </div>
+
+        <!-- AREA KARTU UJIAN (PRINTABLE) -->
+        <div class="print-area bg-white rounded-2xl p-6 md:p-8 shadow-md border-2 border-coklat-logo relative overflow-hidden">
+          
+          <!-- WATERMARK LOGO -->
+          <img src="1.png" alt="Watermark" class="absolute right-4 bottom-4 w-64 opacity-5 pointer-events-none">
+
+          <!-- KOP KARTU -->
+          <div class="flex items-center justify-between border-b-2 border-gold pb-4 mb-6">
+            <div class="flex items-center gap-4">
+              <img src="1.png" alt="Logo PMI" class="w-16 h-16 object-contain">
+              <div>
+                <h3 class="font-bold text-lg font-serif-custom text-coklat-logo tracking-wide">PESANTREN MOTIVASI INDONESIA</h3>
+                <p class="text-xs text-gray-600 font-semibold">PANITIA SELEKSI PENERIMAAN MURID BARU (SPMB)</p>
+                <p class="text-[11px] text-gray-500">Tahun Ajaran 2027/2028 — Nurul Huda, Setu, Bekasi</p>
+              </div>
+            </div>
+            <div class="text-right hidden sm:block">
+              <span class="bg-gold/20 text-coklat-logo border border-gold px-3 py-1 rounded-md font-bold text-xs uppercase">
+                KARTU UJIAN
+              </span>
+            </div>
+          </div>
+
+          <!-- DETAIL PESERTA -->
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-6">
+            
+            <!-- PAS FOTO PLACEHOLDER -->
+            <div class="sm:col-span-1 flex flex-col items-center justify-center">
+              <div class="w-28 h-36 bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center text-gray-400 text-center p-2">
+                <i class="fas fa-user-circle text-4xl mb-1"></i>
+                <span class="text-[10px]">Pas Foto 3x4</span>
+              </div>
+            </div>
+
+            <!-- INFO DETAIL -->
+            <div class="sm:col-span-3 space-y-2 text-xs">
+              <div class="grid grid-cols-3 border-b pb-1.5">
+                <span class="text-gray-500 font-medium">No. Pendaftaran</span>
+                <span class="col-span-2 font-bold text-coklat-logo font-mono">SPMB-27-001</span>
+              </div>
+              <div class="grid grid-cols-3 border-b pb-1.5">
+                <span class="text-gray-500 font-medium">Nama Lengkap</span>
+                <span id="kartuNama" class="col-span-2 font-bold text-gray-800">Ahmad Fathan</span>
+              </div>
+              <div class="grid grid-cols-3 border-b pb-1.5">
+                <span class="text-gray-500 font-medium">Jenjang Tujuan</span>
+                <span id="kartuJenjang" class="col-span-2 font-bold text-gray-800">SMP Motivasi Indonesia</span>
+              </div>
+              <div class="grid grid-cols-3 border-b pb-1.5">
+                <span class="text-gray-500 font-medium">Tempat, Tgl Lahir</span>
+                <span class="col-span-2 text-gray-800">Bekasi, 12 Agustus 2014</span>
+              </div>
+              <div class="grid grid-cols-3">
+                <span class="text-gray-500 font-medium">Status Verifikasi</span>
+                <span class="col-span-2 font-bold text-green-600"><i class="fas fa-check-circle"></i> Terverifikasi / Lunas</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- JADWAL SELEKSI -->
+          <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 mb-6 space-y-3">
+            <h4 class="font-bold text-xs text-coklat-logo uppercase tracking-wider border-b pb-1">Jadwal & Lokasi Seleksi</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+              <div>
+                <p class="text-gray-500 text-[10px]">Tanggal Ujian:</p>
+                <p class="font-bold text-gray-800">Sabtu, 23 Januari 2027</p>
+              </div>
+              <div>
+                <p class="text-gray-500 text-[10px]">Waktu Pelaksanaan:</p>
+                <p class="font-bold text-gray-800">08:00 - 11:30 WIB</p>
+              </div>
+              <div>
+                <p class="text-gray-500 text-[10px]">Materi Tes:</p>
+                <p class="font-bold text-gray-800">Baca Quran, TPA & Wawancara</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- TATA TERTIB & TTD PANITIA -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-[11px] items-end pt-2">
+            <div class="sm:col-span-2 space-y-1 text-gray-600">
+              <p class="font-bold text-gray-800">Ketentuan Peserta Ujian:</p>
+              <p>1. Membawa Kartu Ujian ini dan seragam asal sekolah saat tes.</p>
+              <p>2. Hadir 15 menit sebelum pelaksanaan tes dimulai.</p>
+              <p>3. Orang tua / wali wajib mendampingi untuk sesi wawancara wali.</p>
+            </div>
+            
+            <div class="text-center space-y-1">
+              <p class="text-gray-500 text-[10px]">Bekasi, 2027</p>
+              <p class="text-gray-500 text-[10px]">Panitia SPMB PMI,</p>
+              <div class="h-10"></div>
+              <p class="font-bold text-coklat-logo border-t border-gray-300 pt-1">Panitia SPMB PMI</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const namaSantri = localStorage.getItem('namaCalonSantri') || 'Ahmad Fathan';
+    document.getElementById('teksHeader').innerText = namaSantri;
+    document.getElementById('kartuNama').innerText = namaSantri;
+
+    const kata = namaSantri.trim().split(/\s+/);
+    let inisial = '';
+    if (kata.length >= 2) {
+      inisial = kata[0].charAt(0) + kata[kata.length - 1].charAt(0);
+    } else if (kata.length === 1 && kata[0].length > 0) {
+      inisial = kata[0].substring(0, 2);
+    }
+    document.getElementById('teksInisial').innerText = inisial.toUpperCase();
+  </script>
+</body>
+</html>

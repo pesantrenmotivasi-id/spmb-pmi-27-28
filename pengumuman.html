@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Nama Halaman] | Pesantren Motivasi Indonesia</title>
+  <link rel="icon" type="image/png" href="1.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+    
+    :root {
+      --coklat-logo: #4A2B12; 
+      --gold-logo: #C29B57;   
+      --bg-krem: #FAF8F5;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-krem);
+      color: #2C2A29;
+    }
+    .font-serif-custom { font-family: 'Playfair Display', serif; }
+    
+    .bg-coklat-logo { background-color: var(--coklat-logo); }
+    .text-coklat-logo { color: var(--coklat-logo); }
+    .border-coklat-logo { border-color: var(--coklat-logo); }
+    
+    .bg-gold { background-color: var(--gold-logo); }
+    .text-gold { color: var(--gold-logo); }
+    .border-gold { border-color: var(--gold-logo); }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-[#FAF8F5]">
+
+  <!-- SIDEBAR (Kiri) -->
+  <aside class="w-64 bg-coklat-logo text-white flex flex-col shadow-2xl hidden md:flex relative z-20">
+    <div class="p-6 flex items-center gap-4 border-b border-white/10">
+      <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain">
+      <div>
+        <h1 class="font-bold font-serif-custom text-gold leading-tight">SPMB PMI</h1>
+        <p class="text-[10px] text-gray-300">Tahun Ajaran 2027/2028</p>
+      </div>
+    </div>
+
+    <!-- Menu Navigasi -->
+    <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+      <a href="dashboard-santri.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-home w-5 text-center"></i> Beranda
+      </a>
+      <a href="biodata-santri.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-user-edit w-5 text-center"></i> Biodata Diri
+      </a>
+      <a href="upload-berkas.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-file-upload w-5 text-center"></i> Upload Berkas
+      </a>
+      <a href="pembayaran.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-wallet w-5 text-center"></i> Pembayaran
+      </a>
+      <a href="pengumuman.html" class="flex items-center gap-3 px-4 py-3 bg-gold/20 text-gold rounded-xl border border-gold/30 font-semibold transition-all">
+        <i class="fas fa-bullhorn w-5 text-center"></i> Pengumuman
+      </a>
+    </nav>
+
+    <div class="p-4 border-t border-white/10">
+      <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-all">
+        <i class="fas fa-sign-out-alt w-5 text-center"></i> Keluar
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT (Kanan) -->
+  <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+    
+    <!-- HEADER -->
+    <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
+      <button class="md:hidden text-coklat-logo text-xl">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <h2 class="text-xl font-bold text-gray-800 hidden md:block">Pengumuman Kelulusan</h2>
+
+      <div class="flex items-center gap-6">
+        <a href="pengumuman.html" class="text-gold relative transition-colors">
+          <i class="fas fa-bell text-xl"></i>
+        </a>
+        
+        <div class="flex items-center gap-3 border-l pl-6 border-gray-200">
+          <div class="text-right hidden sm:block">
+            <p id="teksHeader" class="text-sm font-bold text-gray-800">Ahmad Fathan</p>
+            <p id="teksNoPendaftaran" class="text-xs text-gray-500">No: SPMB-27-001</p>
+          </div>
+          <div id="teksInisial" class="w-10 h-10 rounded-full bg-coklat-logo text-white flex items-center justify-center font-bold font-serif-custom shadow-md border-2 border-gold">
+            AF
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT AREA -->
+    <div class="flex-1 overflow-y-auto p-6 md:p-8">
+      <div class="max-w-3xl mx-auto space-y-6">
+        
+        <!-- Status Kartu Pendaftaran -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 text-center relative overflow-hidden">
+          <div class="w-20 h-20 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+            <i class="fas fa-hourglass-half animate-spin"></i>
+          </div>
+
+          <h3 class="text-2xl font-bold font-serif-custom text-coklat-logo mb-2">Berkas Sedang Diverifikasi Panitia</h3>
+          <p class="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
+            Terima kasih telah melengkapi pendaftaran. Tim Seleksi Pesantren Motivasi Indonesia sedang memeriksa berkas dan bukti pembayaran Anda.
+          </p>
+
+          <div class="mt-8 pt-6 border-t border-gray-100 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
+            <div class="bg-[#FAF8F5] p-3 rounded-xl border border-gray-100">
+              <p class="text-[10px] text-gray-400 uppercase font-bold">Nama Santri</p>
+              <p id="teksPengumumanNama" class="text-xs font-bold text-gray-800 mt-0.5">Ahmad Fathan</p>
+            </div>
+            <div class="bg-[#FAF8F5] p-3 rounded-xl border border-gray-100">
+              <p class="text-[10px] text-gray-400 uppercase font-bold">No. Pendaftaran</p>
+              <p id="teksPengumumanNo" class="text-xs font-bold text-gray-800 mt-0.5">SPMB-27-001</p>
+            </div>
+            <div class="bg-[#FAF8F5] p-3 rounded-xl border border-gray-100">
+              <p class="text-[10px] text-gray-400 uppercase font-bold">Jenjang</p>
+              <p id="teksPengumumanJenjang" class="text-xs font-bold text-gray-800 mt-0.5">SMP Motivasi Indonesia</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Help Info -->
+        <div class="bg-coklat-logo text-white p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h4 class="font-bold text-gold text-sm font-serif-custom">Ada Pertanyaan seputar Pengumuman?</h4>
+            <p class="text-xs text-gray-300 mt-1">Hubungi Panitia SPMB via WhatsApp jika mengalami kendala.</p>
+          </div>
+          <a href="https://wa.me/6285880883675?text=Halo%20Panitia%20SPMB,%20saya%20ingin%20bertanya" target="_blank" class="bg-gold text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-yellow-600 transition-colors flex items-center gap-2 whitespace-nowrap">
+            <i class="fab fa-whatsapp text-sm"></i> Hubungi Panitia
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Sinkronisasi Header & Teks Pengumuman
+    const noPendaftar = localStorage.getItem('noPendaftaran') || 'SPMB-27-001';
+    if (document.getElementById('teksNoPendaftaran')) {
+      document.getElementById('teksNoPendaftaran').innerText = 'No: ' + noPendaftar;
+      document.getElementById('teksPengumumanNo').innerText = noPendaftar;
+    }
+
+    const namaSantri = localStorage.getItem('namaCalonSantri');
+    if (namaSantri && namaSantri.trim() !== '') {
+      document.getElementById('teksHeader').innerText = namaSantri;
+      document.getElementById('teksPengumumanNama').innerText = namaSantri;
+
+      const kata = namaSantri.trim().split(/\s+/);
+      let inisial = kata.length >= 2 ? kata[0].charAt(0) + kata[kata.length - 1].charAt(0) : kata[0].substring(0, 2);
+      document.getElementById('teksInisial').innerText = inisial.toUpperCase();
+    }
+
+    const jenjang = localStorage.getItem('jenjangSantri');
+    if (jenjang && document.getElementById('teksPengumumanJenjang')) {
+      document.getElementById('teksPengumumanJenjang').innerText = jenjang + ' Motivasi Indonesia';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Nama Halaman] | Pesantren Motivasi Indonesia</title>
+  <link rel="icon" type="image/png" href="1.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+    
+    :root {
+      --coklat-logo: #4A2B12; 
+      --gold-logo: #C29B57;   
+      --bg-krem: #FAF8F5;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-krem);
+      color: #2C2A29;
+    }
+    .font-serif-custom { font-family: 'Playfair Display', serif; }
+    
+    .bg-coklat-logo { background-color: var(--coklat-logo); }
+    .text-coklat-logo { color: var(--coklat-logo); }
+    .border-coklat-logo { border-color: var(--coklat-logo); }
+    
+    .bg-gold { background-color: var(--gold-logo); }
+    .text-gold { color: var(--gold-logo); }
+    .border-gold { border-color: var(--gold-logo); }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-[#FAF8F5]">
+
+  <!-- SIDEBAR ADMIN -->
+  <aside class="w-64 bg-[#1E1B18] text-white flex flex-col shadow-2xl hidden md:flex relative z-20">
+    <div class="p-6 flex items-center gap-4 border-b border-white/10">
+      <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain">
+      <div>
+        <h1 class="font-bold font-serif-custom text-gold leading-tight">PANITIA SPMB</h1>
+        <p class="text-[10px] text-gray-400">Admin Dashboard</p>
+      </div>
+    </div>
+
+    <!-- Navigasi Admin -->
+    <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+      <a href="#" class="flex items-center gap-3 px-4 py-3 bg-gold/20 text-gold rounded-xl border border-gold/30 font-semibold transition-all">
+        <i class="fas fa-users w-5 text-center"></i> Data Pendaftar
+      </a>
+      <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-globe w-5 text-center"></i> Lihat Halaman Depan
+      </a>
+    </nav>
+
+    <div class="p-4 border-t border-white/10">
+      <a href="login-admin.html" class="flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-all">
+        <i class="fas fa-sign-out-alt w-5 text-center"></i> Keluar Admin
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+    
+    <!-- HEADER ADMIN -->
+    <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
+      <h2 class="text-xl font-bold text-gray-800">Panel Kelola Pendaftar Santri Baru</h2>
+      <div class="flex items-center gap-3">
+        <div class="text-right">
+          <p class="text-sm font-bold text-gray-800">Administrator SPMB</p>
+          <p class="text-xs text-green-600 font-semibold">● Online</p>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-coklat-logo text-gold flex items-center justify-center font-bold border-2 border-gold">
+          ADM
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT SCROLLABLE AREA -->
+    <div class="flex-1 overflow-y-auto p-4 md:p-8">
+      <div class="max-w-6xl mx-auto space-y-6">
+
+        <!-- KARTU STATISTIK RINGKAS -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div>
+              <p class="text-xs text-gray-500 font-bold uppercase">Total Pendaftar</p>
+              <h3 id="statTotal" class="text-3xl font-extrabold text-coklat-logo mt-1">0</h3>
+            </div>
+            <div class="w-12 h-12 bg-gold/10 text-gold rounded-xl flex items-center justify-center text-xl">
+              <i class="fas fa-user-graduate"></i>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div>
+              <p class="text-xs text-gray-500 font-bold uppercase">Perlu Verifikasi</p>
+              <h3 id="statPending" class="text-3xl font-extrabold text-yellow-600 mt-1">0</h3>
+            </div>
+            <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center text-xl">
+              <i class="fas fa-clock"></i>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between">
+            <div>
+              <p class="text-xs text-gray-500 font-bold uppercase">Diterima / Lulus</p>
+              <h3 id="statLulus" class="text-3xl font-extrabold text-green-600 mt-1">0</h3>
+            </div>
+            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center text-xl">
+              <i class="fas fa-check-circle"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABEL DATA PENDAFTAR -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div class="p-6 border-b border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <h4 class="font-bold text-gray-800 text-lg font-serif-custom">
+              <i class="fas fa-list text-gold mr-2"></i> Daftar Calon Santri Masuk
+            </h4>
+            <div class="relative w-full md:w-64">
+              <input type="text" id="inputSearch" onkeyup="cariData()" placeholder="Cari nama / nomor..." class="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-gold">
+              <i class="fas fa-search absolute left-3 top-2.5 text-gray-400 text-xs"></i>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[650px]">
+              <thead>
+                <tr class="bg-[#FAF8F5] text-gray-500 text-[11px] uppercase font-bold border-b border-gray-100">
+                  <th class="p-4 pl-6">No. Pendaftaran</th>
+                  <th class="p-4">Nama Santri</th>
+                  <th class="p-4">Jenjang</th>
+                  <th class="p-4">No. WhatsApp</th>
+                  <th class="p-4">Status Pendaftaran</th>
+                  <th class="p-4 pr-6 text-center">Aksi Panitia</th>
+                </tr>
+              </thead>
+              <tbody id="tabelPendaftar" class="text-sm divide-y divide-gray-100">
+                <!-- Data Otomatis Diisi via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- LOGIKA SCRIPT ADMIN OTOMATIS & MULTI-DATA -->
+  <script>
+    // 1. Ambil Array Pendaftar dari localStorage (atau fallback jika masih kosong)
+    function getPendaftar() {
+      let data = JSON.parse(localStorage.getItem('pendaftar')) || [];
+      
+      // Jika localStorage array kosong tapi ada data pendaftar tunggal lama
+      if (data.length === 0 && localStorage.getItem('namaCalonSantri')) {
+        data.push({
+          noPendaftaran: localStorage.getItem('noPendaftaran') || 'SPMB-27-001',
+          nama: localStorage.getItem('namaCalonSantri'),
+          jenjang: localStorage.getItem('jenjangSantri') || 'SMP',
+          wa: localStorage.getItem('noWaSantri') || '08123456789',
+          status: 'Perlu Verifikasi'
+        });
+        localStorage.setItem('pendaftar', JSON.stringify(data));
+      }
+      return data;
+    }
+
+    // 2. Tampilkan Data ke Tabel & Hitung Statistik
+    function renderTabel(dataList) {
+      const tbody = document.getElementById('tabelPendaftar');
+      const allData = getPendaftar();
+      const list = dataList || allData;
+
+      // Update Kartu Statistik
+      document.getElementById('statTotal').innerText = allData.length;
+      document.getElementById('statPending').innerText = allData.filter(d => !d.status || d.status === 'Perlu Verifikasi').length;
+      document.getElementById('statLulus').innerText = allData.filter(d => d.status === 'LULUS').length;
+
+      if (list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="p-8 text-center text-gray-400 text-xs">Belum ada data calon santri yang mendaftar.</td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = list.map((item, index) => {
+        let statusBadge = `<span class="bg-yellow-100 text-yellow-800 text-[11px] font-bold px-3 py-1 rounded-full"><i class="fas fa-clock mr-1"></i> Perlu Verifikasi</span>`;
+        
+        if (item.status === 'LULUS') {
+          statusBadge = `<span class="bg-green-100 text-green-700 text-[11px] font-bold px-3 py-1 rounded-full"><i class="fas fa-check-circle mr-1"></i> LULUS / DITERIMA</span>`;
+        } else if (item.status === 'DITOLAK') {
+          statusBadge = `<span class="bg-red-100 text-red-700 text-[11px] font-bold px-3 py-1 rounded-full"><i class="fas fa-times-circle mr-1"></i> TIDAK LULUS</span>`;
+        }
+
+        const waClean = (item.wa || '').replace(/[^0-9]/g, '');
+
+        return `
+          <tr class="hover:bg-gray-50/80 transition-colors">
+            <td class="p-4 pl-6 font-bold text-coklat-logo">${item.noPendaftaran || '-'}</td>
+            <td class="p-4 font-semibold text-gray-800">${item.nama}</td>
+            <td class="p-4"><span class="bg-gold/10 text-gold text-xs font-bold px-2.5 py-0.5 rounded">${item.jenjang || 'SMP'}</span></td>
+            <td class="p-4">
+              <a href="https://wa.me/${waClean}" target="_blank" class="text-green-600 font-semibold text-xs hover:underline inline-flex items-center gap-1">
+                <i class="fab fa-whatsapp"></i> ${item.wa || '-'}
+              </a>
+            </td>
+            <td class="p-4">${statusBadge}</td>
+            <td class="p-4 pr-6 text-center space-x-2">
+              <button onclick="ubahStatus(${index}, 'LULUS')" class="bg-green-600 hover:bg-green-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold shadow-sm transition-all">
+                <i class="fas fa-check mr-1"></i> Terima
+              </button>
+              <button onclick="ubahStatus(${index}, 'DITOLAK')" class="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold shadow-sm transition-all">
+                <i class="fas fa-times mr-1"></i> Tolak
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // 3. Fungsi Ubah Status (Terima / Tolak)
+    function ubahStatus(index, statusBaru) {
+      let data = getPendaftar();
+      data[index].status = statusBaru;
+      localStorage.setItem('pendaftar', JSON.stringify(data));
+      renderTabel();
+    }
+
+    // 4. Fitur Pencarian Real-time
+    function cariData() {
+      const keyword = document.getElementById('inputSearch').value.toLowerCase();
+      const allData = getPendaftar();
+      const filtered = allData.filter(item => 
+        (item.nama && item.nama.toLowerCase().includes(keyword)) ||
+        (item.noPendaftaran && item.noPendaftaran.toLowerCase().includes(keyword))
+      );
+      renderTabel(filtered);
+    }
+
+    // Load data saat halaman dibuka
+    document.addEventListener('DOMContentLoaded', () => renderTabel());
+  </script>
+</body>
+</html>

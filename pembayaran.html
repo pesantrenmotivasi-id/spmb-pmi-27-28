@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Nama Halaman] | Pesantren Motivasi Indonesia</title>
+  <link rel="icon" type="image/png" href="1.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+    
+    :root {
+      --coklat-logo: #4A2B12; 
+      --gold-logo: #C29B57;   
+      --bg-krem: #FAF8F5;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-krem);
+      color: #2C2A29;
+    }
+    .font-serif-custom { font-family: 'Playfair Display', serif; }
+    
+    .bg-coklat-logo { background-color: var(--coklat-logo); }
+    .text-coklat-logo { color: var(--coklat-logo); }
+    .border-coklat-logo { border-color: var(--coklat-logo); }
+    
+    .bg-gold { background-color: var(--gold-logo); }
+    .text-gold { color: var(--gold-logo); }
+    .border-gold { border-color: var(--gold-logo); }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-[#FAF8F5]">
+
+  <!-- SIDEBAR (Kiri) -->
+  <aside class="w-64 bg-coklat-logo text-white flex flex-col shadow-2xl hidden md:flex relative z-20">
+    <div class="p-6 flex items-center gap-4 border-b border-white/10">
+      <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain">
+      <div>
+        <h1 class="font-bold font-serif-custom text-gold leading-tight">SPMB PMI</h1>
+        <p class="text-[10px] text-gray-300">Tahun Ajaran 2027/2028</p>
+      </div>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+      <a href="dashboard-santri.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-home w-5 text-center"></i> Beranda
+      </a>
+      <a href="biodata-santri.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-user-edit w-5 text-center"></i> Biodata Diri
+      </a>
+      <a href="upload-berkas.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-file-upload w-5 text-center"></i> Upload Berkas
+      </a>
+      <a href="pembayaran.html" class="flex items-center gap-3 px-4 py-3 bg-gold/20 text-gold rounded-xl border border-gold/30 font-semibold transition-all">
+        <i class="fas fa-wallet w-5 text-center"></i> Pembayaran
+      </a>
+      <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+        <i class="fas fa-bullhorn w-5 text-center"></i> Pengumuman
+      </a>
+    </nav>
+
+    <div class="p-4 border-t border-white/10">
+      <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-all">
+        <i class="fas fa-sign-out-alt w-5 text-center"></i> Keluar
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT (Kanan) -->
+  <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+    
+    <!-- HEADER -->
+    <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
+      <h2 class="text-xl font-bold text-gray-800">Pembayaran Biaya Pendaftaran</h2>
+      <div class="flex items-center gap-3">
+        <div class="text-right hidden sm:block">
+          <p id="teksHeader" class="text-sm font-bold text-gray-800">Ahmad Fathan</p>
+          <p class="text-xs text-gray-500">No: SPMB-27-001</p>
+        </div>
+        <div id="teksInisial" class="w-10 h-10 rounded-full bg-coklat-logo text-white flex items-center justify-center font-bold font-serif-custom shadow-md border-2 border-gold">
+          AF
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT SCROLLABLE AREA -->
+    <div class="flex-1 overflow-y-auto p-6 md:p-8">
+      <div class="max-w-2xl mx-auto space-y-6">
+
+        <!-- RINCIAN NOMINAL -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Biaya SPMB</span>
+          <h3 class="text-4xl font-extrabold text-coklat-logo mt-2 font-serif-custom">Rp 300.000</h3>
+          <p class="text-xs text-green-600 font-semibold mt-2 inline-flex items-center gap-1 bg-green-50 px-3 py-1 rounded-full border border-green-200">
+            <i class="fas fa-shield-alt"></i> Biaya Pendaftaran & Tes Seleksi
+          </p>
+        </div>
+
+        <!-- PETUNJUK & TOMBOL KONTROL WA -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 space-y-6 text-center">
+          <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+
+          <div class="max-w-md mx-auto space-y-2">
+            <h3 class="text-xl font-bold text-gray-800">Pembayaran via WhatsApp Admin</h3>
+            <p class="text-sm text-gray-600">
+              Proses pembayaran dilakukan langsung melalui kontak resmi WhatsApp Admin SPMB Pesantren Motivasi Indonesia.
+            </p>
+          </div>
+
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-left text-xs text-amber-900 space-y-2">
+            <p class="font-bold text-sm"><i class="fas fa-list-ol mr-1 text-gold"></i> Langkah Pembayaran:</p>
+            <p>1. Klik tombol <strong>"Hubungi Admin WA untuk Pembayaran"</strong> di bawah.</p>
+            <p>2. Kirimkan pesan otomatis yang sudah tersedia ke Admin SPMB (<strong>085880883675</strong>).</p>
+            <p>3. Admin akan memberikan informasi rekening tujuan dan memandu proses konfirmasi Anda.</p>
+          </div>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 border-t">
+            <a href="dashboard-santri.html" class="w-full sm:w-auto px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold text-sm hover:bg-gray-100 transition-colors">
+              Kembali ke Beranda
+            </a>
+            <button onclick="hubungiAdminWA()" class="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-lg shadow-green-600/30 transition-all flex items-center justify-center gap-2">
+              <i class="fab fa-whatsapp text-xl"></i> Hubungi Admin WA untuk Pembayaran
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- SCRIPT INTEGRASI -->
+  <script>
+    const namaSantri = localStorage.getItem('namaCalonSantri') || 'Ahmad Fathan';
+    
+    // Tampilkan Nama & Inisial
+    document.getElementById('teksHeader').innerText = namaSantri;
+    const kata = namaSantri.trim().split(/\s+/);
+    let inisial = '';
+    if (kata.length >= 2) {
+      inisial = kata[0].charAt(0) + kata[kata.length - 1].charAt(0);
+    } else if (kata.length === 1 && kata[0].length > 0) {
+      inisial = kata[0].substring(0, 2);
+    }
+    document.getElementById('teksInisial').innerText = inisial.toUpperCase();
+
+    // Fungsi Buka WA
+    function hubungiAdminWA() {
+      localStorage.setItem('pembayaranSelesai', 'true');
+      
+      const noWA = "6285880883675";
+      const pesan = `Assalamu'alaikum Admin SPMB Pesantren Motivasi Indonesia,%0ANama Calon Santri: *${encodeURIComponent(namaSantri)}*%0ANo Pendaftaran: *SPMB-27-001*%0A%0ASaya ingin melakukan pembayaran biaya pendaftaran sebesar *Rp 300.000*. Mohon informasi petunjuk transaksi selanjutnya. Terima kasih.`;
+      
+      // Buka WhatsApp di tab baru
+      window.open(`https://wa.me/${noWA}?text=${pesan}`, '_blank');
+
+      // Kembali ke dashboard
+      setTimeout(() => {
+        window.location.href = 'dashboard-santri.html';
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
