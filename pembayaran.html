@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[Nama Halaman] | Pesantren Motivasi Indonesia</title>
+  <title>Pembayaran | Pesantren Motivasi Indonesia</title>
   <link rel="icon" type="image/png" href="1.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@
       <a href="pembayaran.html" class="flex items-center gap-3 px-4 py-3 bg-gold/20 text-gold rounded-xl border border-gold/30 font-semibold transition-all">
         <i class="fas fa-wallet w-5 text-center"></i> Pembayaran
       </a>
-      <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
+      <a href="pengumuman.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
         <i class="fas fa-bullhorn w-5 text-center"></i> Pengumuman
       </a>
     </nav>
@@ -74,29 +74,86 @@
     
     <!-- HEADER -->
     <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
-      <h2 class="text-xl font-bold text-gray-800">Pembayaran Biaya Pendaftaran</h2>
-      <div class="flex items-center gap-3">
-        <div class="text-right hidden sm:block">
-          <p id="teksHeader" class="text-sm font-bold text-gray-800">Ahmad Fathan</p>
-          <p class="text-xs text-gray-500">No: SPMB-27-001</p>
-        </div>
-        <div id="teksInisial" class="w-10 h-10 rounded-full bg-coklat-logo text-white flex items-center justify-center font-bold font-serif-custom shadow-md border-2 border-gold">
-          AF
+      <button class="md:hidden text-coklat-logo text-xl">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <h2 class="text-xl font-bold text-gray-800 hidden md:block">Pembayaran Biaya Pendaftaran</h2>
+
+      <div class="flex items-center gap-6">
+        <a href="pengumuman.html" class="text-gray-400 hover:text-gold relative transition-colors">
+          <i class="fas fa-bell text-xl"></i>
+          <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
+        </a>
+
+        <div class="flex items-center gap-3 border-l pl-6 border-gray-200">
+          <div class="text-right hidden sm:block">
+            <p id="teksHeader" class="text-sm font-bold text-gray-800">Calon Santri</p>
+            <p id="teksNoPendaftaran" class="text-xs text-gray-500">No: SPMB-27-001</p>
+          </div>
+          <div id="teksInisial" class="w-10 h-10 rounded-full bg-coklat-logo text-white flex items-center justify-center font-bold font-serif-custom shadow-md border-2 border-gold">
+            CS
+          </div>
         </div>
       </div>
     </header>
 
     <!-- CONTENT SCROLLABLE AREA -->
     <div class="flex-1 overflow-y-auto p-6 md:p-8">
-      <div class="max-w-2xl mx-auto space-y-6">
+      <div class="max-w-3xl mx-auto space-y-6">
+
+        <!-- PILIHAN JALUR PENDAFTARAN -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">
+            <i class="fas fa-graduation-cap text-gold mr-1"></i> Pilih Jalur Pendaftaran Santri
+          </label>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Option Non-Beasiswa -->
+            <label id="cardNonBeasiswa" onclick="pilihJalur('non-beasiswa')" class="cursor-pointer border-2 border-gold bg-amber-50/50 rounded-2xl p-4 flex items-center justify-between transition-all shadow-sm">
+              <div class="flex items-center gap-3">
+                <input type="radio" name="jalur" id="radioNonBeasiswa" value="non-beasiswa" checked class="w-4 h-4 text-gold focus:ring-gold">
+                <div>
+                  <h4 class="font-bold text-gray-800 text-sm">Jalur Non-Beasiswa</h4>
+                  <p class="text-xs text-gray-500">Jalur Pendaftaran Reguler</p>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-coklat-logo bg-white px-2.5 py-1 rounded-lg border border-amber-200">Rp 6.038.000</span>
+            </label>
+
+            <!-- Option Beasiswa -->
+            <label id="cardBeasiswa" onclick="pilihJalur('beasiswa')" class="cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-4 flex items-center justify-between transition-all hover:border-gold">
+              <div class="flex items-center gap-3">
+                <input type="radio" name="jalur" id="radioBeasiswa" value="beasiswa" class="w-4 h-4 text-gold focus:ring-gold">
+                <div>
+                  <h4 class="font-bold text-gray-800 text-sm">Jalur Beasiswa</h4>
+                  <p class="text-xs text-gray-500">Program Beasiswa Khusus</p>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-green-700 bg-green-50 px-2.5 py-1 rounded-lg border border-green-200">Rp 2.238.000</span>
+            </label>
+          </div>
+        </div>
 
         <!-- RINCIAN NOMINAL -->
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Biaya SPMB</span>
-          <h3 class="text-4xl font-extrabold text-coklat-logo mt-2 font-serif-custom">Rp 300.000</h3>
-          <p class="text-xs text-green-600 font-semibold mt-2 inline-flex items-center gap-1 bg-green-50 px-3 py-1 rounded-full border border-green-200">
-            <i class="fas fa-shield-alt"></i> Biaya Pendaftaran & Tes Seleksi
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Biaya Pendaftaran</span>
+          <h3 id="labelTotalBiaya" class="text-4xl font-extrabold text-coklat-logo mt-2 font-serif-custom">Rp 6.038.000</h3>
+          <p id="labelJalurAktif" class="text-xs text-gold font-semibold mt-2 inline-flex items-center gap-1 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+            <i class="fas fa-check-circle"></i> Jalur Non-Beasiswa
           </p>
+        </div>
+
+        <!-- RINCIAN KOMPONEN BIAYA -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-4">
+          <h4 class="font-bold text-gray-800 text-sm uppercase tracking-wide border-b pb-3 flex justify-between items-center">
+            <span><i class="fas fa-list-alt text-gold mr-2"></i> Rincian Komponen Biaya</span>
+            <span class="text-xs font-normal text-gray-500">SMP / SMA</span>
+          </h4>
+
+          <div id="wadahRincian" class="space-y-3 text-xs text-gray-700 divide-y divide-gray-100">
+            <!-- Rincian diisi secara dinamis via JavaScript -->
+          </div>
         </div>
 
         <!-- PETUNJUK & TOMBOL KONTROL WA -->
@@ -108,15 +165,15 @@
           <div class="max-w-md mx-auto space-y-2">
             <h3 class="text-xl font-bold text-gray-800">Pembayaran via WhatsApp Admin</h3>
             <p class="text-sm text-gray-600">
-              Proses pembayaran dilakukan langsung melalui kontak resmi WhatsApp Admin SPMB Pesantren Motivasi Indonesia.
+              Proses konfirmasi dan instruksi pembayaran dilakukan langsung melalui kontak resmi WhatsApp Admin SPMB Pesantren Motivasi Indonesia.
             </p>
           </div>
 
           <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-left text-xs text-amber-900 space-y-2">
             <p class="font-bold text-sm"><i class="fas fa-list-ol mr-1 text-gold"></i> Langkah Pembayaran:</p>
             <p>1. Klik tombol <strong>"Hubungi Admin WA untuk Pembayaran"</strong> di bawah.</p>
-            <p>2. Kirimkan pesan otomatis yang sudah tersedia ke Admin SPMB (<strong>085880883675</strong>).</p>
-            <p>3. Admin akan memberikan informasi rekening tujuan dan memandu proses konfirmasi Anda.</p>
+            <p>2. Kirimkan pesan rincian biaya yang sudah terformat ke Admin SPMB (<strong>085880883675</strong>).</p>
+            <p>3. Admin akan mengirimkan nomor rekening tujuan beserta panduan konfirmasi transaksi Anda.</p>
           </div>
 
           <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 border-t">
@@ -135,10 +192,15 @@
 
   <!-- SCRIPT INTEGRASI -->
   <script>
+    const noPendaftar = localStorage.getItem('noPendaftaran') || 'SPMB-27-001';
     const namaSantri = localStorage.getItem('namaCalonSantri') || 'Ahmad Fathan';
     
-    // Tampilkan Nama & Inisial
+    // Tampilkan Nama & Nomor Pendaftaran di Header
+    if (document.getElementById('teksNoPendaftaran')) {
+      document.getElementById('teksNoPendaftaran').innerText = 'No: ' + noPendaftar;
+    }
     document.getElementById('teksHeader').innerText = namaSantri;
+    
     const kata = namaSantri.trim().split(/\s+/);
     let inisial = '';
     if (kata.length >= 2) {
@@ -148,12 +210,86 @@
     }
     document.getElementById('teksInisial').innerText = inisial.toUpperCase();
 
-    // Fungsi Buka WA
+    // Variable State
+    let jalurDipilih = 'non-beasiswa';
+    let totalNominal = 'Rp 6.038.000';
+
+    // Data Rincian Biaya
+    const rincianBiaya = {
+      'non-beasiswa': {
+        total: 'Rp 6.038.000',
+        label: 'Jalur Non-Beasiswa',
+        items: [
+          { nama: 'Formulir Pendaftaran', harga: 'Rp 100.000' },
+          { nama: 'Dana Pengembangan Pesantren', harga: 'Rp 3.000.000' },
+          { nama: 'Fasilitas Asrama (Bantal, Kasur, Lemari, Sprei)', harga: 'Rp 1.330.000' },
+          { nama: 'Seragam PMI (Almamater, Baju Putih, Sarung, Jarik)', harga: 'Rp 365.000' },
+          { nama: 'Buku & Kitab Pembelajaran', harga: 'Rp 543.000' },
+          { nama: 'SPP Bulan Pertama (Uang Makan & Uang Sekolah)', harga: 'Rp 700.000' }
+        ]
+      },
+      'beasiswa': {
+        total: 'Rp 2.238.000',
+        label: 'Jalur Beasiswa',
+        items: [
+          { nama: 'Fasilitas Asrama (Bantal, Kasur, Lemari, Sprei)', harga: 'Rp 1.330.000' },
+          { nama: 'Seragam PMI (Almamater, Baju Putih, Sarung, Jarik)', harga: 'Rp 365.000' },
+          { nama: 'Buku & Kitab Pembelajaran', harga: 'Rp 543.000' }
+        ]
+      }
+    };
+
+    // Fungsi Pilih Jalur
+    function pilihJalur(jenis) {
+      jalurDipilih = jenis;
+      const data = rincianBiaya[jenis];
+      totalNominal = data.total;
+
+      // Update Tampilan Radio & Card Style
+      const cardNon = document.getElementById('cardNonBeasiswa');
+      const cardBeasiswa = document.getElementById('cardBeasiswa');
+      const radioNon = document.getElementById('radioNonBeasiswa');
+      const radioBeasiswa = document.getElementById('radioBeasiswa');
+
+      if (jenis === 'non-beasiswa') {
+        radioNon.checked = true;
+        cardNon.className = "cursor-pointer border-2 border-gold bg-amber-50/50 rounded-2xl p-4 flex items-center justify-between transition-all shadow-sm";
+        cardBeasiswa.className = "cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-4 flex items-center justify-between transition-all hover:border-gold";
+      } else {
+        radioBeasiswa.checked = true;
+        cardBeasiswa.className = "cursor-pointer border-2 border-gold bg-amber-50/50 rounded-2xl p-4 flex items-center justify-between transition-all shadow-sm";
+        cardNon.className = "cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-4 flex items-center justify-between transition-all hover:border-gold";
+      }
+
+      // Update Header Total
+      document.getElementById('labelTotalBiaya').innerText = data.total;
+      document.getElementById('labelJalurAktif').innerHTML = `<i class="fas fa-check-circle"></i> ${data.label}`;
+
+      // Render Rincian List
+      const wadah = document.getElementById('wadahRincian');
+      wadah.innerHTML = '';
+      data.items.forEach(item => {
+        const row = document.createElement('div');
+        row.className = "pt-2 flex justify-between items-center";
+        row.innerHTML = `
+          <span class="text-gray-600 font-medium">${item.nama}</span>
+          <span class="font-bold text-gray-800">${item.harga}</span>
+        `;
+        wadah.appendChild(row);
+      });
+    }
+
+    // Inisialisasi Pertama
+    pilihJalur('non-beasiswa');
+
+    // Fungsi Buka WhatsApp
     function hubungiAdminWA() {
       localStorage.setItem('pembayaranSelesai', 'true');
       
       const noWA = "6285880883675";
-      const pesan = `Assalamu'alaikum Admin SPMB Pesantren Motivasi Indonesia,%0ANama Calon Santri: *${encodeURIComponent(namaSantri)}*%0ANo Pendaftaran: *SPMB-27-001*%0A%0ASaya ingin melakukan pembayaran biaya pendaftaran sebesar *Rp 300.000*. Mohon informasi petunjuk transaksi selanjutnya. Terima kasih.`;
+      const labelJalur = rincianBiaya[jalurDipilih].label;
+      
+      const pesan = `Assalamu'alaikum Admin SPMB Pesantren Motivasi Indonesia,%0ANama Calon Santri: *${encodeURIComponent(namaSantri)}*%0ANo Pendaftaran: *${encodeURIComponent(noPendaftar)}*%0AJalur Pendaftaran: *${encodeURIComponent(labelJalur)}*%0A%0ASaya ingin melakukan konfirmasi pembayaran biaya pendaftaran sebesar *${encodeURIComponent(totalNominal)}*. Mohon petunjuk rekening dan langkah transaksi selanjutnya. Terima kasih.`;
       
       // Buka WhatsApp di tab baru
       window.open(`https://wa.me/${noWA}?text=${pesan}`, '_blank');
