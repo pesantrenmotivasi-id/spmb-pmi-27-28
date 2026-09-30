@@ -219,12 +219,71 @@
       }
     }
 
-// KODE LAMA YANG AKAN DIGANTI:
+// ==========================================
+// FUNGSI KOMPRESI FOTO OTOMATIS (CARA 1)
+// ==========================================
 const toBase64 = file => new Promise((resolve, reject) => {
+  // 1. Jika file BUKAN GAMBAR (misalnya PDF), langsung baca tanpa kompresi
+  if (!file.type.startsWith('image/')) {
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = () => resolve({ ... });
+    reader.onload = () => resolve({
+      base64: reader.result.split(',')[1],
+      mimeType: file.type,
+      name: file.name
+    });
     reader.onerror = error => reject(error);
+    return;
+  }
+
+  // 2. Jika file adalah GAMBAR (JPG, PNG, WebP, dll), kompres otomatis!
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = event => {
+    const img = new Image();
+    img.src = event.target.result;
+    
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      let width = img.width;
+      let height = img.height;
+
+      // Batasi ukuran maksimal lebar/tinggi gambar ke 1024 pixel
+      // (Ukuran ini sudah sangat tajam & jelas untuk dokumen/foto)
+      const MAX_SIZE = 1024;
+      if (width > height) {
+        if (width > MAX_SIZE) {
+          height *= MAX_SIZE / width;
+          width = MAX_SIZE;
+        }
+      } else {
+        if (height > MAX_SIZE) {
+          width *= MAX_SIZE / height;
+          height = MAX_SIZE;
+        }
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // Ubah gambar ke format JPEG dengan kualitas 60%
+      // (Menghemat ukuran file hingga 80-90% tanpa merusak kualitas tampilan)
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
+      
+      resolve({
+        base64: dataUrl.split(',')[1],
+        mimeType: 'image/jpeg',
+        name: file.name.replace(/\.[^/.]+$/, "") + ".jpg"
+      });
+    };
+
+    img.onerror = error => reject(error);
+  };
+  reader.onerror = error => reject(error);
+});
 });
     });
 
