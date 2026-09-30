@@ -32,7 +32,7 @@
     .border-gold { border-color: var(--gold-logo); }
   </style>
 </head>
-<body class="bg-[#FAF8F5]">
+<body class="bg-[#FAF8F5] min-h-screen flex flex-col justify-between">
 
   <!-- HEADER / NAVBAR -->
   <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-sm">
@@ -49,7 +49,7 @@
           <i class="fas fa-lock mr-1"></i> Admin
         </a>
         <a href="#pendaftaran" class="bg-gold hover:bg-yellow-600 text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-bold shadow-md shadow-gold/30 transition-all">
-          Daftar Sekarang
+          Daftar / Masuk
         </a>
       </div>
     </div>
@@ -70,7 +70,7 @@
 
       <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
         <a href="#pendaftaran" class="w-full sm:w-auto bg-coklat-logo hover:bg-black text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl font-bold text-xs sm:text-sm shadow-xl transition-all flex items-center justify-center gap-2">
-          <i class="fas fa-user-plus"></i> Formulir Pendaftaran Online
+          <i class="fas fa-user-plus"></i> Portal Pendaftaran Online
         </a>
         <a href="https://wa.me/6285880883675" target="_blank" class="w-full sm:w-auto bg-white border-2 border-gray-200 hover:border-gold text-gray-700 px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2">
           <i class="fab fa-whatsapp text-green-600"></i> Tanya Panitia
@@ -79,61 +79,100 @@
     </div>
   </section>
 
-  <!-- FORMULIR PENDAFTARAN SECTION -->
+  <!-- PORTAL PENDAFTARAN & LOGIN SECTION -->
   <section id="pendaftaran" class="py-10 sm:py-16 px-4 sm:px-6 bg-white border-t border-gray-100">
     <div class="max-w-3xl mx-auto">
       
-      <div class="text-center mb-6 sm:mb-10">
-        <h3 class="text-2xl sm:text-3xl font-bold font-serif-custom text-coklat-logo">Formulir Pendaftaran Santri Baru</h3>
-        <p class="text-xs text-gray-500 mt-1.5">Isi data diri calon santri dengan lengkap dan benar.</p>
+      <div class="text-center mb-6 sm:mb-8">
+        <h3 class="text-2xl sm:text-3xl font-bold font-serif-custom text-coklat-logo">Portal SPMB Online</h3>
+        <p class="text-xs sm:text-sm text-gray-500 mt-1.5">Silakan isi formulir pendaftaran baru atau masuk jika sudah pernah mendaftar.</p>
       </div>
 
-      <form id="formPendaftaran" class="space-y-4 sm:space-y-6 bg-[#FAF8F5] p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-sm">
-        
-        <!-- Pilihan Jenjang -->
-        <div>
-          <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Pilih Jenjang Pendidikan <span class="text-red-500">*</span></label>
-          <select id="jenjang" required class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:border-gold">
-            <option value="">-- Pilih Jenjang --</option>
-            <option value="SMP">SMP Motivasi Indonesia</option>
-            <option value="SMA">SMA Motivasi Indonesia</option>
-          </select>
-        </div>
-
-        <!-- Nama Lengkap -->
-        <div>
-          <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Nama Lengkap Calon Santri <span class="text-red-500">*</span></label>
-          <input type="text" id="nama" required placeholder="Contoh: Ahmad Fathan" class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:border-gold">
-        </div>
-
-        <!-- Nomor WhatsApp Orang Tua -->
-        <div>
-          <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Nomor WhatsApp Orang Tua / Wali <span class="text-red-500">*</span></label>
-          <input type="tel" id="wa" required placeholder="Contoh: 081234567890" class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:border-gold">
-        </div>
-
-        <!-- Sumber Informasi -->
-        <div>
-          <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Mengetahui Pesantren Dari Mana?</label>
-          <select id="sumberInfo" class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:border-gold">
-            <option value="Media Sosial">Media Sosial (Instagram/TikTok/Facebook)</option>
-            <option value="Google / Website">Pencarian Google / Website</option>
-            <option value="Tempat / Kerabat">Rekomendasi Teman / Kerabat</option>
-            <option value="Lainnya">Lainnya</option>
-          </select>
-        </div>
-
-        <!-- Alasan Masuk Pesantren -->
-        <div>
-          <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Alasan Masuk Pesantren Motivasi Indonesia</label>
-          <textarea id="alasan" rows="3" placeholder="Tuliskan motivasi singkat..." class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:border-gold"></textarea>
-        </div>
-
-        <button type="submit" id="btnSubmit" class="w-full bg-gold hover:bg-yellow-600 text-white font-bold py-3.5 sm:py-4 rounded-xl shadow-lg shadow-gold/30 transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
-          <i class="fas fa-paper-plane"></i> Kirim Pendaftaran & Lanjut ke Dashboard
+      <!-- KOTAK SESI AKTIF (MUNCUL JIKA SUDAH PERNAH DAFTAR) -->
+      <div id="boxSesiAktif" class="hidden mb-6 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-center shadow-sm">
+        <p class="text-xs text-amber-800">Sesi pendaftaran ditemukan di perangkat ini:</p>
+        <p id="teksSesiNama" class="text-sm font-bold text-coklat-logo mt-0.5">-</p>
+        <button onclick="lanjutSesi()" class="mt-2 text-xs bg-gold hover:bg-yellow-600 text-white font-bold px-5 py-2 rounded-xl shadow transition-all">
+          <i class="fas fa-sign-in-alt mr-1"></i> Langsung Masuk ke Dashboard Saya
         </button>
+      </div>
 
-      </form>
+      <!-- TAB SELECTION -->
+      <div class="flex rounded-2xl bg-[#FAF8F5] p-1.5 border border-gray-200 mb-6">
+        <button id="tabDaftar" onclick="switchTab('daftar')" class="flex-1 py-3 text-xs sm:text-sm font-bold rounded-xl text-coklat-logo bg-white shadow-sm transition-all">
+          <i class="fas fa-user-plus mr-1"></i> Pendaftaran Baru
+        </button>
+        <button id="tabLogin" onclick="switchTab('login')" class="flex-1 py-3 text-xs sm:text-sm font-bold rounded-xl text-gray-500 hover:text-coklat-logo transition-all">
+          <i class="fas fa-sign-in-alt mr-1"></i> Masuk / Cek Status
+        </button>
+      </div>
+
+      <!-- CONTAINER FORM -->
+      <div class="bg-[#FAF8F5] p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-sm">
+        
+        <!-- FORM 1: PENDAFTARAN BARU -->
+        <form id="formPendaftaran" class="space-y-4 sm:space-y-6">
+          
+          <!-- Pilihan Jenjang -->
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Pilih Jenjang Pendidikan <span class="text-red-500">*</span></label>
+            <select id="jenjang" required class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:border-gold">
+              <option value="">-- Pilih Jenjang --</option>
+              <option value="SMP">SMP Motivasi Indonesia</option>
+              <option value="SMA">SMA Motivasi Indonesia</option>
+            </select>
+          </div>
+
+          <!-- Nama Lengkap -->
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Nama Lengkap Calon Santri <span class="text-red-500">*</span></label>
+            <input type="text" id="nama" required placeholder="Contoh: Ahmad Fathan" class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:border-gold">
+          </div>
+
+          <!-- Nomor WhatsApp Orang Tua -->
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Nomor WhatsApp Orang Tua / Wali <span class="text-red-500">*</span></label>
+            <input type="tel" id="wa" required placeholder="Contoh: 081234567890" class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:border-gold">
+          </div>
+
+          <!-- Sumber Informasi -->
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Mengetahui Pesantren Dari Mana?</label>
+            <select id="sumberInfo" class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:border-gold">
+              <option value="Media Sosial">Media Sosial (Instagram/TikTok/Facebook)</option>
+              <option value="Google / Website">Pencarian Google / Website</option>
+              <option value="Tempat / Kerabat">Rekomendasi Teman / Kerabat</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </div>
+
+          <!-- Alasan Masuk Pesantren -->
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Alasan Masuk Pesantren Motivasi Indonesia</label>
+            <textarea id="alasan" rows="3" placeholder="Tuliskan motivasi singkat..." class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:border-gold"></textarea>
+          </div>
+
+          <button type="submit" id="btnSubmit" class="w-full bg-gold hover:bg-yellow-600 text-white font-bold py-3.5 sm:py-4 rounded-xl shadow-lg shadow-gold/30 transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
+            <i class="fas fa-paper-plane"></i> Kirim Pendaftaran & Lanjut ke Dashboard
+          </button>
+
+        </form>
+
+        <!-- FORM 2: MASUK / CEK STATUS (LOGIN UNTUK CALON SANTRI LAMA) -->
+        <form id="formLogin" class="space-y-4 sm:space-y-6 hidden">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase mb-2">Nomor Pendaftaran / Nomor WhatsApp <span class="text-red-500">*</span></label>
+            <input type="text" id="loginId" required placeholder="Contoh: SPMB-27-123 atau 081234567890" class="w-full p-3.5 rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:border-gold">
+            <p class="text-[11px] text-gray-400 mt-1.5">Gunakan Nomor Pendaftaran atau Nomor WA WhatsApp yang terdaftar saat membuat pendaftaran awal.</p>
+          </div>
+
+          <button type="submit" id="btnLogin" class="w-full bg-coklat-logo hover:bg-black text-white font-bold py-3.5 sm:py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 text-sm sm:text-base">
+            <i class="fas fa-sign-in-alt"></i> Masuk Ke Dashboard Akun
+          </button>
+        </form>
+
+      </div>
+
     </div>
   </section>
 
@@ -142,11 +181,47 @@
     <p>&copy; 2027/2028 Pesantren Motivasi Indonesia. Hak Cipta Dilindungi.</p>
   </footer>
 
-  <!-- SCRIPT PROSES PENDAFTARAN -->
+  <!-- SCRIPT PROSES PENDAFTARAN & LOGIN -->
   <script>
-    // URL Google Apps Script yang sudah kamu buat
+    // URL Google Apps Script Milikmu
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkLIB4FodYzqkBiyMfNYuGAFdRNi7YQCNueOlBGKZdOZ0fpmoMMnsitvz4XMpqKVsEyA/exec";
 
+    // 1. Cek Sesi Aktif Saat Halaman Dimuat
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedNo = localStorage.getItem('noPendaftaran');
+      const savedNama = localStorage.getItem('namaCalonSantri');
+      
+      if (savedNo && savedNama) {
+        document.getElementById('boxSesiAktif').classList.remove('hidden');
+        document.getElementById('teksSesiNama').innerText = savedNama + ' (' + savedNo + ')';
+      }
+    });
+
+    function lanjutSesi() {
+      window.location.href = 'dashboard-santri.html';
+    }
+
+    // 2. Toggle Switch Tab (Daftar Baru vs Masuk)
+    function switchTab(type) {
+      const tabDaftar = document.getElementById('tabDaftar');
+      const tabLogin = document.getElementById('tabLogin');
+      const formDaftar = document.getElementById('formPendaftaran');
+      const formLogin = document.getElementById('formLogin');
+
+      if (type === 'daftar') {
+        tabDaftar.className = "flex-1 py-3 text-xs sm:text-sm font-bold rounded-xl text-coklat-logo bg-white shadow-sm transition-all";
+        tabLogin.className = "flex-1 py-3 text-xs sm:text-sm font-bold rounded-xl text-gray-500 hover:text-coklat-logo transition-all";
+        formDaftar.classList.remove('hidden');
+        formLogin.classList.add('hidden');
+      } else {
+        tabLogin.className = "flex-1 py-3 text-xs sm:text-sm font-bold rounded-xl text-coklat-logo bg-white shadow-sm transition-all";
+        tabDaftar.className = "flex-1 py-3 text-xs sm:text-sm font-bold rounded-xl text-gray-500 hover:text-coklat-logo transition-all";
+        formLogin.classList.remove('hidden');
+        formDaftar.classList.add('hidden');
+      }
+    }
+
+    // 3. PROSES PENDAFTARAN BARU
     document.getElementById('formPendaftaran').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -154,27 +229,27 @@
       btnSubmit.disabled = true;
       btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim Data...';
 
-      // 1. Ambil Nilai Input Form
+      // Ambil Nilai Input Form
       const nama = document.getElementById('nama').value.trim();
       const wa = document.getElementById('wa').value.trim();
       const jenjang = document.getElementById('jenjang').value;
       const sumberInfo = document.getElementById('sumberInfo').value;
       const alasan = document.getElementById('alasan').value.trim();
 
-      // 2. Buat Nomor Pendaftaran Unik & Tanggal
+      // Buat Nomor Pendaftaran Unik & Tanggal
       const randomNum = Math.floor(100 + Math.random() * 900);
       const noPendaftaran = 'SPMB-27-' + randomNum;
       const tanggalDaftar = new Date().toLocaleDateString('id-ID', {
         day: 'numeric', month: 'long', year: 'numeric'
       });
 
-      // 3. Simpan data individu di LocalStorage untuk Dashboard Santri
+      // Simpan data di LocalStorage untuk Dashboard Santri
       localStorage.setItem('namaCalonSantri', nama);
       localStorage.setItem('noWaSantri', wa);
       localStorage.setItem('jenjangSantri', jenjang);
       localStorage.setItem('noPendaftaran', noPendaftaran);
 
-      // 4. Simpan ke Array LocalStorage untuk Dashboard Admin
+      // Simpan data di Array LocalStorage untuk Dashboard Admin
       const dataBaru = {
         action: "pendaftaran_awal",
         noPendaftaran: noPendaftaran,
@@ -191,7 +266,7 @@
       localStorage.setItem('pendaftar', JSON.stringify(listPendaftar));
       localStorage.setItem('daftarPendaftar', JSON.stringify(listPendaftar));
 
-      // 5. Kirim Data ke Google Sheets
+      // Kirim Data ke Google Sheets
       try {
         await fetch(SCRIPT_URL, {
           method: 'POST',
@@ -210,6 +285,41 @@
         btnSubmit.disabled = false;
         btnSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Pendaftaran & Lanjut ke Dashboard';
       }
+    });
+
+    // 4. PROSES MASUK / CEK STATUS (TANPA MANAMBAH DATA BARU KE GOOGLE SHEETS)
+    document.getElementById('formLogin').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const inputId = document.getElementById('loginId').value.trim();
+      if (!inputId) return;
+
+      // Cek pencocokan dengan data lokal jika ada
+      const listPendaftar = JSON.parse(localStorage.getItem('pendaftar')) || [];
+      const dataDitemukan = listPendaftar.find(p => 
+        (p.noPendaftaran && p.noPendaftaran.toUpperCase() === inputId.toUpperCase()) ||
+        (p.noWhatsapp && p.noWhatsapp === inputId)
+      );
+
+      if (dataDitemukan) {
+        localStorage.setItem('noPendaftaran', dataDitemukan.noPendaftaran);
+        localStorage.setItem('namaCalonSantri', dataDitemukan.namaSantri);
+        if (dataDitemukan.noWhatsapp) localStorage.setItem('noWaSantri', dataDitemukan.noWhatsapp);
+        if (dataDitemukan.jenjang) localStorage.setItem('jenjangSantri', dataDitemukan.jenjang);
+      } else {
+        // Fallback jika masuk via device baru
+        let noPendaftar = inputId.toUpperCase();
+        if (!noPendaftar.startsWith('SPMB-')) {
+          noPendaftar = 'SPMB-27-' + inputId.slice(-3);
+        }
+        localStorage.setItem('noPendaftaran', noPendaftar);
+        if (!localStorage.getItem('namaCalonSantri')) {
+          localStorage.setItem('namaCalonSantri', 'Calon Santri');
+        }
+      }
+
+      alert('Selamat Datang Kembali!\nNomor Pendaftaran: ' + localStorage.getItem('noPendaftaran'));
+      window.location.href = 'dashboard-santri.html';
     });
   </script>
 </body>
