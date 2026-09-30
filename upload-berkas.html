@@ -37,7 +37,7 @@
   <!-- OVERLAY BACKDROP UNTUK MOBILE SIDEBAR -->
   <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden transition-opacity" onclick="toggleSidebar()"></div>
 
-  <!-- SIDEBAR (Kiri) - RESPONSIVE MOBILE -->
+  <!-- SIDEBAR (Kiri) -->
   <aside id="sidebar" class="w-64 bg-coklat-logo text-white flex flex-col shadow-2xl fixed md:relative inset-y-0 left-0 z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
     <div class="p-6 flex items-center gap-4 border-b border-white/10">
       <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain">
@@ -78,7 +78,6 @@
     
     <!-- HEADER -->
     <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
-      <!-- TOMBOL HAMBURGER MOBILE -->
       <button onclick="toggleSidebar()" class="md:hidden text-coklat-logo text-xl p-2 focus:outline-none">
         <i class="fas fa-bars"></i>
       </button>
@@ -103,18 +102,18 @@
       </div>
     </header>
 
-    <!-- CONTENT SCROLLABLE AREA -->
+    <!-- CONTENT AREA -->
     <div class="flex-1 overflow-y-auto p-6 md:p-8">
       <div class="max-w-4xl mx-auto space-y-6">
 
-        <!-- BANNER STATUS JIKA SUDAH PERNAH UPLOAD -->
+        <!-- BANNER STATUS -->
         <div id="bannerStatus" class="hidden bg-green-50 border border-green-200 rounded-2xl p-5 flex items-center gap-4">
           <div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0">
             <i class="fas fa-check text-lg"></i>
           </div>
           <div>
             <h4 class="font-bold text-green-900 text-sm">Berkas Anda Telah Terunggah</h4>
-            <p class="text-xs text-green-700">Anda dapat memperbarui atau mengunggah ulang berkas jika diperlukan dengan memilih file baru di bawah ini.</p>
+            <p class="text-xs text-green-700">Anda dapat memperbarui berkas dengan memilih file baru di bawah ini.</p>
           </div>
         </div>
 
@@ -124,10 +123,9 @@
           <h3 class="text-xl font-bold font-serif-custom text-coklat-logo mb-1 flex items-center gap-2">
             <i class="fas fa-cloud-upload-alt text-gold"></i> Form Unggah Berkas Persyaratan
           </h3>
-          <p class="text-xs text-gray-500 mb-6">Format berkas yang diperbolehkan: Gambar (JPG, PNG) atau PDF (Maksimal 2.5MB per file).</p>
+          <p class="text-xs text-gray-500 mb-6">Format berkas: Gambar (JPG, PNG) atau PDF (Maksimal 2.5MB per file).</p>
 
           <form id="formBerkas" class="space-y-6">
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               
               <!-- 1. Pas Foto -->
@@ -179,24 +177,16 @@
   </main>
 
   <script>
-    // URL WEB APP APPS SCRIPT YANG BARU DARI SPREADSHEET PENDAFTARAN
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfxbUBZDngOAQo_nGzlcKxRhnkpa96NOApwrKG16RpHaKbVBiRCDOuM45R4Jxg_PPq7w/exec";
+    // URL APPS SCRIPT WEB APP
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwzxIrsYnMIHKqmpxro04beSorTEA-CFdQVw5w4YwPFym348G0AuHqoMsO8Zw1T4OBmOw/exec";
 
-    // 1. TOGGLE SIDEBAR MOBILE
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
       const overlay = document.getElementById('sidebarOverlay');
-      
-      if (sidebar.classList.contains('-translate-x-full')) {
-        sidebar.classList.remove('-translate-x-full');
-        overlay.classList.remove('hidden');
-      } else {
-        sidebar.classList.add('-translate-x-full');
-        overlay.classList.add('hidden');
-      }
+      sidebar.classList.toggle('-translate-x-full');
+      overlay.classList.toggle('hidden');
     }
 
-    // 2. TAMPILKAN NAMA & INISIAL DARI LOCAL STORAGE
     const noPendaftar = localStorage.getItem('noPendaftaran') || 'SPMB-27-001';
     if (document.getElementById('teksNoPendaftaran')) {
       document.getElementById('teksNoPendaftaran').innerText = 'No: ' + noPendaftar;
@@ -205,21 +195,13 @@
     const namaSantri = localStorage.getItem('namaCalonSantri');
     if (namaSantri && namaSantri.trim() !== '') {
       document.getElementById('teksHeader').innerText = namaSantri;
-
       const kata = namaSantri.trim().split(/\s+/);
-      let inisial = '';
-      if (kata.length >= 2) {
-        inisial = kata[0].charAt(0) + kata[kata.length - 1].charAt(0);
-      } else if (kata.length === 1 && kata[0].length > 0) {
-        inisial = kata[0].substring(0, 2);
-      }
+      let inisial = kata.length >= 2 ? kata[0].charAt(0) + kata[kata.length - 1].charAt(0) : kata[0].substring(0, 2);
       document.getElementById('teksInisial').innerText = inisial.toUpperCase();
     }
 
-    // 3. CEK STATUS UPLOAD SEBELUMNYA
     if (localStorage.getItem('berkasSelesai') === 'true') {
       document.getElementById('bannerStatus').classList.remove('hidden');
-      // Jika sudah selesai, input tidak wajib lagi diisi ulang
       document.getElementById('filePasFoto').removeAttribute('required');
       document.getElementById('fileKK').removeAttribute('required');
       document.getElementById('fileAkta').removeAttribute('required');
@@ -227,7 +209,6 @@
       document.getElementById('btnUpload').querySelector('span').innerText = 'Perbarui Berkas';
     }
 
-    // 4. PREVIEW NAMA FILE SAAT DIPILIH
     function tampilkanNamaFile(input, elementId) {
       const infoEl = document.getElementById(elementId);
       if (input.files && input.files[0]) {
@@ -238,7 +219,6 @@
       }
     }
 
-    // 5. KONVERSI FILE KE BASE64
     const toBase64 = file => new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
@@ -250,7 +230,6 @@
       reader.onerror = error => reject(error);
     });
 
-    // 6. PROSES SUBMIT & UPLOAD KE APPS SCRIPT
     document.getElementById('formBerkas').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -260,13 +239,11 @@
       const fAkta = document.getElementById('fileAkta').files[0];
       const fIjazah = document.getElementById('fileIjazah').files[0];
 
-      // Jika belum pernah upload dan salah satu file kosong
       if (localStorage.getItem('berkasSelesai') !== 'true' && (!fPasFoto || !fKK || !fAkta || !fIjazah)) {
         alert('⚠️ Mohon pilih semua 4 berkas persyaratan!');
         return;
       }
 
-      // Validasi Ukuran File (Maksimal 2.5MB per file)
       const maxBytes = 2.5 * 1024 * 1024;
       if (
         (fPasFoto && fPasFoto.size > maxBytes) ||
@@ -274,17 +251,16 @@
         (fAkta && fAkta.size > maxBytes) ||
         (fIjazah && fIjazah.size > maxBytes)
       ) {
-        alert('⚠️ Salah satu file melebihi 2.5MB.\nMohon kompres atau pilih file berukuran lebih kecil.');
+        alert('⚠️ Salah satu file melebihi 2.5MB. Mohon kompres file Anda.');
         return;
       }
 
       btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Mengunggah Berkas ke Google Drive...</span>';
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Mengunggah Berkas ke Drive...</span>';
 
       try {
         const payload = {
           noPendaftaran: noPendaftar,
-          namaSantri: namaSantri || 'Calon Santri',
           pasFoto: fPasFoto ? await toBase64(fPasFoto) : null,
           kartuKeluarga: fKK ? await toBase64(fKK) : null,
           aktaKelahiran: fAkta ? await toBase64(fAkta) : null,
@@ -298,13 +274,13 @@
           body: JSON.stringify(payload)
         });
 
-        alert('✅ Semua Berkas Berhasil Diunggah!');
+        alert('✅ Semua Berkas Berhasil Diunggah ke Tab BERKAS!');
         localStorage.setItem('berkasSelesai', 'true');
         window.location.href = 'pembayaran.html';
 
       } catch (err) {
         console.error(err);
-        alert('⚠️ Gagal mengunggah berkas. Silakan periksa koneksi internet Anda dan coba lagi.');
+        alert('⚠️ Gagal mengunggah berkas. Periksa koneksi internet Anda.');
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-upload"></i> <span>Unggah Semua Berkas</span>';
       }
