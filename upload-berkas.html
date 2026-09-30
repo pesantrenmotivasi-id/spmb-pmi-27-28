@@ -106,24 +106,13 @@
     <div class="flex-1 overflow-y-auto p-6 md:p-8">
       <div class="max-w-4xl mx-auto space-y-6">
 
-        <!-- BANNER STATUS -->
-        <div id="bannerStatus" class="hidden bg-green-50 border border-green-200 rounded-2xl p-5 flex items-center gap-4">
-          <div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0">
-            <i class="fas fa-check text-lg"></i>
-          </div>
-          <div>
-            <h4 class="font-bold text-green-900 text-sm">Berkas Anda Telah Terunggah</h4>
-            <p class="text-xs text-green-700">Anda dapat memperbarui berkas dengan memilih file baru di bawah ini.</p>
-          </div>
-        </div>
-
         <!-- FORM UPLOAD -->
         <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
           
           <h3 class="text-xl font-bold font-serif-custom text-coklat-logo mb-1 flex items-center gap-2">
             <i class="fas fa-cloud-upload-alt text-gold"></i> Form Unggah Berkas Persyaratan
           </h3>
-          <p class="text-xs text-gray-500 mb-6">Format berkas: Gambar (JPG, PNG) atau PDF (Maksimal 2.5MB per file).</p>
+          <p class="text-xs text-gray-500 mb-6">Pilih 4 berkas persyaratan di bawah ini (Format: JPG, PNG, PDF).</p>
 
           <form id="formBerkas" class="space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -131,37 +120,25 @@
               <!-- 1. Pas Foto -->
               <div class="p-4 border border-gray-200 rounded-xl bg-gray-50/50 hover:border-gold transition-colors">
                 <label class="block text-xs font-bold text-gray-700 uppercase mb-2">1. Pas Foto Santri (3x4 / 4x6) <span class="text-red-500">*</span></label>
-                <input type="file" id="filePasFoto" accept="image/*,.pdf" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20 cursor-pointer" onchange="tampilkanNamaFile(this, 'infoPasFoto')">
-                <p id="infoPasFoto" class="text-[11px] text-gray-500 mt-2 flex items-center gap-1 hidden">
-                  <i class="fas fa-file-check text-green-600"></i> <span class="filename"></span>
-                </p>
+                <input type="file" id="filePasFoto" accept="image/*,.pdf" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20 cursor-pointer">
               </div>
 
               <!-- 2. Kartu Keluarga -->
               <div class="p-4 border border-gray-200 rounded-xl bg-gray-50/50 hover:border-gold transition-colors">
                 <label class="block text-xs font-bold text-gray-700 uppercase mb-2">2. Kartu Keluarga (KK) <span class="text-red-500">*</span></label>
-                <input type="file" id="fileKK" accept="image/*,.pdf" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20 cursor-pointer" onchange="tampilkanNamaFile(this, 'infoKK')">
-                <p id="infoKK" class="text-[11px] text-gray-500 mt-2 flex items-center gap-1 hidden">
-                  <i class="fas fa-file-check text-green-600"></i> <span class="filename"></span>
-                </p>
+                <input type="file" id="fileKK" accept="image/*,.pdf" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20 cursor-pointer">
               </div>
 
               <!-- 3. Akta Kelahiran -->
               <div class="p-4 border border-gray-200 rounded-xl bg-gray-50/50 hover:border-gold transition-colors">
                 <label class="block text-xs font-bold text-gray-700 uppercase mb-2">3. Akta Kelahiran <span class="text-red-500">*</span></label>
-                <input type="file" id="fileAkta" accept="image/*,.pdf" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20 cursor-pointer" onchange="tampilkanNamaFile(this, 'infoAkta')">
-                <p id="infoAkta" class="text-[11px] text-gray-500 mt-2 flex items-center gap-1 hidden">
-                  <i class="fas fa-file-check text-green-600"></i> <span class="filename"></span>
-                </p>
+                <input type="file" id="fileAkta" accept="image/*,.pdf" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20 cursor-pointer">
               </div>
 
               <!-- 4. Ijazah / SKL -->
               <div class="p-4 border border-gray-200 rounded-xl bg-gray-50/50 hover:border-gold transition-colors">
                 <label class="block text-xs font-bold text-gray-700 uppercase mb-2">4. Ijazah / SKL / Rapor Terakhir <span class="text-red-500">*</span></label>
-                <input type="file" id="fileIjazah" accept="image/*,.pdf" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20 cursor-pointer" onchange="tampilkanNamaFile(this, 'infoIjazah')">
-                <p id="infoIjazah" class="text-[11px] text-gray-500 mt-2 flex items-center gap-1 hidden">
-                  <i class="fas fa-file-check text-green-600"></i> <span class="filename"></span>
-                </p>
+                <input type="file" id="fileIjazah" accept="image/*,.pdf" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20 cursor-pointer">
               </div>
 
             </div>
@@ -177,14 +154,11 @@
   </main>
 
   <script>
-    // URL APPS SCRIPT WEB APP
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzwVa27QNJ9Xy2N0p6MlzqbJ-mm4bmSBXFuom9A5SiUQu9Vm4SVvOH1WYrl_qEDU8BMXw/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfxbUBZDngOAQo_nGzlcKxRhnkpa96NOApwrKG16RpHaKbVBiRCDOuM45R4Jxg_PPq7w/exec";
 
     function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      const overlay = document.getElementById('sidebarOverlay');
-      sidebar.classList.toggle('-translate-x-full');
-      overlay.classList.toggle('hidden');
+      document.getElementById('sidebar').classList.toggle('-translate-x-full');
+      document.getElementById('sidebarOverlay').classList.toggle('hidden');
     }
 
     const noPendaftar = localStorage.getItem('noPendaftaran') || 'SPMB-27-001';
@@ -200,91 +174,48 @@
       document.getElementById('teksInisial').innerText = inisial.toUpperCase();
     }
 
-    if (localStorage.getItem('berkasSelesai') === 'true') {
-      document.getElementById('bannerStatus').classList.remove('hidden');
-      document.getElementById('filePasFoto').removeAttribute('required');
-      document.getElementById('fileKK').removeAttribute('required');
-      document.getElementById('fileAkta').removeAttribute('required');
-      document.getElementById('fileIjazah').removeAttribute('required');
-      document.getElementById('btnUpload').querySelector('span').innerText = 'Perbarui Berkas';
-    }
-
-    function tampilkanNamaFile(input, elementId) {
-      const infoEl = document.getElementById(elementId);
-      if (input.files && input.files[0]) {
-        infoEl.querySelector('.filename').innerText = 'File dipilih: ' + input.files[0].name;
-        infoEl.classList.remove('hidden');
-      } else {
-        infoEl.classList.add('hidden');
-      }
-    }
-
-// ==========================================
-// FUNGSI KOMPRESI FOTO OTOMATIS (CARA 1)
-// ==========================================
-const toBase64 = file => new Promise((resolve, reject) => {
-  // 1. Jika file BUKAN GAMBAR (misalnya PDF), langsung baca tanpa kompresi
-  if (!file.type.startsWith('image/')) {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve({
-      base64: reader.result.split(',')[1],
-      mimeType: file.type,
-      name: file.name
-    });
-    reader.onerror = error => reject(error);
-    return;
-  }
-
-  // 2. Jika file adalah GAMBAR (JPG, PNG, WebP, dll), kompres otomatis!
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = event => {
-    const img = new Image();
-    img.src = event.target.result;
-    
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      let width = img.width;
-      let height = img.height;
-
-      // Batasi ukuran maksimal lebar/tinggi gambar ke 1024 pixel
-      // (Ukuran ini sudah sangat tajam & jelas untuk dokumen/foto)
-      const MAX_SIZE = 1024;
-      if (width > height) {
-        if (width > MAX_SIZE) {
-          height *= MAX_SIZE / width;
-          width = MAX_SIZE;
-        }
-      } else {
-        if (height > MAX_SIZE) {
-          width *= MAX_SIZE / height;
-          height = MAX_SIZE;
-        }
+    // Fungsi konversi file ke Base64 (Kompres otomatis jika foto)
+    const toBase64 = file => new Promise((resolve, reject) => {
+      if (!file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve({ base64: reader.result.split(',')[1], mimeType: file.type, name: file.name });
+        reader.onerror = error => reject(error);
+        return;
       }
 
-      canvas.width = width;
-      canvas.height = height;
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = event => {
+        const img = new Image();
+        img.src = event.target.result;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+          const MAX_SIZE = 1024;
 
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, width, height);
+          if (width > height) {
+            if (width > MAX_SIZE) { height *= MAX_SIZE / width; width = MAX_SIZE; }
+          } else {
+            if (height > MAX_SIZE) { width *= MAX_SIZE / height; height = MAX_SIZE; }
+          }
 
-      // Ubah gambar ke format JPEG dengan kualitas 60%
-      // (Menghemat ukuran file hingga 80-90% tanpa merusak kualitas tampilan)
-      const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
-      
-      resolve({
-        base64: dataUrl.split(',')[1],
-        mimeType: 'image/jpeg',
-        name: file.name.replace(/\.[^/.]+$/, "") + ".jpg"
-      });
-    };
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
 
-    img.onerror = error => reject(error);
-  };
-  reader.onerror = error => reject(error);
-});
-});
+          const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
+          resolve({
+            base64: dataUrl.split(',')[1],
+            mimeType: 'image/jpeg',
+            name: file.name.replace(/\.[^/.]+$/, "") + ".jpg"
+          });
+        };
+        img.onerror = error => reject(error);
+      };
+      reader.onerror = error => reject(error);
     });
 
     document.getElementById('formBerkas').addEventListener('submit', async function(e) {
@@ -296,43 +227,31 @@ const toBase64 = file => new Promise((resolve, reject) => {
       const fAkta = document.getElementById('fileAkta').files[0];
       const fIjazah = document.getElementById('fileIjazah').files[0];
 
-      if (localStorage.getItem('berkasSelesai') !== 'true' && (!fPasFoto || !fKK || !fAkta || !fIjazah)) {
+      if (!fPasFoto || !fKK || !fAkta || !fIjazah) {
         alert('⚠️ Mohon pilih semua 4 berkas persyaratan!');
         return;
       }
 
-      const maxBytes = 2.5 * 1024 * 1024;
-      if (
-        (fPasFoto && fPasFoto.size > maxBytes) ||
-        (fKK && fKK.size > maxBytes) ||
-        (fAkta && fAkta.size > maxBytes) ||
-        (fIjazah && fIjazah.size > maxBytes)
-      ) {
-        alert('⚠️ Salah satu file melebihi 2.5MB. Mohon kompres file Anda.');
-        return;
-      }
-
       btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Mengunggah Berkas ke Drive...</span>';
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin text-lg"></i> <span>Sedang Mengompres & Mengunggah Berkas...</span>';
 
       try {
         const payload = {
           noPendaftaran: noPendaftar,
-          pasFoto: fPasFoto ? await toBase64(fPasFoto) : null,
-          kartuKeluarga: fKK ? await toBase64(fKK) : null,
-          aktaKelahiran: fAkta ? await toBase64(fAkta) : null,
-          ijazah: fIjazah ? await toBase64(fIjazah) : null
+          pasFoto: await toBase64(fPasFoto),
+          kartuKeluarga: await toBase64(fKK),
+          aktaKelahiran: await toBase64(fAkta),
+          ijazah: await toBase64(fIjazah)
         };
 
         await fetch(SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain' },
           body: JSON.stringify(payload)
         });
 
-        alert('✅ Semua Berkas Berhasil Diunggah ke Tab BERKAS!');
-        localStorage.setItem('berkasSelesai', 'true');
+        alert('✅ Semua Berkas Berhasil Diunggah!');
         window.location.href = 'pembayaran.html';
 
       } catch (err) {
