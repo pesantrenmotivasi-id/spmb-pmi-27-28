@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[Nama Halaman] | Pesantren Motivasi Indonesia</title>
+  <title>Dashboard Santri | Pesantren Motivasi Indonesia</title>
   <link rel="icon" type="image/png" href="1.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@
   <!-- OVERLAY BACKDROP UNTUK MOBILE SIDEBAR -->
   <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden transition-opacity" onclick="toggleSidebar()"></div>
 
-  <!-- SIDEBAR (Kiri) - SUDAH RESPONSIVE MOBILE -->
+  <!-- SIDEBAR (Kiri) - RESPONSIVE MOBILE -->
   <aside id="sidebar" class="w-64 bg-coklat-logo text-white flex flex-col shadow-2xl fixed md:relative inset-y-0 left-0 z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
     <div class="p-6 flex items-center gap-4 border-b border-white/10">
       <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain">
@@ -196,9 +196,9 @@
             </div>
             <div class="space-y-4">
               <a href="pengumuman.html" class="block p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-gold transition-colors">
-                <p class="text-xs text-gray-500 mb-1"><i class="far fa-clock"></i> 28 Sept 2026</p>
-                <h5 class="font-bold text-sm text-coklat-logo mb-1">Pelaksanaan Tes Seleksi Gelombang 1</h5>
-                <p class="text-xs text-gray-600 line-clamp-2">Informasi pelaksanaan tes seleksi luring untuk calon santri baru Gelombang 1.</p>
+                <p class="text-xs text-gray-500 mb-1"><i class="far fa-clock"></i> Informasi SPMB 2027/2028</p>
+                <h5 class="font-bold text-sm text-coklat-logo mb-1">Pelaksanaan Tes Seleksi Calon Santri Baru</h5>
+                <p class="text-xs text-gray-600 line-clamp-2">Informasi pelaksanaan tes seleksi luring dan wawancara untuk calon santri baru.</p>
               </a>
             </div>
           </div>
@@ -229,7 +229,7 @@
 
   <!-- LOGIKA OTOMATIS DASHBOARD & SIDEBAR MOBILE -->
   <script>
-    // --- FITUR SIDEBAR MOBILE ---
+    // 1. FITUR TOGGLE SIDEBAR MOBILE
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
       const overlay = document.getElementById('sidebarOverlay');
@@ -243,14 +243,12 @@
       }
     }
 
-    // --- SINKRONISASI DATA DARI LOCAL STORAGE (INDEX) ---
-    // 1. Tampilkan No Pendaftaran
+    // 2. SINKRONISASI DATA DARI LOCAL STORAGE (INDEX / BIODATA)
     const noPendaftar = localStorage.getItem('noPendaftaran') || 'SPMB-27-001';
     if (document.getElementById('teksNoPendaftaran')) {
       document.getElementById('teksNoPendaftaran').innerText = 'No: ' + noPendaftar;
     }
 
-    // 2. Tampilkan Nama & Inisial
     const namaSantri = localStorage.getItem('namaCalonSantri');
     if (namaSantri && namaSantri.trim() !== '') {
       document.getElementById('teksHeader').innerText = namaSantri;
@@ -266,11 +264,12 @@
       document.getElementById('teksInisial').innerText = inisial.toUpperCase();
     }
 
-    // 3. Cek Status Progres (Biodata, Berkas, Pembayaran)
+    // 3. CEK STATUS PROGRES (Biodata, Berkas, Pembayaran)
     const isBiodataSelesai = localStorage.getItem('biodataSelesai');
     const isBerkasSelesai = localStorage.getItem('berkasSelesai');
     const isPembayaranSelesai = localStorage.getItem('pembayaranSelesai');
 
+    // JIKA BIODATA SUDAH SELESAI
     if (isBiodataSelesai === 'true') {
       document.getElementById('teksStatus').className = 'font-bold text-green-600';
       document.getElementById('teksStatus').innerText = 'Biodata Sudah Lengkap';
@@ -292,6 +291,7 @@
       document.getElementById('garisProgres').style.width = '35%';
     }
 
+    // JIKA BERKAS SUDAH SELESAI
     if (isBerkasSelesai === 'true') {
       document.getElementById('teksStatus').innerText = 'Berkas Berhasil Diunggah';
 
@@ -313,8 +313,9 @@
       document.getElementById('garisProgres').style.width = '60%';
     }
 
+    // JIKA PEMBAYARAN SUDAH SELESAI
     if (isPembayaranSelesai === 'true') {
-      document.getElementById('teksStatus').innerText = 'Konfirmasi Pembayaran Terkirim via WA';
+      document.getElementById('teksStatus').innerText = 'Konfirmasi Pembayaran Terkirim';
 
       const btnBiodata = document.getElementById('btnBiodata');
       btnBiodata.innerHTML = 'Lihat Pengumuman <i class="fas fa-bullhorn ml-1"></i>';
