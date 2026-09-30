@@ -179,8 +179,8 @@
   </main>
 
   <script>
-    // URL WEB APP APPS SCRIPT KHUSUS BERKAS
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxq14t_oAUJzFC3IwG9J376xphiPS9Rh5PQme04cp3STCyzs1Z3WYgNljPUK8oc5pijFQ/exec";
+    // URL WEB APP APPS SCRIPT YANG BARU DARI SPREADSHEET PENDAFTARAN
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfxbUBZDngOAQo_nGzlcKxRhnkpa96NOApwrKG16RpHaKbVBiRCDOuM45R4Jxg_PPq7w/exec";
 
     // 1. TOGGLE SIDEBAR MOBILE
     function toggleSidebar() {
@@ -266,7 +266,7 @@
         return;
       }
 
-      // Validasi Ukuran File (Maksimal 2.5MB)
+      // Validasi Ukuran File (Maksimal 2.5MB per file)
       const maxBytes = 2.5 * 1024 * 1024;
       if (
         (fPasFoto && fPasFoto.size > maxBytes) ||
@@ -284,6 +284,7 @@
       try {
         const payload = {
           noPendaftaran: noPendaftar,
+          namaSantri: namaSantri || 'Calon Santri',
           pasFoto: fPasFoto ? await toBase64(fPasFoto) : null,
           kartuKeluarga: fKK ? await toBase64(fKK) : null,
           aktaKelahiran: fAkta ? await toBase64(fAkta) : null,
