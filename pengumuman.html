@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[Nama Halaman] | Pesantren Motivasi Indonesia</title>
+  <title>Pengumuman | Pesantren Motivasi Indonesia</title>
   <link rel="icon" type="image/png" href="1.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -34,8 +34,11 @@
 </head>
 <body class="flex h-screen overflow-hidden bg-[#FAF8F5]">
 
-  <!-- SIDEBAR (Kiri) -->
-  <aside class="w-64 bg-coklat-logo text-white flex flex-col shadow-2xl hidden md:flex relative z-20">
+  <!-- OVERLAY BACKDROP UNTUK MOBILE SIDEBAR -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden transition-opacity" onclick="toggleSidebar()"></div>
+
+  <!-- SIDEBAR (Kiri) - RESPONSIVE MOBILE -->
+  <aside id="sidebar" class="w-64 bg-coklat-logo text-white flex flex-col shadow-2xl fixed md:relative inset-y-0 left-0 z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
     <div class="p-6 flex items-center gap-4 border-b border-white/10">
       <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain">
       <div>
@@ -75,24 +78,26 @@
     
     <!-- HEADER -->
     <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
-      <button class="md:hidden text-coklat-logo text-xl">
+      <!-- TOMBOL HAMBURGER MOBILE -->
+      <button onclick="toggleSidebar()" class="md:hidden text-coklat-logo text-xl p-2 focus:outline-none">
         <i class="fas fa-bars"></i>
       </button>
 
-      <h2 class="text-xl font-bold text-gray-800 hidden md:block">Pengumuman Kelulusan</h2>
+      <h2 class="text-xl font-bold text-gray-800 hidden md:block">Pengumuman Kelulusan & Verifikasi</h2>
 
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-6 ml-auto md:ml-0">
         <a href="pengumuman.html" class="text-gold relative transition-colors">
           <i class="fas fa-bell text-xl"></i>
+          <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
         </a>
-        
+
         <div class="flex items-center gap-3 border-l pl-6 border-gray-200">
           <div class="text-right hidden sm:block">
-            <p id="teksHeader" class="text-sm font-bold text-gray-800">Ahmad Fathan</p>
+            <p id="teksHeader" class="text-sm font-bold text-gray-800">Calon Santri</p>
             <p id="teksNoPendaftaran" class="text-xs text-gray-500">No: SPMB-27-001</p>
           </div>
           <div id="teksInisial" class="w-10 h-10 rounded-full bg-coklat-logo text-white flex items-center justify-center font-bold font-serif-custom shadow-md border-2 border-gold">
-            AF
+            CS
           </div>
         </div>
       </div>
@@ -102,41 +107,90 @@
     <div class="flex-1 overflow-y-auto p-6 md:p-8">
       <div class="max-w-3xl mx-auto space-y-6">
         
-        <!-- Status Kartu Pendaftaran -->
+        <!-- KARTU STATUS SELEKSI -->
         <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 text-center relative overflow-hidden">
-          <div class="w-20 h-20 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
-            <i class="fas fa-hourglass-half animate-spin"></i>
+          <div class="w-20 h-20 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-inner">
+            <i class="fas fa-hourglass-half animate-pulse"></i>
           </div>
 
           <h3 class="text-2xl font-bold font-serif-custom text-coklat-logo mb-2">Berkas Sedang Diverifikasi Panitia</h3>
           <p class="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-            Terima kasih telah melengkapi pendaftaran. Tim Seleksi Pesantren Motivasi Indonesia sedang memeriksa berkas dan bukti pembayaran Anda.
+            Terima kasih telah melengkapi pendaftaran. Tim Seleksi SPMB Pesantren Motivasi Indonesia sedang memeriksa kelengkapan berkas dan bukti pembayaran Anda.
           </p>
 
           <div class="mt-8 pt-6 border-t border-gray-100 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
-            <div class="bg-[#FAF8F5] p-3 rounded-xl border border-gray-100">
-              <p class="text-[10px] text-gray-400 uppercase font-bold">Nama Santri</p>
-              <p id="teksPengumumanNama" class="text-xs font-bold text-gray-800 mt-0.5">Ahmad Fathan</p>
+            <div class="bg-[#FAF8F5] p-4 rounded-xl border border-gray-100">
+              <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Nama Santri</p>
+              <p id="teksPengumumanNama" class="text-xs font-bold text-gray-800 mt-1">Calon Santri</p>
             </div>
-            <div class="bg-[#FAF8F5] p-3 rounded-xl border border-gray-100">
-              <p class="text-[10px] text-gray-400 uppercase font-bold">No. Pendaftaran</p>
-              <p id="teksPengumumanNo" class="text-xs font-bold text-gray-800 mt-0.5">SPMB-27-001</p>
+            <div class="bg-[#FAF8F5] p-4 rounded-xl border border-gray-100">
+              <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">No. Pendaftaran</p>
+              <p id="teksPengumumanNo" class="text-xs font-bold text-gray-800 mt-1">SPMB-27-001</p>
             </div>
-            <div class="bg-[#FAF8F5] p-3 rounded-xl border border-gray-100">
-              <p class="text-[10px] text-gray-400 uppercase font-bold">Jenjang</p>
-              <p id="teksPengumumanJenjang" class="text-xs font-bold text-gray-800 mt-0.5">SMP Motivasi Indonesia</p>
+            <div class="bg-[#FAF8F5] p-4 rounded-xl border border-gray-100">
+              <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Jenjang Pendidikan</p>
+              <p id="teksPengumumanJenjang" class="text-xs font-bold text-gray-800 mt-1">SMP Motivasi Indonesia</p>
             </div>
           </div>
         </div>
 
-        <!-- Help Info -->
-        <div class="bg-coklat-logo text-white p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+        <!-- TIMELINE/TAHAPAN SELEKSI -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-4">
+          <h4 class="font-bold text-gray-800 text-sm uppercase tracking-wide border-b pb-3 flex items-center gap-2">
+            <i class="fas fa-tasks text-gold"></i> Tahapan Seleksi Masuk
+          </h4>
+
+          <div class="space-y-4 text-xs">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0 font-bold">
+                <i class="fas fa-check text-xs"></i>
+              </div>
+              <div>
+                <p class="font-bold text-gray-800 text-sm">1. Pendaftaran & Pengisian Biodata</p>
+                <p class="text-gray-500">Data calon santri dan wali murid telah berhasil disimpan.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center shrink-0 font-bold">
+                2
+              </div>
+              <div>
+                <p class="font-bold text-gray-800 text-sm">2. Verifikasi Berkas & Pembayaran</p>
+                <p class="text-gray-500">Panitia sedang memeriksa dokumen administrasi dan status pembayaran.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 opacity-50">
+              <div class="w-6 h-6 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center shrink-0 font-bold">
+                3
+              </div>
+              <div>
+                <p class="font-bold text-gray-800 text-sm">3. Tes Seleksi / Wawancara</p>
+                <p class="text-gray-500">Jadwal tes akademik dan wawancara akan diinfokan setelah verifikasi berkas selesai.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 opacity-50">
+              <div class="w-6 h-6 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center shrink-0 font-bold">
+                4
+              </div>
+              <div>
+                <p class="font-bold text-gray-800 text-sm">4. Pengumuman Kelulusan Akhir</p>
+                <p class="text-gray-500">Hasil keputusan penerimaan santri baru akan ditampilkan di halaman ini.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BANTUAN / CONTACT WA -->
+        <div class="bg-coklat-logo text-white p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
           <div>
             <h4 class="font-bold text-gold text-sm font-serif-custom">Ada Pertanyaan seputar Pengumuman?</h4>
-            <p class="text-xs text-gray-300 mt-1">Hubungi Panitia SPMB via WhatsApp jika mengalami kendala.</p>
+            <p class="text-xs text-gray-300 mt-1">Hubungi Panitia SPMB via WhatsApp jika mengalami kendala atau butuh bantuan.</p>
           </div>
-          <a href="https://wa.me/6285880883675?text=Halo%20Panitia%20SPMB,%20saya%20ingin%20bertanya" target="_blank" class="bg-gold text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-yellow-600 transition-colors flex items-center gap-2 whitespace-nowrap">
-            <i class="fab fa-whatsapp text-sm"></i> Hubungi Panitia
+          <a href="https://wa.me/6285880883675?text=Halo%20Panitia%20SPMB%20Pesantren%20Motivasi%20Indonesia,%20saya%20ingin%20bertanya%20mengenai%20status%20pendaftaran%20saya." target="_blank" class="bg-gold hover:bg-yellow-600 text-white text-xs font-bold px-5 py-3 rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap shadow-md">
+            <i class="fab fa-whatsapp text-base"></i> Hubungi Panitia WA
           </a>
         </div>
 
@@ -145,26 +199,49 @@
   </main>
 
   <script>
-    // Sinkronisasi Header & Teks Pengumuman
+    // 1. FUNGSI TOGGLE SIDEBAR MOBILE
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      }
+    }
+
+    // 2. SINKRONISASI DATA DARI LOCAL STORAGE
     const noPendaftar = localStorage.getItem('noPendaftaran') || 'SPMB-27-001';
     if (document.getElementById('teksNoPendaftaran')) {
       document.getElementById('teksNoPendaftaran').innerText = 'No: ' + noPendaftar;
+    }
+    if (document.getElementById('teksPengumumanNo')) {
       document.getElementById('teksPengumumanNo').innerText = noPendaftar;
     }
 
-    const namaSantri = localStorage.getItem('namaCalonSantri');
-    if (namaSantri && namaSantri.trim() !== '') {
-      document.getElementById('teksHeader').innerText = namaSantri;
+    const namaSantri = localStorage.getItem('namaCalonSantri') || 'Calon Santri';
+    document.getElementById('teksHeader').innerText = namaSantri;
+    if (document.getElementById('teksPengumumanNama')) {
       document.getElementById('teksPengumumanNama').innerText = namaSantri;
-
-      const kata = namaSantri.trim().split(/\s+/);
-      let inisial = kata.length >= 2 ? kata[0].charAt(0) + kata[kata.length - 1].charAt(0) : kata[0].substring(0, 2);
-      document.getElementById('teksInisial').innerText = inisial.toUpperCase();
     }
 
+    // Hitung Inisial Profil
+    const kata = namaSantri.trim().split(/\s+/);
+    let inisial = '';
+    if (kata.length >= 2) {
+      inisial = kata[0].charAt(0) + kata[kata.length - 1].charAt(0);
+    } else if (kata.length === 1 && kata[0].length > 0) {
+      inisial = kata[0].substring(0, 2);
+    }
+    document.getElementById('teksInisial').innerText = inisial.toUpperCase();
+
+    // Jenjang Santri
     const jenjang = localStorage.getItem('jenjangSantri');
     if (jenjang && document.getElementById('teksPengumumanJenjang')) {
-      document.getElementById('teksPengumumanJenjang').innerText = jenjang + ' Motivasi Indonesia';
+      document.getElementById('teksPengumumanJenjang').innerText = jenjang.toUpperCase() + ' Motivasi Indonesia';
     }
   </script>
 </body>
