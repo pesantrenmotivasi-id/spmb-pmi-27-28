@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pengumuman | Pesantren Motivasi Indonesia</title>
+  <title>Pengumuman & Informasi Tes Seleksi | Pesantren Motivasi Indonesia</title>
   <link rel="icon" type="image/png" href="1.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -56,7 +56,7 @@
         <i class="fas fa-user-edit w-5 text-center"></i> Biodata Diri
       </a>
       <a href="upload-berkas.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-file-upload w-5 text-center"></i> Upload Berkas
+        <i class="fas fa-file-upload w-5 text-center"></i> Syarat Administrasi
       </a>
       <a href="pembayaran.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
         <i class="fas fa-wallet w-5 text-center"></i> Pembayaran
@@ -78,12 +78,11 @@
     
     <!-- HEADER -->
     <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
-      <!-- TOMBOL HAMBURGER MOBILE -->
       <button onclick="toggleSidebar()" class="md:hidden text-coklat-logo text-xl p-2 focus:outline-none">
         <i class="fas fa-bars"></i>
       </button>
 
-      <h2 class="text-xl font-bold text-gray-800 hidden md:block">Pengumuman Kelulusan & Verifikasi</h2>
+      <h2 class="text-xl font-bold text-gray-800 hidden md:block">Pengumuman & Panduan Seleksi</h2>
 
       <div class="flex items-center gap-6 ml-auto md:ml-0">
         <a href="pengumuman.html" class="text-gold relative transition-colors">
@@ -103,94 +102,225 @@
       </div>
     </header>
 
-    <!-- CONTENT AREA -->
+    <!-- CONTENT AREA SCROLLABLE -->
     <div class="flex-1 overflow-y-auto p-6 md:p-8">
-      <div class="max-w-3xl mx-auto space-y-6">
+      <div class="max-w-4xl mx-auto space-y-8">
         
-        <!-- KARTU STATUS SELEKSI -->
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 text-center relative overflow-hidden">
-          <div class="w-20 h-20 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-inner">
-            <i class="fas fa-hourglass-half animate-pulse"></i>
+        <!-- KARTU STATUS KELULUSAN & PENGUMUMAN UTAMA -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-bl-full -z-0 opacity-50"></div>
+
+          <div class="relative z-10 text-center max-w-2xl mx-auto">
+            <div class="w-16 h-16 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-sm">
+              <i class="fas fa-clipboard-check animate-bounce"></i>
+            </div>
+
+            <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-[11px] font-bold tracking-wide uppercase">
+              Status Pendaftaran: Menunggu Pelaksanaan Tes
+            </span>
+
+            <h3 class="text-2xl font-bold font-serif-custom text-coklat-logo mt-3 mb-2">
+              Persiapan Alur Tes Seleksi Penerimaan Santri Baru
+            </h3>
+            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
+              Selamat! Data pendaftaran dan bukti administrasi Anda telah dicatat oleh panitia. Selanjutnya, calon santri diwajibkan mengikuti seluruh tahapan <strong class="text-coklat-logo">Tes Seleksi Penerimaan Santri Baru</strong> Pesantren Motivasi Indonesia.
+            </p>
           </div>
 
-          <h3 class="text-2xl font-bold font-serif-custom text-coklat-logo mb-2">Berkas Sedang Diverifikasi Panitia</h3>
-          <p class="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-            Terima kasih telah melengkapi pendaftaran. Tim Seleksi SPMB Pesantren Motivasi Indonesia sedang memeriksa kelengkapan berkas dan bukti pembayaran Anda.
-          </p>
-
+          <!-- RINGKASAN PROFIL PESERTA -->
           <div class="mt-8 pt-6 border-t border-gray-100 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
-            <div class="bg-[#FAF8F5] p-4 rounded-xl border border-gray-100">
-              <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Nama Santri</p>
-              <p id="teksPengumumanNama" class="text-xs font-bold text-gray-800 mt-1">Calon Santri</p>
+            <div class="bg-[#FAF8F5] p-4 rounded-xl border border-gray-100 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold">
+                <i class="fas fa-user-graduate text-base"></i>
+              </div>
+              <div>
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Nama Peserta</p>
+                <p id="teksPengumumanNama" class="text-xs font-bold text-gray-800 mt-0.5">Calon Santri</p>
+              </div>
             </div>
-            <div class="bg-[#FAF8F5] p-4 rounded-xl border border-gray-100">
-              <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">No. Pendaftaran</p>
-              <p id="teksPengumumanNo" class="text-xs font-bold text-gray-800 mt-1">SPMB-27-001</p>
+
+            <div class="bg-[#FAF8F5] p-4 rounded-xl border border-gray-100 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold">
+                <i class="fas fa-id-card text-base"></i>
+              </div>
+              <div>
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">No. Pendaftaran</p>
+                <p id="teksPengumumanNo" class="text-xs font-bold text-gray-800 mt-0.5">SPMB-27-001</p>
+              </div>
             </div>
-            <div class="bg-[#FAF8F5] p-4 rounded-xl border border-gray-100">
-              <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Jenjang Pendidikan</p>
-              <p id="teksPengumumanJenjang" class="text-xs font-bold text-gray-800 mt-1">SMP Motivasi Indonesia</p>
+
+            <div class="bg-[#FAF8F5] p-4 rounded-xl border border-gray-100 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold">
+                <i class="fas fa-school text-base"></i>
+              </div>
+              <div>
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Jenjang Pilihan</p>
+                <p id="teksPengumumanJenjang" class="text-xs font-bold text-gray-800 mt-0.5">SMP Motivasi Indonesia</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- TIMELINE/TAHAPAN SELEKSI -->
-        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 space-y-4">
-          <h4 class="font-bold text-gray-800 text-sm uppercase tracking-wide border-b pb-3 flex items-center gap-2">
-            <i class="fas fa-tasks text-gold"></i> Tahapan Seleksi Masuk
-          </h4>
+        <!-- SEKSI UTAMA: MATERI & MATRIKS TES SELEKSI -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-100 pb-4">
+            <div>
+              <h3 class="text-lg font-bold font-serif-custom text-coklat-logo flex items-center gap-2">
+                <i class="fas fa-graduation-cap text-gold"></i> Materi Tes Seleksi Masuk
+              </h3>
+              <p class="text-xs text-gray-500">Berikut adalah 6 materi ujian yang akan dievaluasi oleh Tim Penguji Pesantren Motivasi Indonesia.</p>
+            </div>
+            <span class="text-xs bg-gold/10 text-gold font-bold px-3 py-1.5 rounded-lg border border-gold/20 self-start sm:self-auto">
+              <i class="fas fa-star text-[10px] mr-1"></i> Wajib Diikuti Santri
+            </span>
+          </div>
 
-          <div class="space-y-4 text-xs">
-            <div class="flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0 font-bold">
-                <i class="fas fa-check text-xs"></i>
+          <!-- GRID 6 MATERI TES -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            
+            <!-- 1. Tes Membaca Al-Qur'an -->
+            <div class="p-5 border border-gray-100 rounded-2xl bg-[#FAF8F5] hover:bg-white hover:border-gold hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                <i class="fas fa-quran"></i>
               </div>
-              <div>
-                <p class="font-bold text-gray-800 text-sm">1. Pendaftaran & Pengisian Biodata</p>
-                <p class="text-gray-500">Data calon santri dan wali murid telah berhasil disimpan.</p>
-              </div>
+              <h4 class="font-bold text-gray-800 text-sm mb-1">1. Tes Membaca Al-Qur'an</h4>
+              <p class="text-xs text-gray-500 leading-relaxed">
+                Pengujian kelancaran membaca Al-Qur'an, ketepatan hukum Tajwid, Makhraj huruf, serta kelancaran hafalan surat pendek (Juz Amma).
+              </p>
             </div>
 
-            <div class="flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center shrink-0 font-bold">
-                2
+            <!-- 2. Praktik Ibadah -->
+            <div class="p-5 border border-gray-100 rounded-2xl bg-[#FAF8F5] hover:bg-white hover:border-gold hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                <i class="fas fa-pray"></i>
               </div>
-              <div>
-                <p class="font-bold text-gray-800 text-sm">2. Verifikasi Berkas & Pembayaran</p>
-                <p class="text-gray-500">Panitia sedang memeriksa dokumen administrasi dan status pembayaran.</p>
-              </div>
+              <h4 class="font-bold text-gray-800 text-sm mb-1">2. Praktik Ibadah</h4>
+              <p class="text-xs text-gray-500 leading-relaxed">
+                Praktek langsung tata cara wudhu, gerakan & bacaan shalat fardhu/sunnah, serta hapalan doa-doa harian sehari-hari.
+              </p>
             </div>
 
-            <div class="flex items-start gap-3 opacity-50">
-              <div class="w-6 h-6 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center shrink-0 font-bold">
+            <!-- 3. Pengetahuan Agama Dasar -->
+            <div class="p-5 border border-gray-100 rounded-2xl bg-[#FAF8F5] hover:bg-white hover:border-gold hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                <i class="fas fa-kaaba"></i>
+              </div>
+              <h4 class="font-bold text-gray-800 text-sm mb-1">3. Pengetahuan Agama Dasar</h4>
+              <p class="text-xs text-gray-500 leading-relaxed">
+                Soal-soal seputar pemahaman dasar Aqidah Islam, Rukun Iman & Islam, Fiqih ibadah dasar, dan Sejarah Kebudayaan Islam (SKI).
+              </p>
+            </div>
+
+            <!-- 4. Tes Potensi Akademik (TPA) -->
+            <div class="p-5 border border-gray-100 rounded-2xl bg-[#FAF8F5] hover:bg-white hover:border-gold hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                <i class="fas fa-brain"></i>
+              </div>
+              <h4 class="font-bold text-gray-800 text-sm mb-1">4. Tes Potensi Akademik (TPA)</h4>
+              <p class="text-xs text-gray-500 leading-relaxed">
+                Mengukur logika berpikir, Matematika dasar, pemahaman Bahasa Indonesia, serta kemampuan analisis verbal calon santri.
+              </p>
+            </div>
+
+            <!-- 5. Psikotes -->
+            <div class="p-5 border border-gray-100 rounded-2xl bg-[#FAF8F5] hover:bg-white hover:border-gold hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                <i class="fas fa-user-check"></i>
+              </div>
+              <h4 class="font-bold text-gray-800 text-sm mb-1">5. Psikotes & Kesiapan Mental</h4>
+              <p class="text-xs text-gray-500 leading-relaxed">
+                Pemetaan karakter, tingkat kemandirian, minat talent, kesiapan tinggal di asrama pesantren (mondok), dan ketahanan emosional.
+              </p>
+            </div>
+
+            <!-- 6. Wawancara Santri & Orang Tua -->
+            <div class="p-5 border border-gray-100 rounded-2xl bg-[#FAF8F5] hover:bg-white hover:border-gold hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+                <i class="fas fa-comments"></i>
+              </div>
+              <h4 class="font-bold text-gray-800 text-sm mb-1">6. Wawancara Orang Tua & Santri</h4>
+              <p class="text-xs text-gray-500 leading-relaxed">
+                Sesi dialog bersama pengasuh pesantren untuk menyelaraskan komitmen wali murid dan motivasi belajar calon santri.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TAHAPAN LENGKAP PENERIMAAN SANTRI -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 space-y-6">
+          <h3 class="text-lg font-bold font-serif-custom text-coklat-logo flex items-center gap-2">
+            <i class="fas fa-stream text-gold"></i> Alur Tahapan SPMB Pesantren
+          </h3>
+
+          <div class="relative border-l-2 border-gold/30 ml-4 pl-6 space-y-6">
+            
+            <!-- Tahap 1 -->
+            <div class="relative">
+              <span class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-green-500 text-white text-xs flex items-center justify-center font-bold">
+                <i class="fas fa-check"></i>
+              </span>
+              <h4 class="font-bold text-gray-800 text-sm">Tahap 1: Pengisian Biodata & Pendaftaran Online</h4>
+              <p class="text-xs text-gray-500 mt-1">Calon santri melengkapi formulir identitas diri, orang tua, dan pilihan jenjang pendidikan.</p>
+            </div>
+
+            <!-- Tahap 2 -->
+            <div class="relative">
+              <span class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-green-500 text-white text-xs flex items-center justify-center font-bold">
+                <i class="fas fa-check"></i>
+              </span>
+              <h4 class="font-bold text-gray-800 text-sm">Tahap 2: Syarat Administrasi & Biaya Tes</h4>
+              <p class="text-xs text-gray-500 mt-1">Penyelesaian pendaftaran administrasi dan konfirmasi via WhatsApp Panitia.</p>
+            </div>
+
+            <!-- Tahap 3 -->
+            <div class="relative">
+              <span class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-gold text-white text-xs flex items-center justify-center font-bold ring-4 ring-gold/20">
                 3
-              </div>
-              <div>
-                <p class="font-bold text-gray-800 text-sm">3. Tes Seleksi / Wawancara</p>
-                <p class="text-gray-500">Jadwal tes akademik dan wawancara akan diinfokan setelah verifikasi berkas selesai.</p>
-              </div>
+              </span>
+              <h4 class="font-bold text-coklat-logo text-sm">Tahap 3: Pelaksanaan Tes Seleksi & Wawancara</h4>
+              <p class="text-xs text-gray-600 mt-1">Peserta hadir di kompleks Pesantren Motivasi Indonesia untuk mengikuti tes 6 materi seleksi di atas.</p>
             </div>
 
-            <div class="flex items-start gap-3 opacity-50">
-              <div class="w-6 h-6 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center shrink-0 font-bold">
+            <!-- Tahap 4 -->
+            <div class="relative">
+              <span class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center font-bold">
                 4
-              </div>
-              <div>
-                <p class="font-bold text-gray-800 text-sm">4. Pengumuman Kelulusan Akhir</p>
-                <p class="text-gray-500">Hasil keputusan penerimaan santri baru akan ditampilkan di halaman ini.</p>
-              </div>
+              </span>
+              <h4 class="font-bold text-gray-400 text-sm">Tahap 4: Pengumuman Hasil Kelulusan & Daftar Ulang</h4>
+              <p class="text-xs text-gray-400 mt-1">Pengumuman resmi santri yang diterima akan ditampilkan secara berkala di portal ini.</p>
             </div>
+
           </div>
         </div>
 
-        <!-- BANTUAN / CONTACT WA -->
-        <div class="bg-coklat-logo text-white p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
-          <div>
-            <h4 class="font-bold text-gold text-sm font-serif-custom">Ada Pertanyaan seputar Pengumuman?</h4>
-            <p class="text-xs text-gray-300 mt-1">Hubungi Panitia SPMB via WhatsApp jika mengalami kendala atau butuh bantuan.</p>
+        <!-- PETUNJUK TEKNIS SAAT HADIR TES -->
+        <div class="bg-amber-50/60 border border-amber-200 rounded-2xl p-6 flex flex-col md:flex-row items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-xl shrink-0">
+            <i class="fas fa-info-circle"></i>
           </div>
-          <a href="https://wa.me/6285880883675?text=Halo%20Panitia%20SPMB%20Pesantren%20Motivasi%20Indonesia,%20saya%20ingin%20bertanya%20mengenai%20status%20pendaftaran%20saya." target="_blank" class="bg-gold hover:bg-yellow-600 text-white text-xs font-bold px-5 py-3 rounded-xl transition-colors flex items-center gap-2 whitespace-nowrap shadow-md">
-            <i class="fab fa-whatsapp text-base"></i> Hubungi Panitia WA
+          <div class="space-y-2 text-xs text-amber-900">
+            <h4 class="font-bold text-sm text-amber-950">Perlengkapan yang Wajib Dibawa Saat Tes Offline:</h4>
+            <ul class="list-disc list-inside space-y-1 text-amber-900/90">
+              <li>Pakaian rapi dan sopan (Calon Santri Putra: Baju Koko/Kemeja, Celana Bahan, Peci; Putri: Busana Muslimah Syar'i).</li>
+              <li>Alat tulis pribadi (Pensil 2B, Pulpen, Penghapus).</li>
+              <li>Kitab Suci Al-Qur'an pribadi.</li>
+              <li>Orang Tua / Wali murid WAJIB mendampingi calon santri untuk sesi wawancara.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- KOTAK BANTUAN WHATSAPP PANITIA -->
+        <div class="bg-coklat-logo text-white p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
+          <div>
+            <span class="text-xs font-bold text-gold uppercase tracking-wider">Layanan Informasi SPMB</span>
+            <h4 class="font-bold text-white text-lg font-serif-custom mt-1">Butuh Bantuan mengenai Jadwal & Lokasi Tes?</h4>
+            <p class="text-xs text-gray-300 mt-1 max-w-xl">
+              Tim Panitia Penerimaan Santri Baru siap melayani pertanyaan Anda seputar alur ujian, lokasi pesantren, dan pendaftaran.
+            </p>
+          </div>
+          <a href="https://wa.me/6285880883675?text=Assalamu'alaikum%20Panitia%20SPMB%20Pesantren%20Motivasi%20Indonesia,%20saya%20ingin%20bertanya%20mengenai%20jadwal%20dan%20pelaksanaan%20tes%20seleksi." target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-xs font-bold px-6 py-3.5 rounded-xl transition-all flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-green-600/30">
+            <i class="fab fa-whatsapp text-lg"></i> Hubungi Panitia via WA
           </a>
         </div>
 
