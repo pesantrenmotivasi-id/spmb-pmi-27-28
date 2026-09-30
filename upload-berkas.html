@@ -82,7 +82,7 @@
         <i class="fas fa-bars"></i>
       </button>
 
-      <h2 class="text-xl font-bold text-gray-800 hidden md:block">Upload Berkas Persyaratan</h2>
+      <h2 class="text-xl font-bold text-gray-800 hidden md:block">Berkas Persyaratan SPMB</h2>
 
       <div class="flex items-center gap-6 ml-auto md:ml-0">
         <a href="pengumuman.html" class="text-gray-400 hover:text-gold relative transition-colors">
@@ -106,56 +106,73 @@
     <div class="flex-1 overflow-y-auto p-6 md:p-8">
       <div class="max-w-4xl mx-auto space-y-6">
 
-        <!-- FORM UPLOAD -->
+        <!-- KARTU PETUNJUK -->
         <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
-          
-          <h3 class="text-xl font-bold font-serif-custom text-coklat-logo mb-1 flex items-center gap-2">
-            <i class="fas fa-cloud-upload-alt text-gold"></i> Form Unggah Berkas Persyaratan
-          </h3>
-          <p class="text-xs text-gray-500 mb-6">Pilih 4 berkas persyaratan di bawah ini (Format: JPG, PNG, PDF).</p>
+          <div class="flex items-start gap-4 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl shrink-0">
+              <i class="fas fa-folder-open"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold font-serif-custom text-coklat-logo">Persyaratan Berkas Pendaftaran</h3>
+              <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+                Silakan siapkan 4 dokumen di bawah ini. Berkas dapat dikirimkan langsung secara online melalui WhatsApp Panitia SPMB atau dibawa saat seleksi fisik di Pesantren.
+              </p>
+            </div>
+          </div>
 
-          <form id="formBerkas" class="space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              
-              <!-- 1. Pas Foto -->
-              <div class="p-4 border border-gray-200 rounded-xl bg-gray-50/50 hover:border-gold transition-colors">
-                <label class="block text-xs font-bold text-gray-700 uppercase mb-2">1. Pas Foto Santri (3x4 / 4x6) <span class="text-red-500">*</span></label>
-                <input type="file" id="filePasFoto" accept="image/*,.pdf" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20 cursor-pointer">
+          <!-- DAFTAR DOKUMEN -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div class="p-4 border border-gray-100 rounded-xl bg-[#FAF8F5] flex items-center gap-3">
+              <i class="fas fa-check-circle text-green-600 text-lg"></i>
+              <div>
+                <p class="text-xs font-bold text-gray-800">1. Pas Foto Santri</p>
+                <p class="text-[11px] text-gray-500">Ukuran 3x4 atau 4x6 (Background Merah/Biru)</p>
               </div>
-
-              <!-- 2. Kartu Keluarga -->
-              <div class="p-4 border border-gray-200 rounded-xl bg-gray-50/50 hover:border-gold transition-colors">
-                <label class="block text-xs font-bold text-gray-700 uppercase mb-2">2. Kartu Keluarga (KK) <span class="text-red-500">*</span></label>
-                <input type="file" id="fileKK" accept="image/*,.pdf" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20 cursor-pointer">
-              </div>
-
-              <!-- 3. Akta Kelahiran -->
-              <div class="p-4 border border-gray-200 rounded-xl bg-gray-50/50 hover:border-gold transition-colors">
-                <label class="block text-xs font-bold text-gray-700 uppercase mb-2">3. Akta Kelahiran <span class="text-red-500">*</span></label>
-                <input type="file" id="fileAkta" accept="image/*,.pdf" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20 cursor-pointer">
-              </div>
-
-              <!-- 4. Ijazah / SKL -->
-              <div class="p-4 border border-gray-200 rounded-xl bg-gray-50/50 hover:border-gold transition-colors">
-                <label class="block text-xs font-bold text-gray-700 uppercase mb-2">4. Ijazah / SKL / Rapor Terakhir <span class="text-red-500">*</span></label>
-                <input type="file" id="fileIjazah" accept="image/*,.pdf" required class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20 cursor-pointer">
-              </div>
-
             </div>
 
-            <button type="submit" id="btnUpload" class="w-full bg-gold hover:bg-yellow-600 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-gold/30 transition-all flex items-center justify-center gap-2 mt-6">
-              <i class="fas fa-upload"></i> <span>Unggah Semua Berkas</span>
+            <div class="p-4 border border-gray-100 rounded-xl bg-[#FAF8F5] flex items-center gap-3">
+              <i class="fas fa-check-circle text-green-600 text-lg"></i>
+              <div>
+                <p class="text-xs font-bold text-gray-800">2. Kartu Keluarga (KK)</p>
+                <p class="text-[11px] text-gray-500">Foto/Scan jelas halaman utama KK</p>
+              </div>
+            </div>
+
+            <div class="p-4 border border-gray-100 rounded-xl bg-[#FAF8F5] flex items-center gap-3">
+              <i class="fas fa-check-circle text-green-600 text-lg"></i>
+              <div>
+                <p class="text-xs font-bold text-gray-800">3. Akta Kelahiran</p>
+                <p class="text-[11px] text-gray-500">Foto/Scan Akta Kelahiran Santri</p>
+              </div>
+            </div>
+
+            <div class="p-4 border border-gray-100 rounded-xl bg-[#FAF8F5] flex items-center gap-3">
+              <i class="fas fa-check-circle text-green-600 text-lg"></i>
+              <div>
+                <p class="text-xs font-bold text-gray-800">4. Ijazah / SKL / Rapor</p>
+                <p class="text-[11px] text-gray-500">Dokumen kelulusan / nilai sekolah asal</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- TOMBOL AKSI WA & NEXT -->
+          <div class="space-y-3 pt-4 border-t border-gray-100">
+            <button onclick="kirimKeWA()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-green-600/20 transition-all flex items-center justify-center gap-2 text-sm">
+              <i class="fab fa-whatsapp text-lg"></i> <span>Kirim Foto Berkas via WhatsApp Panitia</span>
             </button>
-          </form>
+
+            <a href="pembayaran.html" class="w-full bg-gold hover:bg-yellow-600 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-gold/30 transition-all flex items-center justify-center gap-2 text-sm">
+              <span>Lanjut ke Halaman Pembayaran</span> <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
 
         </div>
+
       </div>
     </div>
   </main>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfxbUBZDngOAQo_nGzlcKxRhnkpa96NOApwrKG16RpHaKbVBiRCDOuM45R4Jxg_PPq7w/exec";
-
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('-translate-x-full');
       document.getElementById('sidebarOverlay').classList.toggle('hidden');
@@ -166,101 +183,23 @@
       document.getElementById('teksNoPendaftaran').innerText = 'No: ' + noPendaftar;
     }
 
-    const namaSantri = localStorage.getItem('namaCalonSantri');
-    if (namaSantri && namaSantri.trim() !== '') {
-      document.getElementById('teksHeader').innerText = namaSantri;
-      const kata = namaSantri.trim().split(/\s+/);
-      let inisial = kata.length >= 2 ? kata[0].charAt(0) + kata[kata.length - 1].charAt(0) : kata[0].substring(0, 2);
-      document.getElementById('teksInisial').innerText = inisial.toUpperCase();
+    const namaSantri = localStorage.getItem('namaCalonSantri') || 'Calon Santri';
+    document.getElementById('teksHeader').innerText = namaSantri;
+    const kata = namaSantri.trim().split(/\s+/);
+    let inisial = kata.length >= 2 ? kata[0].charAt(0) + kata[kata.length - 1].charAt(0) : kata[0].substring(0, 2);
+    document.getElementById('teksInisial').innerText = inisial.toUpperCase();
+
+    // Fungsi otomatis buka WA Panitia
+    function kirimKeWA() {
+      const pesan = encodeURIComponent(
+        `Assalamu'alaikum Panitia SPMB Pesantren Motivasi Indonesia.\n\n` +
+        `Saya ingin mengirimkan berkas pendaftaran:\n` +
+        `- Nama Santri: ${namaSantri}\n` +
+        `- No. Pendaftaran: ${noPendaftar}\n\n` +
+        `Berikut dokumen persyaratannya (Pas Foto, KK, Akta, Ijazah):`
+      );
+      window.open(`https://wa.me/6285880883675?text=${pesan}`, '_blank');
     }
-
-    // Fungsi konversi file ke Base64 (Kompres otomatis jika foto)
-    const toBase64 = file => new Promise((resolve, reject) => {
-      if (!file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve({ base64: reader.result.split(',')[1], mimeType: file.type, name: file.name });
-        reader.onerror = error => reject(error);
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = event => {
-        const img = new Image();
-        img.src = event.target.result;
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          let width = img.width;
-          let height = img.height;
-          const MAX_SIZE = 1024;
-
-          if (width > height) {
-            if (width > MAX_SIZE) { height *= MAX_SIZE / width; width = MAX_SIZE; }
-          } else {
-            if (height > MAX_SIZE) { width *= MAX_SIZE / height; height = MAX_SIZE; }
-          }
-
-          canvas.width = width;
-          canvas.height = height;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, width, height);
-
-          const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
-          resolve({
-            base64: dataUrl.split(',')[1],
-            mimeType: 'image/jpeg',
-            name: file.name.replace(/\.[^/.]+$/, "") + ".jpg"
-          });
-        };
-        img.onerror = error => reject(error);
-      };
-      reader.onerror = error => reject(error);
-    });
-
-    document.getElementById('formBerkas').addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      const btn = document.getElementById('btnUpload');
-      const fPasFoto = document.getElementById('filePasFoto').files[0];
-      const fKK = document.getElementById('fileKK').files[0];
-      const fAkta = document.getElementById('fileAkta').files[0];
-      const fIjazah = document.getElementById('fileIjazah').files[0];
-
-      if (!fPasFoto || !fKK || !fAkta || !fIjazah) {
-        alert('⚠️ Mohon pilih semua 4 berkas persyaratan!');
-        return;
-      }
-
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin text-lg"></i> <span>Sedang Mengompres & Mengunggah Berkas...</span>';
-
-      try {
-        const payload = {
-          noPendaftaran: noPendaftar,
-          pasFoto: await toBase64(fPasFoto),
-          kartuKeluarga: await toBase64(fKK),
-          aktaKelahiran: await toBase64(fAkta),
-          ijazah: await toBase64(fIjazah)
-        };
-
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify(payload)
-        });
-
-        alert('✅ Semua Berkas Berhasil Diunggah!');
-        window.location.href = 'pembayaran.html';
-
-      } catch (err) {
-        console.error(err);
-        alert('⚠️ Gagal mengunggah berkas. Periksa koneksi internet Anda.');
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-upload"></i> <span>Unggah Semua Berkas</span>';
-      }
-    });
   </script>
 </body>
 </html>
