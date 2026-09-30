@@ -34,8 +34,11 @@
 </head>
 <body class="flex h-screen overflow-hidden bg-[#FAF8F5]">
 
-  <!-- SIDEBAR (Kiri) -->
-  <aside class="w-64 bg-coklat-logo text-white flex flex-col shadow-2xl hidden md:flex relative z-20">
+  <!-- OVERLAY BACKDROP UNTUK MOBILE SIDEBAR -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden transition-opacity" onclick="toggleSidebar()"></div>
+
+  <!-- SIDEBAR (Kiri) - RESPONSIVE MOBILE -->
+  <aside id="sidebar" class="w-64 bg-coklat-logo text-white flex flex-col shadow-2xl fixed md:relative inset-y-0 left-0 z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
     <div class="p-6 flex items-center gap-4 border-b border-white/10">
       <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain">
       <div>
@@ -44,6 +47,7 @@
       </div>
     </div>
 
+    <!-- Menu Navigasi -->
     <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
       <a href="dashboard-santri.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
         <i class="fas fa-home w-5 text-center"></i> Beranda
@@ -74,13 +78,14 @@
     
     <!-- HEADER -->
     <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
-      <button class="md:hidden text-coklat-logo text-xl">
+      <!-- TOMBOL HAMBURGER MOBILE -->
+      <button onclick="toggleSidebar()" class="md:hidden text-coklat-logo text-xl p-2 focus:outline-none">
         <i class="fas fa-bars"></i>
       </button>
 
       <h2 class="text-xl font-bold text-gray-800 hidden md:block">Pembayaran Biaya Pendaftaran</h2>
 
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-6 ml-auto md:ml-0">
         <a href="pengumuman.html" class="text-gray-400 hover:text-gold relative transition-colors">
           <i class="fas fa-bell text-xl"></i>
           <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
@@ -101,6 +106,17 @@
     <!-- CONTENT SCROLLABLE AREA -->
     <div class="flex-1 overflow-y-auto p-6 md:p-8">
       <div class="max-w-3xl mx-auto space-y-6">
+
+        <!-- BANNER STATUS JIKA SUDAH PERNAH HUKUNGI WA -->
+        <div id="bannerStatus" class="hidden bg-green-50 border border-green-200 rounded-2xl p-5 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0">
+            <i class="fas fa-check text-lg"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-green-900 text-sm">Konfirmasi Pembayaran Telah Dikirim</h4>
+            <p class="text-xs text-green-700">Anda telah mengontak Admin via WhatsApp. Silakan selesaikan transaksi sesuai petunjuk yang diberikan Admin SPMB.</p>
+          </div>
+        </div>
 
         <!-- PILIHAN JALUR PENDAFTARAN -->
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
@@ -176,7 +192,7 @@
             <p>3. Admin akan mengirimkan nomor rekening tujuan beserta panduan konfirmasi transaksi Anda.</p>
           </div>
 
-          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 border-t">
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 border-t border-gray-100">
             <a href="dashboard-santri.html" class="w-full sm:w-auto px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold text-sm hover:bg-gray-100 transition-colors">
               Kembali ke Beranda
             </a>
@@ -192,10 +208,24 @@
 
   <!-- SCRIPT INTEGRASI -->
   <script>
+    // 1. TOGGLE SIDEBAR MOBILE
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      }
+    }
+
+    // 2. BACA DATA SANTRI DARI LOCAL STORAGE
     const noPendaftar = localStorage.getItem('noPendaftaran') || 'SPMB-27-001';
-    const namaSantri = localStorage.getItem('namaCalonSantri') || 'Ahmad Fathan';
+    const namaSantri = localStorage.getItem('namaCalonSantri') || 'Calon Santri';
     
-    // Tampilkan Nama & Nomor Pendaftaran di Header
     if (document.getElementById('teksNoPendaftaran')) {
       document.getElementById('teksNoPendaftaran').innerText = 'No: ' + noPendaftar;
     }
@@ -210,11 +240,16 @@
     }
     document.getElementById('teksInisial').innerText = inisial.toUpperCase();
 
-    // Variable State
+    // 3. CEK STATUS PEMBAYARAN SEBELUMNYA
+    if (localStorage.getItem('pembayaranSelesai') === 'true') {
+      const banner = document.getElementById('bannerStatus');
+      if (banner) banner.classList.remove('hidden');
+    }
+
+    // 4. VARIABLE STATE & DATA RINCIAN BIAYA
     let jalurDipilih = 'non-beasiswa';
     let totalNominal = 'Rp 6.038.000';
 
-    // Data Rincian Biaya
     const rincianBiaya = {
       'non-beasiswa': {
         total: 'Rp 6.038.000',
@@ -239,13 +274,13 @@
       }
     };
 
-    // Fungsi Pilih Jalur
+    // 5. FUNGSI PILIH JALUR
     function pilihJalur(jenis) {
       jalurDipilih = jenis;
       const data = rincianBiaya[jenis];
       totalNominal = data.total;
 
-      // Update Tampilan Radio & Card Style
+      // Update Radio & Tampilan Card
       const cardNon = document.getElementById('cardNonBeasiswa');
       const cardBeasiswa = document.getElementById('cardBeasiswa');
       const radioNon = document.getElementById('radioNonBeasiswa');
@@ -265,7 +300,7 @@
       document.getElementById('labelTotalBiaya').innerText = data.total;
       document.getElementById('labelJalurAktif').innerHTML = `<i class="fas fa-check-circle"></i> ${data.label}`;
 
-      // Render Rincian List
+      // Render List Rincian
       const wadah = document.getElementById('wadahRincian');
       wadah.innerHTML = '';
       data.items.forEach(item => {
@@ -279,10 +314,10 @@
       });
     }
 
-    // Inisialisasi Pertama
+    // Inisialisasi awal pada Jalur Non-Beasiswa
     pilihJalur('non-beasiswa');
 
-    // Fungsi Buka WhatsApp
+    // 6. FUNGSI BUKA WHATSAPP ADMIN
     function hubungiAdminWA() {
       localStorage.setItem('pembayaranSelesai', 'true');
       
@@ -291,7 +326,7 @@
       
       const pesan = `Assalamu'alaikum Admin SPMB Pesantren Motivasi Indonesia,%0ANama Calon Santri: *${encodeURIComponent(namaSantri)}*%0ANo Pendaftaran: *${encodeURIComponent(noPendaftar)}*%0AJalur Pendaftaran: *${encodeURIComponent(labelJalur)}*%0A%0ASaya ingin melakukan konfirmasi pembayaran biaya pendaftaran sebesar *${encodeURIComponent(totalNominal)}*. Mohon petunjuk rekening dan langkah transaksi selanjutnya. Terima kasih.`;
       
-      // Buka WhatsApp di tab baru
+      // Buka WA di tab baru
       window.open(`https://wa.me/${noWA}?text=${pesan}`, '_blank');
 
       // Kembali ke dashboard
