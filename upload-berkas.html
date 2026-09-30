@@ -103,7 +103,7 @@
           <h3 class="text-xl font-bold font-serif-custom text-coklat-logo mb-2">
             <i class="fas fa-cloud-upload-alt text-gold mr-2"></i> Form Unggah Berkas Persyaratan
           </h3>
-          <p class="text-xs text-gray-500 mb-6">Format berkas yang diperbolehkan: Gambar (JPG, PNG) atau PDF (Maksimal 5MB per file).</p>
+          <p class="text-xs text-gray-500 mb-6">Format berkas yang diperbolehkan: Gambar (JPG, PNG) atau PDF (Maksimal 2.5MB per file).</p>
 
           <form id="formBerkas" class="space-y-6">
             
@@ -185,13 +185,27 @@
 
       const btn = document.getElementById('btnUpload');
       btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengunggah ke Google Drive... Serta Menimpan Link...';
+
+      const fPasFoto = document.getElementById('filePasFoto').files[0];
+      const fKK = document.getElementById('fileKK').files[0];
+      const fAkta = document.getElementById('fileAkta').files[0];
+      const fIjazah = document.getElementById('fileIjazah').files[0];
+
+      // Batas Maksimal 2.5MB per file
+      const maxBytes = 2.5 * 1024 * 1024;
+      if (fPasFoto.size > maxBytes || fKK.size > maxBytes || fAkta.size > maxBytes || fIjazah.size > maxBytes) {
+        alert('⚠️ Salah satu file melebihi 2.5MB.\nMohon pilih foto/file berukuran lebih kecil agar proses upload lancar.');
+        btn.disabled = false;
+        return;
+      }
+
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengunggah ke Google Drive & Menyimpan Link...';
 
       try {
-        const pasFotoObj = await toBase64(document.getElementById('filePasFoto').files[0]);
-        const kkObj = await toBase64(document.getElementById('fileKK').files[0]);
-        const aktaObj = await toBase64(document.getElementById('fileAkta').files[0]);
-        const ijazahObj = await toBase64(document.getElementById('fileIjazah').files[0]);
+        const pasFotoObj = await toBase64(fPasFoto);
+        const kkObj = await toBase64(fKK);
+        const aktaObj = await toBase64(fAkta);
+        const ijazahObj = await toBase64(fIjazah);
 
         const payload = {
           noPendaftaran: noPendaftar,
@@ -208,7 +222,7 @@
           body: JSON.stringify(payload)
         });
 
-        alert('Semua Berkas Berhasil Diunggah ke Google Drive!');
+        alert('Semua Berkas Berhasil Diunggah!');
         localStorage.setItem('berkasSelesai', 'true');
         window.location.href = 'pembayaran.html';
 
