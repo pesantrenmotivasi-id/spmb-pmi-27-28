@@ -6,33 +6,30 @@
   <title>SPMB 2026/2027 | Pesantren Motivasi Indonesia</title>
   <link rel="icon" type="image/png" href="1.png">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-blue': '#0072CE',
+            'deep-navy': '#0A2540',
+            'accent-gold': '#F59E0B',
+            'gold': '#F59E0B',
+          }
+        }
+      }
+    }
+  </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
     
-    :root {
-      --primary-blue: #0072CE;
-      --deep-navy: #0A2540;
-      --accent-gold: #F59E0B;
-      --bg-ice: #F0F9FF;
-    }
-
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: #F8FAFC;
       color: #0F172A;
     }
     .font-serif-custom { font-family: 'Playfair Display', serif; }
-    .bg-primary-blue { background-color: var(--primary-blue); }
-    .text-primary-blue { color: var(--primary-blue); }
-    .border-primary-blue { border-color: var(--primary-blue); }
-    
-    .bg-deep-navy { background-color: var(--deep-navy); }
-    .text-deep-navy { color: var(--deep-navy); }
-    
-    .bg-gold { background-color: var(--accent-gold); }
-    .text-gold { color: var(--accent-gold); }
-    .border-gold { border-color: var(--accent-gold); }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased">
@@ -101,23 +98,28 @@
         <p class="text-xs sm:text-sm text-slate-500 mt-2">Pilih gelombang pendaftaran dan manfaatkan program promo menarik.</p>
       </div>
 
-      <!-- PROMO SPMB HIGHLIGHT -->
+      <!-- PROMO SPMB HIGHLIGHT (DIPERBAIKI) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+        <!-- Card 1: Diskon Gelombang 1 -->
         <div class="bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950 p-5 rounded-2xl shadow-lg flex items-center gap-4">
-          <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl font-bold">🏷️</div>
+          <div class="w-12 h-12 bg-white/30 rounded-xl flex items-center justify-center text-2xl font-bold">🏷️</div>
           <div>
-            <h4 class="font-extrabold text-base">Diskon Gelombang 1</h4>
-            <p class="text-xs opacity-90 font-medium">Potongan khusus pendaftar awal</p>
+            <h4 class="font-extrabold text-base text-slate-950">Diskon Gelombang 1</h4>
+            <p class="text-xs text-slate-900 font-medium">Potongan khusus pendaftar awal</p>
           </div>
         </div>
-        <div class="bg-gradient-to-br from-primary-blue to-blue-700 text-white p-5 rounded-2xl shadow-lg flex items-center gap-4">
+
+        <!-- Card 2: Program Beasiswa (DIPERBAIKI DENGAN GRADIENT JELAS) -->
+        <div class="bg-gradient-to-br from-[#0072CE] to-blue-800 text-white p-5 rounded-2xl shadow-lg flex items-center gap-4">
           <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl font-bold">🎓</div>
           <div>
-            <h4 class="font-extrabold text-base">Program Beasiswa</h4>
+            <h4 class="font-extrabold text-base text-white">Program Beasiswa</h4>
             <p class="text-xs text-sky-100 font-medium">Beasiswa prestasi & tahfiz</p>
           </div>
         </div>
-        <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-5 rounded-2xl shadow-lg flex items-center gap-4 border border-amber-400/30">
+
+        <!-- Card 3: Cashback Formulir -->
+        <div class="bg-gradient-to-br from-[#0A2540] to-slate-900 text-white p-5 rounded-2xl shadow-lg flex items-center gap-4 border border-amber-400/30">
           <div class="w-12 h-12 bg-amber-400/20 text-gold rounded-xl flex items-center justify-center text-2xl font-bold">💸</div>
           <div>
             <h4 class="font-extrabold text-base text-gold">Cashback Formulir</h4>
@@ -129,25 +131,25 @@
       <!-- GELOMBANG TIMELINE GRID -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Gelombang 1 -->
-        <div class="bg-sky-50/70 border-2 border-primary-blue rounded-2xl p-5 relative shadow-sm">
-          <span class="bg-primary-blue text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase">Gelombang 1</span>
+        <div class="bg-sky-50/80 border-2 border-[#0072CE] rounded-2xl p-5 relative shadow-sm">
+          <span class="bg-[#0072CE] text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase">Gelombang 1</span>
           <h5 class="text-sm font-extrabold text-deep-navy mt-3">4 Okt 2026 – 10 Jan 2027</h5>
-          <p class="text-xs text-slate-500 mt-1">Sangat Direkomendasikan (Promo Maksimal)</p>
+          <p class="text-xs text-slate-600 mt-1 font-medium">Sangat Direkomendasikan (Promo Maksimal)</p>
         </div>
         <!-- Gelombang 2 -->
-        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
           <span class="bg-slate-700 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase">Gelombang 2</span>
           <h5 class="text-sm font-extrabold text-deep-navy mt-3">11 Jan 2027 – 14 Mar 2027</h5>
           <p class="text-xs text-slate-500 mt-1">Kuota Terbatas</p>
         </div>
         <!-- Gelombang 3 -->
-        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
           <span class="bg-slate-700 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase">Gelombang 3</span>
           <h5 class="text-sm font-extrabold text-deep-navy mt-3">15 Mar 2027 – 9 Mei 2027</h5>
           <p class="text-xs text-slate-500 mt-1">Seleksi Reguler</p>
         </div>
         <!-- Gelombang 4 -->
-        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
           <span class="bg-slate-700 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase">Gelombang 4</span>
           <h5 class="text-sm font-extrabold text-deep-navy mt-3">10 Mei 2027 – 27 Juni 2027</h5>
           <p class="text-xs text-slate-500 mt-1">Gelombang Terakhir</p>
@@ -272,7 +274,7 @@
         <p class="text-xs sm:text-sm text-slate-500 mt-1">Silakan isi formulir pendaftaran baru atau masuk jika sudah pernah mendaftar.</p>
       </div>
 
-      <!-- KOTAK SESI AKTIF (MUNCUL JIKA SUDAH PERNAH DAFTAR) -->
+      <!-- KOTAK SESI AKTIF -->
       <div id="boxSesiAktif" class="hidden mb-6 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-center shadow-sm">
         <p class="text-xs text-amber-800 font-medium">Sesi pendaftaran ditemukan di perangkat ini:</p>
         <p id="teksSesiNama" class="text-sm font-extrabold text-deep-navy mt-0.5">-</p>
@@ -297,7 +299,6 @@
         <!-- FORM 1: PENDAFTARAN BARU -->
         <form id="formPendaftaran" class="space-y-5">
           
-          <!-- Pilihan Jenjang -->
           <div>
             <label class="block text-xs font-extrabold text-slate-700 uppercase mb-2">Pilih Jenjang Pendidikan <span class="text-red-500">*</span></label>
             <select id="jenjang" required class="w-full p-3.5 rounded-xl border border-slate-300 bg-slate-50 text-xs sm:text-sm focus:outline-none focus:border-primary-blue focus:bg-white font-medium">
@@ -307,19 +308,16 @@
             </select>
           </div>
 
-          <!-- Nama Lengkap -->
           <div>
             <label class="block text-xs font-extrabold text-slate-700 uppercase mb-2">Nama Lengkap Calon Santri <span class="text-red-500">*</span></label>
             <input type="text" id="nama" required placeholder="Contoh: Ahmad Fathan" class="w-full p-3.5 rounded-xl border border-slate-300 bg-slate-50 text-xs sm:text-sm focus:outline-none focus:border-primary-blue focus:bg-white font-medium">
           </div>
 
-          <!-- Nomor WhatsApp Orang Tua -->
           <div>
             <label class="block text-xs font-extrabold text-slate-700 uppercase mb-2">Nomor WhatsApp Orang Tua / Wali <span class="text-red-500">*</span></label>
             <input type="tel" id="wa" required placeholder="Contoh: 081234567890" class="w-full p-3.5 rounded-xl border border-slate-300 bg-slate-50 text-xs sm:text-sm focus:outline-none focus:border-primary-blue focus:bg-white font-medium">
           </div>
 
-          <!-- Sumber Informasi -->
           <div>
             <label class="block text-xs font-extrabold text-slate-700 uppercase mb-2">Mengetahui Pesantren Dari Mana?</label>
             <select id="sumberInfo" class="w-full p-3.5 rounded-xl border border-slate-300 bg-slate-50 text-xs sm:text-sm focus:outline-none focus:border-primary-blue focus:bg-white font-medium">
@@ -330,7 +328,6 @@
             </select>
           </div>
 
-          <!-- Alasan Masuk Pesantren -->
           <div>
             <label class="block text-xs font-extrabold text-slate-700 uppercase mb-2">Alasan Masuk Pesantren Motivasi Indonesia</label>
             <textarea id="alasan" rows="3" placeholder="Tuliskan motivasi singkat..." class="w-full p-3.5 rounded-xl border border-slate-300 bg-slate-50 text-xs sm:text-sm focus:outline-none focus:border-primary-blue focus:bg-white font-medium"></textarea>
@@ -375,10 +372,8 @@
 
   <!-- SCRIPT PROSES PENDAFTARAN & LOGIN -->
   <script>
-    // URL Google Apps Script Milikmu
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkLIB4FodYzqkBiyMfNYuGAFdRNi7YQCNueOlBGKZdOZ0fpmoMMnsitvz4XMpqKVsEyA/exec";
 
-    // 1. Cek Sesi Aktif Saat Halaman Dimuat
     window.addEventListener('DOMContentLoaded', () => {
       const savedNo = localStorage.getItem('noPendaftaran');
       const savedNama = localStorage.getItem('namaCalonSantri');
@@ -393,7 +388,6 @@
       window.location.href = 'dashboard-santri.html';
     }
 
-    // 2. Toggle Switch Tab (Daftar Baru vs Masuk)
     function switchTab(type) {
       const tabDaftar = document.getElementById('tabDaftar');
       const tabLogin = document.getElementById('tabLogin');
@@ -413,7 +407,6 @@
       }
     }
 
-    // 3. PROSES PENDAFTARAN BARU
     document.getElementById('formPendaftaran').addEventListener('submit', async function(e) {
       e.preventDefault();
 
@@ -421,27 +414,23 @@
       btnSubmit.disabled = true;
       btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim Data...';
 
-      // Ambil Nilai Input Form
       const nama = document.getElementById('nama').value.trim();
       const wa = document.getElementById('wa').value.trim();
       const jenjang = document.getElementById('jenjang').value;
       const sumberInfo = document.getElementById('sumberInfo').value;
       const alasan = document.getElementById('alasan').value.trim();
 
-      // Buat Nomor Pendaftaran Unik & Tanggal
       const randomNum = Math.floor(100 + Math.random() * 900);
       const noPendaftaran = 'SPMB-27-' + randomNum;
       const tanggalDaftar = new Date().toLocaleDateString('id-ID', {
         day: 'numeric', month: 'long', year: 'numeric'
       });
 
-      // Simpan data di LocalStorage untuk Dashboard Santri
       localStorage.setItem('namaCalonSantri', nama);
       localStorage.setItem('noWaSantri', wa);
       localStorage.setItem('jenjangSantri', jenjang);
       localStorage.setItem('noPendaftaran', noPendaftaran);
 
-      // Simpan data di Array LocalStorage untuk Dashboard Admin
       const dataBaru = {
         action: "pendaftaran_awal",
         noPendaftaran: noPendaftaran,
@@ -458,7 +447,6 @@
       localStorage.setItem('pendaftar', JSON.stringify(listPendaftar));
       localStorage.setItem('daftarPendaftar', JSON.stringify(listPendaftar));
 
-      // Kirim Data ke Google Sheets
       try {
         await fetch(SCRIPT_URL, {
           method: 'POST',
@@ -479,7 +467,6 @@
       }
     });
 
-    // 4. PROSES MASUK / CEK STATUS
     document.getElementById('formLogin').addEventListener('submit', function(e) {
       e.preventDefault();
 
