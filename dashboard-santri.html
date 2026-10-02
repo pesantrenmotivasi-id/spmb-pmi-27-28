@@ -6,68 +6,79 @@
   <title>Dashboard Santri | Pesantren Motivasi Indonesia</title>
   <link rel="icon" type="image/png" href="1.png">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: {
+              DEFAULT: '#0F2942', // Deep Ocean Navy
+              dark: '#0A1C2E',
+              light: '#1E40AF',
+              soft: '#F0F4F8'
+            },
+            gold: {
+              DEFAULT: '#D4AF37', // Gold Elegance
+              hover: '#B89328',
+              light: '#FDF8EC',
+              border: '#E5C158'
+            },
+            bgApp: '#F8FAFC'
+          }
+        }
+      }
+    }
+  </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
-    
-    :root {
-      --coklat-logo: #4A2B12; 
-      --gold-logo: #C29B57;   
-      --bg-krem: #FAF8F5;
-    }
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-krem);
-      color: #2C2A29;
+      background-color: #F8FAFC;
+      color: #1E293B;
     }
     .font-serif-custom { font-family: 'Playfair Display', serif; }
-    
-    .bg-coklat-logo { background-color: var(--coklat-logo); }
-    .text-coklat-logo { color: var(--coklat-logo); }
-    .border-coklat-logo { border-color: var(--coklat-logo); }
-    
-    .bg-gold { background-color: var(--gold-logo); }
-    .text-gold { color: var(--gold-logo); }
-    .border-gold { border-color: var(--gold-logo); }
   </style>
 </head>
-<body class="flex h-screen overflow-hidden bg-[#FAF8F5]">
+<body class="flex h-screen overflow-hidden bg-bgApp">
 
   <!-- OVERLAY BACKDROP UNTUK MOBILE SIDEBAR -->
   <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden transition-opacity" onclick="toggleSidebar()"></div>
 
-  <!-- SIDEBAR (Kiri) - RESPONSIVE MOBILE -->
-  <aside id="sidebar" class="w-64 bg-coklat-logo text-white flex flex-col shadow-2xl fixed md:relative inset-y-0 left-0 z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
-    <div class="p-6 flex items-center gap-4 border-b border-white/10">
-      <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain">
+  <!-- SIDEBAR (Kiri) - RESPONSIVE MOBILE (Ocean & Gold Theme) -->
+  <aside id="sidebar" class="w-64 bg-ocean text-white flex flex-col shadow-2xl fixed md:relative inset-y-0 left-0 z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out border-r border-gold/20">
+    <!-- Header Logo -->
+    <div class="p-6 flex items-center gap-4 border-b border-white/10 bg-ocean-dark/50">
+      <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain shadow-md border border-gold/40">
       <div>
-        <h1 class="font-bold font-serif-custom text-gold leading-tight">SPMB PMI</h1>
-        <p class="text-[10px] text-gray-300">Tahun Ajaran 2027/2028</p>
+        <h1 class="font-bold font-serif-custom text-gold text-lg leading-tight">SPMB PMI</h1>
+        <p class="text-[11px] text-gray-300 tracking-wide">Tahun Ajaran 2027/2028</p>
       </div>
     </div>
 
     <!-- Menu Navigasi -->
-    <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
-      <a href="dashboard-santri.html" class="flex items-center gap-3 px-4 py-3 bg-gold/20 text-gold rounded-xl border border-gold/30 font-semibold transition-all">
-        <i class="fas fa-home w-5 text-center"></i> Beranda
+    <nav class="flex-1 overflow-y-auto py-5 px-4 space-y-1.5">
+      <a href="dashboard-santri.html" class="flex items-center gap-3 px-4 py-3 bg-gold/20 text-gold rounded-xl border border-gold/40 font-semibold shadow-sm transition-all">
+        <i class="fas fa-home w-5 text-center text-gold"></i> Beranda
       </a>
       <a href="biodata-santri.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-user-edit w-5 text-center"></i> Biodata Diri
+        <i class="fas fa-user-edit w-5 text-center text-gold/80"></i> Biodata Diri
       </a>
       <a href="upload-berkas.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-file-upload w-5 text-center"></i> Upload Berkas
+        <i class="fas fa-file-upload w-5 text-center text-gold/80"></i> Upload Berkas
       </a>
       <a href="pembayaran.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-wallet w-5 text-center"></i> Pembayaran
+        <i class="fas fa-wallet w-5 text-center text-gold/80"></i> Pembayaran
       </a>
       <a href="pengumuman.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-bullhorn w-5 text-center"></i> Pengumuman
+        <i class="fas fa-bullhorn w-5 text-center text-gold/80"></i> Pengumuman
       </a>
     </nav>
 
+    <!-- Tombol Keluar -->
     <div class="p-4 border-t border-white/10">
-      <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-all">
+      <a href="index.html" class="flex items-center gap-3 px-4 py-2.5 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-all text-sm">
         <i class="fas fa-sign-out-alt w-5 text-center"></i> Keluar
       </a>
     </div>
@@ -79,11 +90,11 @@
     <!-- HEADER -->
     <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
       <!-- TOMBOL HAMBURGER MOBILE -->
-      <button onclick="toggleSidebar()" class="md:hidden text-coklat-logo text-xl p-2 focus:outline-none">
+      <button onclick="toggleSidebar()" class="md:hidden text-ocean text-xl p-2 focus:outline-none">
         <i class="fas fa-bars"></i>
       </button>
 
-      <h2 class="text-xl font-bold text-gray-800 hidden md:block">Beranda Dashboard</h2>
+      <h2 class="text-lg md:text-xl font-bold text-ocean hidden md:block font-serif-custom">Beranda Dashboard Santri</h2>
 
       <div class="flex items-center gap-6 ml-auto md:ml-0">
         <a href="pengumuman.html" class="text-gray-400 hover:text-gold relative transition-colors">
@@ -93,10 +104,10 @@
         
         <div class="flex items-center gap-3 border-l pl-6 border-gray-200">
           <div class="text-right hidden sm:block">
-            <p id="teksHeader" class="text-sm font-bold text-gray-800">Calon Santri</p>
-            <p id="teksNoPendaftaran" class="text-xs text-gray-500">No: -</p>
+            <p id="teksHeader" class="text-sm font-bold text-slate-800">Calon Santri</p>
+            <p id="teksNoPendaftaran" class="text-xs text-gold font-semibold">No: -</p>
           </div>
-          <div id="teksInisial" class="w-10 h-10 rounded-full bg-coklat-logo text-white flex items-center justify-center font-bold font-serif-custom shadow-md border-2 border-gold">
+          <div id="teksInisial" class="w-10 h-10 rounded-full bg-ocean text-white flex items-center justify-center font-bold font-serif-custom shadow-md border-2 border-gold">
             CS
           </div>
         </div>
@@ -104,43 +115,57 @@
     </header>
 
     <!-- CONTENT SCROLLABLE AREA -->
-    <div class="flex-1 overflow-y-auto p-6 md:p-8">
+    <div class="flex-1 overflow-y-auto p-4 md:p-8">
       <div class="max-w-5xl mx-auto space-y-6">
 
-        <!-- KARTU SELAMAT DATANG -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border-l-4 border-gold relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
-          <div class="absolute right-0 top-0 opacity-5 text-9xl -mt-4 -mr-4 pointer-events-none text-coklat-logo">
+        <!-- KARTU SELAMAT DATANG (ELEGANT BANNER) -->
+        <div class="bg-gradient-to-r from-ocean via-ocean-dark to-ocean rounded-2xl p-6 md:p-8 text-white shadow-lg border border-gold/40 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div class="absolute right-0 top-0 opacity-10 text-9xl -mt-4 -mr-4 pointer-events-none text-gold">
             <i class="fas fa-graduation-cap"></i>
           </div>
           <div class="relative z-10 w-full md:w-auto">
-            <h3 id="teksSelamat" class="text-2xl font-bold font-serif-custom text-coklat-logo mb-2">Selamat Datang!</h3>
-            <p class="text-gray-600 text-sm">Akun pendaftaran Anda berhasil dibuat. Status Anda saat ini: <span id="teksStatus" class="font-bold text-red-500">Belum Melengkapi Biodata</span>. Silakan ikuti petunjuk tombol di bawah/samping.</p>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/20 text-gold border border-gold/30 text-xs font-semibold mb-3">
+              <i class="fas fa-star text-[10px]"></i> Status Pendaftaran Aktif
+            </div>
+            <h3 id="teksSelamat" class="text-2xl font-bold font-serif-custom text-gold mb-2">Selamat Datang!</h3>
+            <p class="text-slate-200 text-sm max-w-xl leading-relaxed">
+              Akun pendaftaran Anda berhasil dibuat. Status berkas Anda saat ini: 
+              <span id="teksStatus" class="font-bold text-red-400 bg-red-500/10 px-2 py-0.5 rounded border border-red-500/30">Belum Melengkapi Biodata</span>. 
+              Silakan ikuti instruksi alur pendaftaran di bawah ini.
+            </p>
           </div>
           <div class="relative z-10 shrink-0 w-full md:w-auto text-center md:text-left">
-            <a href="biodata-santri.html" id="btnBiodata" class="bg-gold hover:bg-yellow-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-gold/30 transition-all inline-flex items-center justify-center w-full md:w-auto gap-2">
-              Lengkapi Biodata <i class="fas fa-arrow-right"></i>
+            <a href="biodata-santri.html" id="btnBiodata" class="bg-gold hover:bg-gold-hover text-ocean font-bold px-6 py-3.5 rounded-xl shadow-md shadow-gold/20 transition-all inline-flex items-center justify-center w-full md:w-auto gap-2 border border-gold-border text-sm">
+              <span>Lengkapi Biodata</span> <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </div>
 
-        <!-- ALUR PENDAFTARAN (STEPPER) -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm">
-          <h4 class="font-bold text-lg text-gray-800 mb-6 border-b pb-3">Progres Pendaftaran Santri Baru</h4>
+        <!-- ALUR PENDAFTARAN (STEPPER PROGRESS) -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+          <div class="flex items-center justify-between mb-6 border-b border-slate-100 pb-4">
+            <div>
+              <h4 class="font-bold text-lg text-ocean font-serif-custom flex items-center gap-2">
+                <i class="fas fa-tasks text-gold"></i> Progres Pendaftaran Santri Baru
+              </h4>
+              <p class="text-xs text-slate-500 mt-0.5">Selesaikan setiap tahapan untuk mengamankan kuota santri baru.</p>
+            </div>
+          </div>
           
           <div class="relative">
-            <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 hidden md:block z-0 rounded-full"></div>
+            <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-200 -translate-y-1/2 hidden md:block z-0 rounded-full"></div>
             <div id="garisProgres" class="absolute top-1/2 left-0 w-[15%] h-1 bg-gold -translate-y-1/2 hidden md:block z-0 rounded-full transition-all duration-1000"></div>
 
             <div class="flex flex-col md:flex-row justify-between relative z-10 gap-6 md:gap-0">
               
               <!-- Step 1: Buat Akun -->
               <div class="flex flex-row md:flex-col items-center gap-4 md:gap-2 text-center">
-                <div class="w-10 h-10 rounded-full bg-gold text-white flex items-center justify-center font-bold border-4 border-white shadow-md shrink-0">
+                <div class="w-10 h-10 rounded-full bg-gold text-ocean flex items-center justify-center font-bold border-4 border-white shadow-md shrink-0">
                   <i class="fas fa-check"></i>
                 </div>
                 <div class="text-left md:text-center">
-                  <p class="text-sm font-bold text-coklat-logo">Buat Akun</p>
-                  <p class="text-[10px] text-gray-500">Selesai</p>
+                  <p class="text-xs font-bold text-ocean">Buat Akun</p>
+                  <p class="text-[10px] text-emerald-600 font-bold">Selesai</p>
                 </div>
               </div>
 
@@ -151,35 +176,35 @@
                   2
                 </div>
                 <div class="text-left md:text-center">
-                  <p class="text-sm font-bold text-gray-800">Isi Biodata</p>
-                  <p id="step2Status" class="text-[10px] text-yellow-600 font-semibold">Menunggu Aksi</p>
+                  <p class="text-xs font-bold text-slate-800">Isi Biodata</p>
+                  <p id="step2Status" class="text-[10px] text-amber-600 font-bold">Menunggu Aksi</p>
                 </div>
               </div>
 
               <!-- Step 3: Upload Berkas -->
               <div class="flex flex-row md:flex-col items-center gap-4 md:gap-2 text-center">
-                <div id="step3Icon" class="w-10 h-10 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center font-bold border-4 border-white shadow-sm shrink-0">3</div>
+                <div id="step3Icon" class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold border-4 border-white shadow-sm shrink-0">3</div>
                 <div class="text-left md:text-center">
-                  <p class="text-sm font-bold text-gray-400">Upload Berkas</p>
-                  <p id="step3Status" class="text-[10px] text-gray-400">Terkunci</p>
+                  <p class="text-xs font-bold text-slate-400">Upload Berkas</p>
+                  <p id="step3Status" class="text-[10px] text-slate-400">Terkunci</p>
                 </div>
               </div>
 
               <!-- Step 4: Pembayaran -->
               <div class="flex flex-row md:flex-col items-center gap-4 md:gap-2 text-center">
-                <div id="step4Icon" class="w-10 h-10 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center font-bold border-4 border-white shadow-sm shrink-0">4</div>
+                <div id="step4Icon" class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold border-4 border-white shadow-sm shrink-0">4</div>
                 <div class="text-left md:text-center">
-                  <p class="text-sm font-bold text-gray-400">Biaya Pendaftaran</p>
-                  <p id="step4Status" class="text-[10px] text-gray-400">Terkunci</p>
+                  <p class="text-xs font-bold text-slate-400">Pembayaran</p>
+                  <p id="step4Status" class="text-[10px] text-slate-400">Terkunci</p>
                 </div>
               </div>
 
               <!-- Step 5: Tes Seleksi -->
               <div class="flex flex-row md:flex-col items-center gap-4 md:gap-2 text-center">
-                <div id="step5Icon" class="w-10 h-10 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center font-bold border-4 border-white shadow-sm shrink-0">5</div>
+                <div id="step5Icon" class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold border-4 border-white shadow-sm shrink-0">5</div>
                 <div class="text-left md:text-center">
-                  <p class="text-sm font-bold text-gray-400">Tes Seleksi</p>
-                  <p id="step5Status" class="text-[10px] text-gray-400">Terkunci</p>
+                  <p class="text-xs font-bold text-slate-400">Tes Seleksi</p>
+                  <p id="step5Status" class="text-[10px] text-slate-400">Terkunci</p>
                 </div>
               </div>
 
@@ -187,40 +212,159 @@
           </div>
         </div>
 
-        <!-- GRID BAWAH (Info & Kontak) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
-            <div class="flex justify-between items-center mb-4">
-              <h4 class="font-bold text-gray-800"><i class="fas fa-bullhorn text-gold mr-2"></i> Papan Pengumuman</h4>
-              <a href="pengumuman.html" class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded font-bold hover:bg-red-200 transition-colors">Lihat Semua</a>
+        <!-- WIDGET TIMELINE: JADWAL PENTING GELOMBANG AKTIF -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b border-slate-100 pb-4 gap-2">
+            <div>
+              <h4 class="font-bold text-lg text-ocean font-serif-custom flex items-center gap-2">
+                <i class="fas fa-calendar-alt text-gold"></i> Timeline Agenda Gelombang 1 (Aktif)
+              </h4>
+              <p class="text-xs text-slate-500 mt-0.5">Pantau tenggat waktu penting pendaftaran agar tidak terlewat.</p>
             </div>
-            <div class="space-y-4">
-              <a href="pengumuman.html" class="block p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-gold transition-colors">
-                <p class="text-xs text-gray-500 mb-1"><i class="far fa-clock"></i> Informasi SPMB 2027/2028</p>
-                <h5 class="font-bold text-sm text-coklat-logo mb-1">Pelaksanaan Tes Seleksi Calon Santri Baru</h5>
-                <p class="text-xs text-gray-600 line-clamp-2">Informasi pelaksanaan tes seleksi luring dan wawancara untuk calon santri baru.</p>
+            <span class="bg-gold/15 text-ocean text-xs font-bold px-3 py-1.5 rounded-full border border-gold/40 flex items-center gap-1.5">
+              <i class="fas fa-clock text-gold"></i> Periode Oktober - Desember
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+            <!-- Timeline Item 1 -->
+            <div class="bg-ocean-soft/60 p-4 rounded-xl border border-gold/30 relative flex flex-col justify-between">
+              <div>
+                <span class="inline-block bg-gold text-ocean text-[10px] font-bold px-2 py-0.5 rounded mb-2">TAHAP 1</span>
+                <h5 class="font-bold text-sm text-ocean mb-1">Pendaftaran &amp; Berkas</h5>
+                <p class="text-xs text-slate-600 mb-3">Pengisian biodata &amp; unggah kelengkapan berkas pendaftaran.</p>
+              </div>
+              <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between text-xs font-semibold text-ocean">
+                <span>Tenggat Waktu:</span>
+                <span class="text-red-600 font-bold">30 Nov 2026</span>
+              </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 relative flex flex-col justify-between">
+              <div>
+                <span class="inline-block bg-slate-200 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded mb-2">TAHAP 2</span>
+                <h5 class="font-bold text-sm text-slate-800 mb-1">Tes Seleksi &amp; Wawancara</h5>
+                <p class="text-xs text-slate-500 mb-3">Ujian akademik, baca Al-Qur'an, dan wawancara orang tua/wali.</p>
+              </div>
+              <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-slate-600">
+                <span>Pelaksanaan:</span>
+                <span class="text-ocean font-bold">13 Des 2026</span>
+              </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 relative flex flex-col justify-between">
+              <div>
+                <span class="inline-block bg-slate-200 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded mb-2">TAHAP 3</span>
+                <h5 class="font-bold text-sm text-slate-800 mb-1">Pengumuman Kelulusan</h5>
+                <p class="text-xs text-slate-500 mb-3">Hasil seleksi resmi diumumkan di portal dashboard santri.</p>
+              </div>
+              <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-slate-600">
+                <span>Tanggal:</span>
+                <span class="text-ocean font-bold">20 Des 2026</span>
+              </div>
+            </div>
+
+            <!-- Timeline Item 4 -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 relative flex flex-col justify-between">
+              <div>
+                <span class="inline-block bg-slate-200 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded mb-2">TAHAP 4</span>
+                <h5 class="font-bold text-sm text-slate-800 mb-1">Daftar Ulang</h5>
+                <p class="text-xs text-slate-500 mb-3">Konfirmasi kehadiran &amp; penyelesaian administrasi daftar ulang.</p>
+              </div>
+              <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-slate-600">
+                <span>Batas Akhir:</span>
+                <span class="text-ocean font-bold">28 Des 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WIDGET INFO PROGRAM & FASILITAS SANTRI -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+          <div class="mb-6 border-b border-slate-100 pb-4">
+            <h4 class="font-bold text-lg text-ocean font-serif-custom flex items-center gap-2">
+              <i class="fas fa-concierge-bell text-gold"></i> Program Unggulan &amp; Fasilitas Santri
+            </h4>
+            <p class="text-xs text-slate-500 mt-0.5">Keunggulan pendidikan yang disiapkan untuk mendukung tumbuh kembang santri.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Program Card 1 -->
+            <div class="p-5 rounded-2xl bg-gradient-to-br from-white to-ocean-soft/40 border border-slate-200 hover:border-gold transition-all shadow-sm">
+              <div class="w-12 h-12 rounded-xl bg-ocean text-gold flex items-center justify-center text-xl mb-3 shadow-md">
+                <i class="fas fa-quran"></i>
+              </div>
+              <h5 class="font-bold text-sm text-ocean mb-1">Tahfidz &amp; Kajian Kitab</h5>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Program mutqin hafalan Al-Qur'an bersanad disertai pendalaman kitab-kitab turats/klasik.
+              </p>
+            </div>
+
+            <!-- Program Card 2 -->
+            <div class="p-5 rounded-2xl bg-gradient-to-br from-white to-ocean-soft/40 border border-slate-200 hover:border-gold transition-all shadow-sm">
+              <div class="w-12 h-12 rounded-xl bg-ocean text-gold flex items-center justify-center text-xl mb-3 shadow-md">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <h5 class="font-bold text-sm text-ocean mb-1">Leadership &amp; Eco-Living</h5>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Pembentukan karakter kepemimpinan, kemandirian wirausaha, dan pembelajaran kelestarian lingkungan.
+              </p>
+            </div>
+
+            <!-- Program Card 3 -->
+            <div class="p-5 rounded-2xl bg-gradient-to-br from-white to-ocean-soft/40 border border-slate-200 hover:border-gold transition-all shadow-sm">
+              <div class="w-12 h-12 rounded-xl bg-ocean text-gold flex items-center justify-center text-xl mb-3 shadow-md">
+                <i class="fas fa-building"></i>
+              </div>
+              <h5 class="font-bold text-sm text-ocean mb-1">Fasilitas Asrama Modern</h5>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Kamar asrama representatif, masjid utama, laboratorium komputer modern, serta area olahraga terpadu.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRID BAWAH (Info Pengumuman & Kontak Admin) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- PAPAN PENGUMUMAN -->
+          <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-3">
+              <h4 class="font-bold text-ocean flex items-center gap-2"><i class="fas fa-bullhorn text-gold"></i> Papan Pengumuman</h4>
+              <a href="pengumuman.html" class="text-xs bg-gold/20 text-ocean px-3 py-1 rounded-full font-bold hover:bg-gold/30 transition-colors border border-gold/40">Lihat Semua</a>
+            </div>
+            <div class="space-y-3">
+              <a href="pengumuman.html" class="block p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-gold transition-colors">
+                <p class="text-[11px] text-slate-500 mb-1 flex items-center gap-1">
+                  <i class="far fa-clock text-gold"></i> Informasi SPMB 2027/2028
+                </p>
+                <h5 class="font-bold text-sm text-ocean mb-1">Pelaksanaan Tes Seleksi Calon Santri Baru</h5>
+                <p class="text-xs text-slate-600 line-clamp-2">Informasi teknis pelaksanaan tes seleksi luring dan wawancara untuk calon santri SMP &amp; SMA.</p>
               </a>
             </div>
           </div>
 
           <!-- LAYANAN KONTAK WA ADMIN -->
-          <div class="bg-white rounded-2xl p-6 shadow-sm border-t-4 border-coklat-logo">
-            <h4 class="font-bold text-gray-800 mb-4"><i class="fas fa-headset text-coklat-logo mr-2"></i> Bantuan & Layanan Panitia</h4>
-            <p class="text-sm text-gray-600 mb-4">Mengalami kesulitan atau butuh bantuan pendaftaran? Hubungi panitia SPMB resmi kami melalui WhatsApp.</p>
+          <div class="bg-white rounded-2xl p-6 shadow-sm border-t-4 border-ocean border-x border-b border-slate-200">
+            <h4 class="font-bold text-ocean mb-2 flex items-center gap-2"><i class="fas fa-headset text-gold"></i> Bantuan &amp; Layanan Panitia</h4>
+            <p class="text-xs text-slate-600 mb-4">Mengalami kesulitan atau butuh bantuan pendaftaran? Hubungi panitia SPMB resmi kami melalui WhatsApp.</p>
             
             <div class="space-y-3">
-              <a href="https://wa.me/6285880883675" target="_blank" class="flex items-center justify-between p-3 bg-green-50 rounded-xl border border-green-200 hover:bg-green-100 transition-colors">
+              <a href="https://wa.me/6285880883675" target="_blank" class="flex items-center justify-between p-3.5 bg-emerald-50 rounded-xl border border-emerald-200 hover:bg-emerald-100 transition-colors">
                 <div class="flex items-center gap-3">
-                  <div class="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center"><i class="fab fa-whatsapp"></i></div>
+                  <div class="w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center text-lg"><i class="fab fa-whatsapp"></i></div>
                   <div>
-                    <span class="text-sm font-bold text-green-900 block">Admin SPMB (SMP & SMA)</span>
-                    <span class="text-xs text-green-700">0858-8088-3675</span>
+                    <span class="text-sm font-bold text-emerald-950 block">Admin SPMB (SMP &amp; SMA)</span>
+                    <span class="text-xs text-emerald-700">0858-8088-3675</span>
                   </div>
                 </div>
-                <i class="fas fa-chevron-right text-green-600 text-xs"></i>
+                <i class="fas fa-chevron-right text-emerald-600 text-xs"></i>
               </a>
             </div>
           </div>
+
         </div>
 
       </div>
@@ -271,22 +415,22 @@
 
     // JIKA BIODATA SUDAH SELESAI
     if (isBiodataSelesai === 'true') {
-      document.getElementById('teksStatus').className = 'font-bold text-green-600';
+      document.getElementById('teksStatus').className = 'font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200';
       document.getElementById('teksStatus').innerText = 'Biodata Sudah Lengkap';
 
       const btnBiodata = document.getElementById('btnBiodata');
-      btnBiodata.innerHTML = 'Upload Berkas <i class="fas fa-file-upload ml-1"></i>';
+      btnBiodata.innerHTML = '<span>Upload Berkas</span> <i class="fas fa-file-upload ml-1"></i>';
       btnBiodata.href = 'upload-berkas.html';
 
-      document.getElementById('step2Icon').className = 'w-10 h-10 rounded-full bg-gold text-white flex items-center justify-center font-bold border-4 border-white shadow-md shrink-0';
+      document.getElementById('step2Icon').className = 'w-10 h-10 rounded-full bg-gold text-ocean flex items-center justify-center font-bold border-4 border-white shadow-md shrink-0';
       document.getElementById('step2Icon').innerHTML = '<i class="fas fa-check"></i>';
       document.getElementById('step2Status').innerText = 'Selesai';
-      document.getElementById('step2Status').className = 'text-[10px] text-gray-500';
+      document.getElementById('step2Status').className = 'text-[10px] text-emerald-600 font-bold';
 
       document.getElementById('step3Icon').className = 'w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center font-bold border-4 border-gold shadow-md shrink-0 relative';
       document.getElementById('step3Icon').innerHTML = '<span class="absolute w-full h-full rounded-full border-2 border-gold animate-ping opacity-50"></span>3';
       document.getElementById('step3Status').innerText = 'Menunggu Aksi';
-      document.getElementById('step3Status').className = 'text-[10px] text-yellow-600 font-semibold';
+      document.getElementById('step3Status').className = 'text-[10px] text-amber-600 font-bold';
 
       document.getElementById('garisProgres').style.width = '35%';
     }
@@ -296,19 +440,19 @@
       document.getElementById('teksStatus').innerText = 'Berkas Berhasil Diunggah';
 
       const btnBiodata = document.getElementById('btnBiodata');
-      btnBiodata.innerHTML = 'Lakukan Pembayaran <i class="fas fa-wallet ml-1"></i>';
+      btnBiodata.innerHTML = '<span>Lakukan Pembayaran</span> <i class="fas fa-wallet ml-1"></i>';
       btnBiodata.href = 'pembayaran.html';
-      btnBiodata.className = 'bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-xl font-bold shadow-lg transition-all inline-flex items-center justify-center w-full md:w-auto gap-2';
+      btnBiodata.className = 'bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3.5 rounded-xl shadow-md transition-all inline-flex items-center justify-center w-full md:w-auto gap-2 text-sm';
 
-      document.getElementById('step3Icon').className = 'w-10 h-10 rounded-full bg-gold text-white flex items-center justify-center font-bold border-4 border-white shadow-md shrink-0';
+      document.getElementById('step3Icon').className = 'w-10 h-10 rounded-full bg-gold text-ocean flex items-center justify-center font-bold border-4 border-white shadow-md shrink-0';
       document.getElementById('step3Icon').innerHTML = '<i class="fas fa-check"></i>';
       document.getElementById('step3Status').innerText = 'Selesai';
-      document.getElementById('step3Status').className = 'text-[10px] text-gray-500';
+      document.getElementById('step3Status').className = 'text-[10px] text-emerald-600 font-bold';
 
       document.getElementById('step4Icon').className = 'w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center font-bold border-4 border-gold shadow-md shrink-0 relative';
       document.getElementById('step4Icon').innerHTML = '<span class="absolute w-full h-full rounded-full border-2 border-gold animate-ping opacity-50"></span>4';
       document.getElementById('step4Status').innerText = 'Menunggu Aksi';
-      document.getElementById('step4Status').className = 'text-[10px] text-yellow-600 font-semibold';
+      document.getElementById('step4Status').className = 'text-[10px] text-amber-600 font-bold';
 
       document.getElementById('garisProgres').style.width = '60%';
     }
@@ -318,19 +462,19 @@
       document.getElementById('teksStatus').innerText = 'Konfirmasi Pembayaran Terkirim';
 
       const btnBiodata = document.getElementById('btnBiodata');
-      btnBiodata.innerHTML = 'Lihat Pengumuman <i class="fas fa-bullhorn ml-1"></i>';
+      btnBiodata.innerHTML = '<span>Lihat Pengumuman</span> <i class="fas fa-bullhorn ml-1"></i>';
       btnBiodata.href = 'pengumuman.html';
-      btnBiodata.className = 'bg-coklat-logo hover:bg-[#2C2A29] text-white px-6 py-3 rounded-xl font-bold shadow-lg transition-all inline-flex items-center justify-center w-full md:w-auto gap-2';
+      btnBiodata.className = 'bg-ocean hover:bg-ocean-dark text-white font-bold px-6 py-3.5 rounded-xl shadow-md border border-gold/30 transition-all inline-flex items-center justify-center w-full md:w-auto gap-2 text-sm';
 
-      document.getElementById('step4Icon').className = 'w-10 h-10 rounded-full bg-gold text-white flex items-center justify-center font-bold border-4 border-white shadow-md shrink-0';
+      document.getElementById('step4Icon').className = 'w-10 h-10 rounded-full bg-gold text-ocean flex items-center justify-center font-bold border-4 border-white shadow-md shrink-0';
       document.getElementById('step4Icon').innerHTML = '<i class="fas fa-check"></i>';
       document.getElementById('step4Status').innerText = 'Selesai';
-      document.getElementById('step4Status').className = 'text-[10px] text-gray-500';
+      document.getElementById('step4Status').className = 'text-[10px] text-emerald-600 font-bold';
 
       document.getElementById('step5Icon').className = 'w-10 h-10 rounded-full bg-white text-gold flex items-center justify-center font-bold border-4 border-gold shadow-md shrink-0 relative';
       document.getElementById('step5Icon').innerHTML = '<span class="absolute w-full h-full rounded-full border-2 border-gold animate-ping opacity-50"></span>5';
       document.getElementById('step5Status').innerText = 'Siap Ujian';
-      document.getElementById('step5Status').className = 'text-[10px] text-yellow-600 font-semibold';
+      document.getElementById('step5Status').className = 'text-[10px] text-amber-600 font-bold';
 
       document.getElementById('garisProgres').style.width = '100%';
     }
