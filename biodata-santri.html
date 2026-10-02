@@ -11,18 +11,19 @@
       theme: {
         extend: {
           colors: {
-            coklat: {
-              DEFAULT: '#4A2B12',
-              dark: '#361F0D',
-              light: '#663C1B'
+            ocean: {
+              DEFAULT: '#0F2942', // Deep Ocean Navy
+              dark: '#0A1C2E',
+              light: '#1E40AF',
+              soft: '#F0F4F8'
             },
             gold: {
-              DEFAULT: '#C29B57',
-              hover: '#B08846',
-              light: '#FAF5EC',
-              border: '#E5D2B1'
+              DEFAULT: '#D4AF37', // Gold Elegance
+              hover: '#B89328',
+              light: '#FDF8EC',
+              border: '#E5C158'
             },
-            krem: '#FAF8F5'
+            bgApp: '#F8FAFC'
           }
         }
       }
@@ -32,55 +33,49 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
     
-    :root {
-      --coklat-logo: #4A2B12; 
-      --gold-logo: #C29B57;   
-      --bg-krem: #FAF8F5;
-    }
-
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-krem);
-      color: #2C2A29;
+      background-color: #F8FAFC;
+      color: #1E293B;
     }
     .font-serif-custom { font-family: 'Playfair Display', serif; }
   </style>
 </head>
-<body class="flex h-screen overflow-hidden bg-krem">
+<body class="flex h-screen overflow-hidden bg-bgApp">
 
-  <!-- SIDEBAR (Kiri) -->
-  <aside class="w-72 bg-coklat text-white flex flex-col shadow-2xl hidden md:flex relative z-20 border-r border-gold/20">
+  <!-- SIDEBAR (Kiri) - Ocean & Gold Theme -->
+  <aside class="w-72 bg-ocean text-white flex flex-col shadow-2xl hidden md:flex relative z-20 border-r border-gold/20">
     <!-- Header Logo -->
-    <div class="p-6 flex items-center gap-4 border-b border-white/10 bg-coklat-dark/40">
+    <div class="p-6 flex items-center gap-4 border-b border-white/10 bg-ocean-dark/50">
       <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain shadow-md border border-gold/40">
       <div>
         <h1 class="font-bold font-serif-custom text-gold text-lg leading-tight">SPMB PMI</h1>
-        <p class="text-[11px] text-gold-border/80 tracking-wide">Tahun Ajaran 2027/2028</p>
+        <p class="text-[11px] text-gray-300 tracking-wide">Tahun Ajaran 2027/2028</p>
       </div>
     </div>
 
     <!-- Menu Navigasi -->
     <nav class="flex-1 overflow-y-auto py-5 px-4 space-y-1.5">
       <a href="dashboard-santri.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-home w-5 text-center text-gold-border"></i> Beranda
+        <i class="fas fa-home w-5 text-center text-gold/80"></i> Beranda
       </a>
       <a href="biodata-santri.html" class="flex items-center gap-3 px-4 py-3 bg-gold/20 text-gold font-semibold rounded-xl border border-gold/40 shadow-sm transition-all">
         <i class="fas fa-user-edit w-5 text-center text-gold"></i> Biodata Diri
       </a>
       <a href="upload-berkas.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-file-upload w-5 text-center text-gold-border"></i> Upload Berkas
+        <i class="fas fa-file-upload w-5 text-center text-gold/80"></i> Upload Berkas
       </a>
       <a href="pembayaran.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-wallet w-5 text-center text-gold-border"></i> Pembayaran
+        <i class="fas fa-wallet w-5 text-center text-gold/80"></i> Pembayaran
       </a>
       <a href="pengumuman.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-bullhorn w-5 text-center text-gold-border"></i> Pengumuman
+        <i class="fas fa-bullhorn w-5 text-center text-gold/80"></i> Pengumuman
       </a>
     </nav>
 
     <!-- BANNER PROMO RINGKAS (SIDEBAR) -->
     <div class="px-4 py-3">
-      <div class="bg-gradient-to-br from-gold/30 to-coklat-light/60 p-3.5 rounded-2xl border border-gold/40 shadow-inner">
+      <div class="bg-gradient-to-br from-gold/25 via-ocean-dark/80 to-ocean-dark p-3.5 rounded-2xl border border-gold/40 shadow-inner">
         <div class="flex items-center gap-2 text-gold font-bold text-xs mb-1">
           <i class="fas fa-gift text-sm animate-bounce"></i>
           <span>INFO PROMO & BEASISWA</span>
@@ -93,7 +88,7 @@
 
     <!-- Tombol Keluar -->
     <div class="p-4 border-t border-white/10">
-      <a href="index.html" class="flex items-center gap-3 px-4 py-2.5 text-red-300 hover:bg-red-500/10 hover:text-red-200 rounded-xl transition-all text-sm">
+      <a href="index.html" class="flex items-center gap-3 px-4 py-2.5 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-all text-sm">
         <i class="fas fa-sign-out-alt w-5 text-center"></i> Keluar
       </a>
     </div>
@@ -104,11 +99,11 @@
     
     <!-- HEADER -->
     <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
-      <button class="md:hidden text-coklat text-xl focus:outline-none">
+      <button class="md:hidden text-ocean text-xl focus:outline-none">
         <i class="fas fa-bars"></i>
       </button>
 
-      <h2 class="text-lg md:text-xl font-bold text-coklat hidden md:block font-serif-custom">
+      <h2 class="text-lg md:text-xl font-bold text-ocean hidden md:block font-serif-custom">
         Form Kelengkapan Biodata Santri
       </h2>
 
@@ -120,10 +115,10 @@
         
         <div class="flex items-center gap-3 border-l pl-6 border-gray-200">
           <div class="text-right hidden sm:block">
-            <p id="teksHeader" class="text-sm font-bold text-gray-800">Calon Santri</p>
+            <p id="teksHeader" class="text-sm font-bold text-slate-800">Calon Santri</p>
             <p id="teksNoPendaftaran" class="text-xs text-gold font-semibold">No: SPMB-27-000</p>
           </div>
-          <div id="teksInisial" class="w-10 h-10 rounded-full bg-coklat text-white flex items-center justify-center font-bold font-serif-custom shadow-md border-2 border-gold">
+          <div id="teksInisial" class="w-10 h-10 rounded-full bg-ocean text-white flex items-center justify-center font-bold font-serif-custom shadow-md border-2 border-gold">
             CS
           </div>
         </div>
@@ -134,31 +129,31 @@
     <div class="flex-1 overflow-y-auto p-4 md:p-8">
       <div class="max-w-4xl mx-auto space-y-6">
 
-        <!-- BANNER HEADER RINGKAS (MOTIVASI & PROMO) -->
-        <div class="bg-gradient-to-r from-coklat via-coklat-light to-coklat p-5 rounded-2xl text-white shadow-md border border-gold/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <!-- BANNER HEADER RINGKAS (MOTIVASI & PROMO BROSUR MATCH) -->
+        <div class="bg-gradient-to-r from-ocean via-ocean-dark to-ocean p-5 rounded-2xl text-white shadow-md border border-gold/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div class="flex items-center gap-4">
             <div class="w-12 h-12 rounded-xl bg-gold/20 border border-gold/40 flex items-center justify-center text-gold text-2xl shrink-0">
               <i class="fas fa-award"></i>
             </div>
             <div>
               <h3 class="font-bold text-gold font-serif-custom text-base">Penawaran Spesial Gelombang Aktif</h3>
-              <p class="text-xs text-gray-200 mt-0.5">Lengkapi data pendaftaran sekarang untuk mengamankan kuota kelas &amp; klaim potongan biaya pendaftaran!</p>
+              <p class="text-xs text-slate-200 mt-0.5">Lengkapi data pendaftaran sekarang untuk mengamankan kuota kelas &amp; klaim potongan biaya pendaftaran!</p>
             </div>
           </div>
-          <div class="shrink-0 bg-gold text-coklat font-bold text-xs px-3.5 py-2 rounded-xl shadow-md border border-gold-border flex items-center gap-1.5">
+          <div class="shrink-0 bg-gold text-ocean font-bold text-xs px-3.5 py-2 rounded-xl shadow-md border border-gold-border flex items-center gap-1.5">
             <i class="fas fa-check-circle"></i> Status Kuota: Tersedia
           </div>
         </div>
 
         <!-- FORM CARD -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-200">
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
           
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-100 pb-4 mb-6 gap-3">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-4 mb-6 gap-3">
             <div>
-              <h3 class="text-xl font-bold font-serif-custom text-coklat flex items-center gap-2">
+              <h3 class="text-xl font-bold font-serif-custom text-ocean flex items-center gap-2">
                 <i class="fas fa-id-card text-gold"></i> Form Data Calon Santri &amp; Orang Tua
               </h3>
-              <p class="text-xs text-gray-500 mt-1">Pastikan seluruh data yang diisikan sesuai dengan dokumen resmi (KK / Ijazah / Akta).</p>
+              <p class="text-xs text-slate-500 mt-1">Pastikan seluruh data yang diisikan sesuai dengan dokumen resmi (KK / Ijazah / Akta).</p>
             </div>
             <span id="badgeStatus" class="hidden text-xs bg-emerald-50 text-emerald-700 font-bold px-3 py-1.5 rounded-full border border-emerald-300">
               <i class="fas fa-check-circle mr-1"></i> Data Tersimpan
@@ -168,40 +163,40 @@
           <form id="formBiodata" class="space-y-6">
 
             <!-- SEKSI 1: GELOMBANG & JENJANG PENDIDIKAN -->
-            <div class="bg-gold-light/60 p-5 rounded-2xl border border-gold-border/60 space-y-4">
-              <h4 class="font-bold text-coklat text-xs uppercase tracking-wider flex items-center gap-2">
+            <div class="bg-ocean-soft/80 p-5 rounded-2xl border border-gold/30 space-y-4">
+              <h4 class="font-bold text-ocean text-xs uppercase tracking-wider flex items-center gap-2">
                 <i class="fas fa-graduation-cap text-gold"></i> Pendaftaran &amp; Program Pendidikan
               </h4>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <!-- GELOMBANG PENDAFTARAN -->
                 <div>
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
                     Gelombang Pendaftaran <span class="text-red-500">*</span>
                   </label>
-                  <select id="inputGelombang" required class="w-full p-3 rounded-xl border border-gray-300 text-sm bg-white font-medium focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all">
+                  <select id="inputGelombang" required class="w-full p-3 rounded-xl border border-slate-300 text-sm bg-white font-medium focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all">
                     <option value="Gelombang 1">Gelombang 1 (Oktober - Desember)</option>
                     <option value="Gelombang 2">Gelombang 2 (Januari - Maret)</option>
                     <option value="Gelombang 3">Gelombang 3 (April - Mei)</option>
                     <option value="Gelombang 4">Gelombang 4 (Juni - Juli)</option>
                   </select>
-                  <p id="infoGelombang" class="text-[11px] text-coklat font-medium mt-1 flex items-center gap-1">
+                  <p id="infoGelombang" class="text-[11px] text-ocean font-medium mt-1 flex items-center gap-1">
                     <i class="fas fa-info-circle text-gold"></i> Gelombang otomatis disesuaikan berdasarkan tanggal aktif saat ini.
                   </p>
                 </div>
 
                 <!-- JENJANG / KURIKULUM -->
                 <div>
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-2">
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-2">
                     Pilihan Jenjang / Kurikulum <span class="text-red-500">*</span>
                   </label>
                   <div class="grid grid-cols-2 gap-3">
-                    <label class="relative flex items-center justify-center p-3 rounded-xl border border-gray-300 bg-white cursor-pointer hover:border-gold hover:bg-gold-light/40 transition-all text-sm font-semibold text-gray-700 has-[:checked]:border-gold has-[:checked]:bg-gold/15 has-[:checked]:text-coklat shadow-sm">
+                    <label class="relative flex items-center justify-center p-3 rounded-xl border border-slate-300 bg-white cursor-pointer hover:border-gold hover:bg-gold-light/50 transition-all text-sm font-semibold text-slate-700 has-[:checked]:border-gold has-[:checked]:bg-gold/15 has-[:checked]:text-ocean shadow-sm">
                       <input type="radio" name="inputJenjang" value="SMP" required class="sr-only">
                       <i class="fas fa-school mr-2 text-gold"></i> SMP PMI
                     </label>
 
-                    <label class="relative flex items-center justify-center p-3 rounded-xl border border-gray-300 bg-white cursor-pointer hover:border-gold hover:bg-gold-light/40 transition-all text-sm font-semibold text-gray-700 has-[:checked]:border-gold has-[:checked]:bg-gold/15 has-[:checked]:text-coklat shadow-sm">
+                    <label class="relative flex items-center justify-center p-3 rounded-xl border border-slate-300 bg-white cursor-pointer hover:border-gold hover:bg-gold-light/50 transition-all text-sm font-semibold text-slate-700 has-[:checked]:border-gold has-[:checked]:bg-gold/15 has-[:checked]:text-ocean shadow-sm">
                       <input type="radio" name="inputJenjang" value="SMA" required class="sr-only">
                       <i class="fas fa-university mr-2 text-gold"></i> SMA PMI
                     </label>
@@ -212,24 +207,24 @@
 
             <!-- SEKSI 2: DATA SANTRI -->
             <div class="space-y-4">
-              <h4 class="font-bold text-coklat text-xs uppercase tracking-wider flex items-center gap-2 border-b border-gray-100 pb-2">
+              <h4 class="font-bold text-ocean text-xs uppercase tracking-wider flex items-center gap-2 border-b border-slate-100 pb-2">
                 <i class="fas fa-user text-gold"></i> Data Pribadi Santri
               </h4>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nama Lengkap Santri</label>
-                  <input type="text" id="inputNama" required class="w-full p-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all" placeholder="Sesuai Akta / Ijazah">
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Lengkap Santri</label>
+                  <input type="text" id="inputNama" required class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all" placeholder="Sesuai Akta / Ijazah">
                 </div>
 
                 <div>
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">NISN</label>
-                  <input type="number" id="inputNisn" placeholder="10 Digit NISN" required class="w-full p-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all">
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">NISN</label>
+                  <input type="number" id="inputNisn" placeholder="10 Digit NISN" required class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all">
                 </div>
 
                 <div>
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Jenis Kelamin</label>
-                  <select id="inputJenisKelamin" required class="w-full p-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all bg-white">
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Jenis Kelamin</label>
+                  <select id="inputJenisKelamin" required class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all bg-white">
                     <option value="">-- Pilih Jenis Kelamin --</option>
                     <option value="Laki-laki">Laki-laki</option>
                     <option value="Perempuan">Perempuan</option>
@@ -237,48 +232,48 @@
                 </div>
 
                 <div>
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Tempat Lahir</label>
-                  <input type="text" id="inputTempatLahir" placeholder="Contoh: Bekasi" required class="w-full p-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all">
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Tempat Lahir</label>
+                  <input type="text" id="inputTempatLahir" placeholder="Contoh: Bekasi" required class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all">
                 </div>
 
                 <div class="md:col-span-2">
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Tanggal Lahir</label>
-                  <input type="date" id="inputTanggalLahir" required class="w-full p-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all bg-white">
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Tanggal Lahir</label>
+                  <input type="date" id="inputTanggalLahir" required class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all bg-white">
                 </div>
               </div>
             </div>
 
             <!-- SEKSI 3: DATA ORANG TUA / WALI -->
             <div class="space-y-4 pt-2">
-              <h4 class="font-bold text-coklat text-xs uppercase tracking-wider flex items-center gap-2 border-b border-gray-100 pb-2">
+              <h4 class="font-bold text-ocean text-xs uppercase tracking-wider flex items-center gap-2 border-b border-slate-100 pb-2">
                 <i class="fas fa-users text-gold"></i> Data Orang Tua / Wali Santri
               </h4>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nama Ayah Kandung</label>
-                  <input type="text" id="inputNamaAyah" required class="w-full p-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all">
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Ayah Kandung</label>
+                  <input type="text" id="inputNamaAyah" required class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all">
                 </div>
 
                 <div>
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nama Ibu Kandung</label>
-                  <input type="text" id="inputNamaIbu" required class="w-full p-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all">
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Ibu Kandung</label>
+                  <input type="text" id="inputNamaIbu" required class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all">
                 </div>
 
                 <div class="md:col-span-2">
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">No. WhatsApp / HP Wali</label>
-                  <input type="tel" id="inputNoHpWali" placeholder="08xxxxxxxxxx" required class="w-full p-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all">
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">No. WhatsApp / HP Wali</label>
+                  <input type="tel" id="inputNoHpWali" placeholder="08xxxxxxxxxx" required class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all">
                 </div>
 
                 <div class="md:col-span-2">
-                  <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Alamat Lengkap Rumah</label>
-                  <textarea id="inputAlamat" rows="3" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota/Kabupaten" required class="w-full p-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all"></textarea>
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Alamat Lengkap Rumah</label>
+                  <textarea id="inputAlamat" rows="3" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota/Kabupaten" required class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold transition-all"></textarea>
                 </div>
               </div>
             </div>
 
             <!-- BUTTON SIMPAN -->
-            <button type="submit" id="btnSimpan" class="w-full bg-gold hover:bg-gold-hover text-coklat font-bold py-3.5 rounded-xl shadow-md shadow-gold/20 transition-all flex items-center justify-center gap-2 mt-6 text-base border border-gold-border">
+            <button type="submit" id="btnSimpan" class="w-full bg-gold hover:bg-gold-hover text-ocean font-bold py-3.5 rounded-xl shadow-md shadow-gold/20 transition-all flex items-center justify-center gap-2 mt-6 text-base border border-gold-border">
               <i class="fas fa-save"></i> <span>Simpan &amp; Lanjutkan</span>
             </button>
           </form>
