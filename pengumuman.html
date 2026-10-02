@@ -6,68 +6,79 @@
   <title>Pengumuman & Informasi Tes Seleksi | Pesantren Motivasi Indonesia</title>
   <link rel="icon" type="image/png" href="1.png">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: {
+              DEFAULT: '#0F2942', // Deep Ocean Navy
+              dark: '#0A1C2E',
+              light: '#1E40AF',
+              soft: '#F0F4F8'
+            },
+            gold: {
+              DEFAULT: '#D4AF37', // Gold Elegance
+              hover: '#B89328',
+              light: '#FDF8EC',
+              border: '#E5C158'
+            },
+            bgApp: '#F8FAFC'
+          }
+        }
+      }
+    }
+  </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
-    
-    :root {
-      --coklat-logo: #4A2B12; 
-      --gold-logo: #C29B57;   
-      --bg-krem: #FAF8F5;
-    }
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-krem);
-      color: #2C2A29;
+      background-color: #F8FAFC;
+      color: #1E293B;
     }
     .font-serif-custom { font-family: 'Playfair Display', serif; }
-    
-    .bg-coklat-logo { background-color: var(--coklat-logo); }
-    .text-coklat-logo { color: var(--coklat-logo); }
-    .border-coklat-logo { border-color: var(--coklat-logo); }
-    
-    .bg-gold { background-color: var(--gold-logo); }
-    .text-gold { color: var(--gold-logo); }
-    .border-gold { border-color: var(--gold-logo); }
   </style>
 </head>
-<body class="flex h-screen overflow-hidden bg-[#FAF8F5]">
+<body class="flex h-screen overflow-hidden bg-bgApp">
 
   <!-- OVERLAY BACKDROP UNTUK MOBILE SIDEBAR -->
   <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden transition-opacity" onclick="toggleSidebar()"></div>
 
-  <!-- SIDEBAR (Kiri) - RESPONSIVE MOBILE -->
-  <aside id="sidebar" class="w-64 bg-coklat-logo text-white flex flex-col shadow-2xl fixed md:relative inset-y-0 left-0 z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
-    <div class="p-6 flex items-center gap-4 border-b border-white/10">
-      <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain">
+  <!-- SIDEBAR (Kiri) - RESPONSIVE MOBILE (Ocean & Gold Theme) -->
+  <aside id="sidebar" class="w-64 bg-ocean text-white flex flex-col shadow-2xl fixed md:relative inset-y-0 left-0 z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out border-r border-gold/20">
+    <!-- Header Logo -->
+    <div class="p-6 flex items-center gap-4 border-b border-white/10 bg-ocean-dark/50">
+      <img src="1.png" alt="Logo PMI" class="w-12 h-12 bg-white rounded-full p-1 object-contain shadow-md border border-gold/40">
       <div>
-        <h1 class="font-bold font-serif-custom text-gold leading-tight">SPMB PMI</h1>
-        <p class="text-[10px] text-gray-300">Tahun Ajaran 2027/2028</p>
+        <h1 class="font-bold font-serif-custom text-gold text-lg leading-tight">SPMB PMI</h1>
+        <p class="text-[11px] text-gray-300 tracking-wide">Tahun Ajaran 2027/2028</p>
       </div>
     </div>
 
     <!-- Menu Navigasi -->
-    <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+    <nav class="flex-1 overflow-y-auto py-5 px-4 space-y-1.5">
       <a href="dashboard-santri.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-home w-5 text-center"></i> Beranda
+        <i class="fas fa-home w-5 text-center text-gold/80"></i> Beranda
       </a>
       <a href="biodata-santri.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-user-edit w-5 text-center"></i> Biodata Diri
+        <i class="fas fa-user-edit w-5 text-center text-gold/80"></i> Biodata Diri
       </a>
       <a href="upload-berkas.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-file-upload w-5 text-center"></i> Syarat Administrasi
+        <i class="fas fa-file-upload w-5 text-center text-gold/80"></i> Upload Berkas
       </a>
       <a href="pembayaran.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/10 hover:text-white rounded-xl transition-all">
-        <i class="fas fa-wallet w-5 text-center"></i> Pembayaran
+        <i class="fas fa-wallet w-5 text-center text-gold/80"></i> Pembayaran
       </a>
-      <a href="pengumuman.html" class="flex items-center gap-3 px-4 py-3 bg-gold/20 text-gold rounded-xl border border-gold/30 font-semibold transition-all">
-        <i class="fas fa-bullhorn w-5 text-center"></i> Pengumuman
+      <a href="pengumuman.html" class="flex items-center gap-3 px-4 py-3 bg-gold/20 text-gold rounded-xl border border-gold/40 font-semibold shadow-sm transition-all">
+        <i class="fas fa-bullhorn w-5 text-center text-gold"></i> Pengumuman
       </a>
     </nav>
 
+    <!-- Tombol Keluar -->
     <div class="p-4 border-t border-white/10">
-      <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-all">
+      <a href="index.html" class="flex items-center gap-3 px-4 py-2.5 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl transition-all text-sm">
         <i class="fas fa-sign-out-alt w-5 text-center"></i> Keluar
       </a>
     </div>
@@ -78,11 +89,12 @@
     
     <!-- HEADER -->
     <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4 flex justify-between items-center z-10">
-      <button onclick="toggleSidebar()" class="md:hidden text-coklat-logo text-xl p-2 focus:outline-none">
+      <!-- TOMBOL HAMBURGER MOBILE -->
+      <button onclick="toggleSidebar()" class="md:hidden text-ocean text-xl p-2 focus:outline-none">
         <i class="fas fa-bars"></i>
       </button>
 
-      <h2 class="text-xl font-bold text-gray-800 hidden md:block">Pengumuman & Panduan Seleksi</h2>
+      <h2 class="text-lg md:text-xl font-bold text-ocean hidden md:block font-serif-custom">Pengumuman &amp; Panduan Seleksi</h2>
 
       <div class="flex items-center gap-6 ml-auto md:ml-0">
         <a href="pengumuman.html" class="text-gold relative transition-colors">
@@ -92,86 +104,171 @@
 
         <div class="flex items-center gap-3 border-l pl-6 border-gray-200">
           <div class="text-right hidden sm:block">
-            <p id="teksHeader" class="text-sm font-bold text-gray-800">Calon Santri</p>
-            <p id="teksNoPendaftaran" class="text-xs text-gray-500">No: SPMB-27-001</p>
+            <p id="teksHeader" class="text-sm font-bold text-slate-800">Calon Santri</p>
+            <p id="teksNoPendaftaran" class="text-xs text-gold font-semibold">No: SPMB-27-001</p>
           </div>
-          <div id="teksInisial" class="w-10 h-10 rounded-full bg-coklat-logo text-white flex items-center justify-center font-bold font-serif-custom shadow-md border-2 border-gold">
+          <div id="teksInisial" class="w-10 h-10 rounded-full bg-ocean text-white flex items-center justify-center font-bold font-serif-custom shadow-md border-2 border-gold">
             CS
           </div>
         </div>
       </div>
     </header>
 
-    <!-- CONTENT AREA SCROLLABLE -->
-    <div class="flex-1 overflow-y-auto p-6 md:p-8">
-      <div class="max-w-4xl mx-auto space-y-8">
+    <!-- CONTENT SCROLLABLE AREA -->
+    <div class="flex-1 overflow-y-auto p-4 md:p-8">
+      <div class="max-w-4xl mx-auto space-y-6">
         
         <!-- KARTU STATUS KELULUSAN & PENGUMUMAN UTAMA -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-bl-full -z-0 opacity-50"></div>
+        <div class="bg-gradient-to-r from-ocean via-ocean-dark to-ocean rounded-2xl p-6 md:p-8 text-white shadow-lg border border-gold/40 relative overflow-hidden">
+          <div class="absolute right-0 top-0 opacity-10 text-9xl -mt-6 -mr-6 pointer-events-none text-gold">
+            <i class="fas fa-award"></i>
+          </div>
 
           <div class="relative z-10 text-center max-w-2xl mx-auto">
-            <div class="w-16 h-16 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 shadow-sm">
-              <i class="fas fa-clipboard-check animate-bounce"></i>
+            <div class="w-16 h-16 bg-gold/20 text-gold rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 border border-gold/40 shadow-inner">
+              <i class="fas fa-clipboard-check animate-pulse"></i>
             </div>
 
-            <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-[11px] font-bold tracking-wide uppercase">
+            <span class="inline-block px-3 py-1 bg-gold/20 text-gold rounded-full text-xs font-bold tracking-wide uppercase border border-gold/30 mb-3">
               Status Pendaftaran: Menunggu Pelaksanaan Tes
             </span>
 
-            <h3 class="text-2xl font-bold font-serif-custom text-coklat-logo mt-3 mb-2">
+            <h3 class="text-2xl md:text-3xl font-bold font-serif-custom text-gold mb-2">
               Persiapan Alur Tes Seleksi Penerimaan Santri Baru
             </h3>
-            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
-              Selamat! Data pendaftaran dan bukti administrasi Anda telah dicatat oleh panitia. Selanjutnya, calon santri diwajibkan mengikuti seluruh tahapan <strong class="text-coklat-logo">Tes Seleksi Penerimaan Santri Baru</strong> Pesantren Motivasi Indonesia.
+            <p class="text-xs md:text-sm text-slate-200 leading-relaxed">
+              Selamat! Data pendaftaran dan bukti administrasi Anda telah dicatat oleh panitia. Selanjutnya, calon santri diwajibkan mengikuti seluruh tahapan <strong class="text-gold">Tes Seleksi Penerimaan Santri Baru</strong> Pesantren Motivasi Indonesia.
             </p>
           </div>
 
           <!-- RINGKASAN PROFIL PESERTA -->
-          <div class="mt-8 pt-6 border-t border-gray-100 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
-            <div class="bg-[#FAF8F5] p-4 rounded-xl border border-gray-100 flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold">
+          <div class="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left relative z-10">
+            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-gold text-ocean flex items-center justify-center font-bold shrink-0 shadow-md">
                 <i class="fas fa-user-graduate text-base"></i>
               </div>
-              <div>
-                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Nama Peserta</p>
-                <p id="teksPengumumanNama" class="text-xs font-bold text-gray-800 mt-0.5">Calon Santri</p>
+              <div class="overflow-hidden">
+                <p class="text-[10px] text-gray-300 uppercase font-bold tracking-wider">Nama Peserta</p>
+                <p id="teksPengumumanNama" class="text-xs font-bold text-white mt-0.5 truncate">Calon Santri</p>
               </div>
             </div>
 
-            <div class="bg-[#FAF8F5] p-4 rounded-xl border border-gray-100 flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold">
+            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-gold text-ocean flex items-center justify-center font-bold shrink-0 shadow-md">
                 <i class="fas fa-id-card text-base"></i>
               </div>
               <div>
-                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">No. Pendaftaran</p>
-                <p id="teksPengumumanNo" class="text-xs font-bold text-gray-800 mt-0.5">SPMB-27-001</p>
+                <p class="text-[10px] text-gray-300 uppercase font-bold tracking-wider">No. Pendaftaran</p>
+                <p id="teksPengumumanNo" class="text-xs font-bold text-gold mt-0.5">SPMB-27-001</p>
               </div>
             </div>
 
-            <div class="bg-[#FAF8F5] p-4 rounded-xl border border-gray-100 flex items-center gap-3">
-              <div class="w-10 h-10 rounded-lg bg-gold/10 text-gold flex items-center justify-center font-bold">
+            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-gold text-ocean flex items-center justify-center font-bold shrink-0 shadow-md">
                 <i class="fas fa-school text-base"></i>
               </div>
-              <div>
-                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Jenjang Pilihan</p>
-                <p id="teksPengumumanJenjang" class="text-xs font-bold text-gray-800 mt-0.5">SMP Motivasi Indonesia</p>
+              <div class="overflow-hidden">
+                <p class="text-[10px] text-gray-300 uppercase font-bold tracking-wider">Jenjang Pilihan</p>
+                <p id="teksPengumumanJenjang" class="text-xs font-bold text-white mt-0.5 truncate">SMP Motivasi Indonesia</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- SEKSI UTAMA: MATERI & MATRIKS TES SELEKSI -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 space-y-6">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-100 pb-4">
+        <!-- FITUR BARU: INFORMASI ALUR LANJUTAN & PENGINGAT JADWAL GELOMBANG LULUS -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b border-slate-100 pb-4 gap-2">
             <div>
-              <h3 class="text-lg font-bold font-serif-custom text-coklat-logo flex items-center gap-2">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 text-[11px] font-bold border border-emerald-200 mb-2">
+                <i class="fas fa-check-circle text-emerald-600"></i> Terdaftar di Gelombang 1 (Jalur Utama)
+              </div>
+              <h3 class="text-lg font-bold font-serif-custom text-ocean flex items-center gap-2">
+                <i class="fas fa-calendar-check text-gold"></i> Pengingat Jadwal Alur Lanjutan Gelombang Lulus
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">Catat tanggal penting kelanjutan proses administrasi dan kedatangan santri di asrama.</p>
+            </div>
+            <span class="bg-gold/15 text-ocean text-xs font-bold px-3 py-1.5 rounded-full border border-gold/40 shrink-0">
+              <i class="fas fa-flag text-gold mr-1"></i> Gelombang 1
+            </span>
+          </div>
+
+          <!-- AGENDA ALUR LANJUTAN GRID -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <!-- Item 1: Daftar Ulang -->
+            <div class="p-4 rounded-xl bg-ocean-soft/60 border border-gold/30 flex flex-col justify-between">
+              <div>
+                <div class="w-8 h-8 rounded-lg bg-ocean text-gold flex items-center justify-center font-bold text-sm mb-2 shadow-sm">
+                  1
+                </div>
+                <h4 class="font-bold text-sm text-ocean mb-1">Daftar Ulang Resmi</h4>
+                <p class="text-xs text-slate-600 mb-3">Penyelesaian administrasi keuangan awal &amp; konfirmasi komitmen.</p>
+              </div>
+              <div class="pt-2 border-t border-slate-200/80 text-[11px] font-bold text-ocean flex items-center justify-between">
+                <span>Batas Akhir:</span>
+                <span class="text-red-600">28 Des 2026</span>
+              </div>
+            </div>
+
+            <!-- Item 2: Ukur Seragam -->
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="w-8 h-8 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-sm mb-2">
+                  2
+                </div>
+                <h4 class="font-bold text-sm text-slate-800 mb-1">Verifikasi &amp; Seragam</h4>
+                <p class="text-xs text-slate-500 mb-3">Pengukuran baju seragam &amp; penyerahan kelengkapan berkas fisik.</p>
+              </div>
+              <div class="pt-2 border-t border-slate-200 text-[11px] font-bold text-slate-700 flex items-center justify-between">
+                <span>Pelaksanaan:</span>
+                <span class="text-ocean">10-15 Jan 2027</span>
+              </div>
+            </div>
+
+            <!-- Item 3: Masuk Asrama -->
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="w-8 h-8 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-sm mb-2">
+                  3
+                </div>
+                <h4 class="font-bold text-sm text-slate-800 mb-1">Kedatangan Asrama</h4>
+                <p class="text-xs text-slate-500 mb-3">Check-in kamar asrama &amp; penyerahan perlengkapan pribadi santri.</p>
+              </div>
+              <div class="pt-2 border-t border-slate-200 text-[11px] font-bold text-slate-700 flex items-center justify-between">
+                <span>Tanggal:</span>
+                <span class="text-ocean">11 Juli 2027</span>
+              </div>
+            </div>
+
+            <!-- Item 4: Khutbatul 'Arsy -->
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="w-8 h-8 rounded-lg bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-sm mb-2">
+                  4
+                </div>
+                <h4 class="font-bold text-sm text-slate-800 mb-1">Orientasi Santri Baru</h4>
+                <p class="text-xs text-slate-500 mb-3">Pembukaan Khutbatul 'Arsy &amp; Pekan Perkenalan Pesantren.</p>
+              </div>
+              <div class="pt-2 border-t border-slate-200 text-[11px] font-bold text-slate-700 flex items-center justify-between">
+                <span>Mulai:</span>
+                <span class="text-ocean">12 Juli 2027</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SEKSI UTAMA: MATERI & MATRIKS TES SELEKSI -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4">
+            <div>
+              <h3 class="text-lg font-bold font-serif-custom text-ocean flex items-center gap-2">
                 <i class="fas fa-graduation-cap text-gold"></i> Materi Tes Seleksi Masuk
               </h3>
-              <p class="text-xs text-gray-500">Berikut adalah 6 materi ujian yang akan dievaluasi oleh Tim Penguji Pesantren Motivasi Indonesia.</p>
+              <p class="text-xs text-slate-500">Berikut adalah 6 materi ujian yang akan dievaluasi oleh Tim Penguji Pesantren Motivasi Indonesia.</p>
             </div>
-            <span class="text-xs bg-gold/10 text-gold font-bold px-3 py-1.5 rounded-lg border border-gold/20 self-start sm:self-auto">
-              <i class="fas fa-star text-[10px] mr-1"></i> Wajib Diikuti Santri
+            <span class="text-xs bg-gold/15 text-ocean font-bold px-3 py-1.5 rounded-lg border border-gold/40 self-start sm:self-auto">
+              <i class="fas fa-star text-[10px] text-gold mr-1"></i> Wajib Diikuti Santri
             </span>
           </div>
 
@@ -179,67 +276,67 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             
             <!-- 1. Tes Membaca Al-Qur'an -->
-            <div class="p-5 border border-gray-100 rounded-2xl bg-[#FAF8F5] hover:bg-white hover:border-gold hover:shadow-md transition-all group">
-              <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+            <div class="p-5 border border-slate-200 rounded-2xl bg-slate-50/50 hover:bg-white hover:border-gold hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform shadow-sm">
                 <i class="fas fa-quran"></i>
               </div>
-              <h4 class="font-bold text-gray-800 text-sm mb-1">1. Tes Membaca Al-Qur'an</h4>
-              <p class="text-xs text-gray-500 leading-relaxed">
+              <h4 class="font-bold text-ocean text-sm mb-1">1. Tes Membaca Al-Qur'an</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
                 Pengujian kelancaran membaca Al-Qur'an, ketepatan hukum Tajwid, Makhraj huruf, serta kelancaran hafalan surat pendek (Juz Amma).
               </p>
             </div>
 
             <!-- 2. Praktik Ibadah -->
-            <div class="p-5 border border-gray-100 rounded-2xl bg-[#FAF8F5] hover:bg-white hover:border-gold hover:shadow-md transition-all group">
-              <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+            <div class="p-5 border border-slate-200 rounded-2xl bg-slate-50/50 hover:bg-white hover:border-gold hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform shadow-sm">
                 <i class="fas fa-pray"></i>
               </div>
-              <h4 class="font-bold text-gray-800 text-sm mb-1">2. Praktik Ibadah</h4>
-              <p class="text-xs text-gray-500 leading-relaxed">
-                Praktek langsung tata cara wudhu, gerakan & bacaan shalat fardhu/sunnah, serta hapalan doa-doa harian sehari-hari.
+              <h4 class="font-bold text-ocean text-sm mb-1">2. Praktik Ibadah</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Praktek langsung tata cara wudhu, gerakan &amp; bacaan shalat fardhu/sunnah, serta hafalan doa-doa harian sehari-hari.
               </p>
             </div>
 
             <!-- 3. Pengetahuan Agama Dasar -->
-            <div class="p-5 border border-gray-100 rounded-2xl bg-[#FAF8F5] hover:bg-white hover:border-gold hover:shadow-md transition-all group">
-              <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+            <div class="p-5 border border-slate-200 rounded-2xl bg-slate-50/50 hover:bg-white hover:border-gold hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform shadow-sm">
                 <i class="fas fa-kaaba"></i>
               </div>
-              <h4 class="font-bold text-gray-800 text-sm mb-1">3. Pengetahuan Agama Dasar</h4>
-              <p class="text-xs text-gray-500 leading-relaxed">
-                Soal-soal seputar pemahaman dasar Aqidah Islam, Rukun Iman & Islam, Fiqih ibadah dasar, dan Sejarah Kebudayaan Islam (SKI).
+              <h4 class="font-bold text-ocean text-sm mb-1">3. Pengetahuan Agama Dasar</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Soal-soal seputar pemahaman dasar Aqidah Islam, Rukun Iman &amp; Islam, Fiqih ibadah dasar, dan Sejarah Kebudayaan Islam (SKI).
               </p>
             </div>
 
             <!-- 4. Tes Potensi Akademik (TPA) -->
-            <div class="p-5 border border-gray-100 rounded-2xl bg-[#FAF8F5] hover:bg-white hover:border-gold hover:shadow-md transition-all group">
-              <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+            <div class="p-5 border border-slate-200 rounded-2xl bg-slate-50/50 hover:bg-white hover:border-gold hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform shadow-sm">
                 <i class="fas fa-brain"></i>
               </div>
-              <h4 class="font-bold text-gray-800 text-sm mb-1">4. Tes Potensi Akademik (TPA)</h4>
-              <p class="text-xs text-gray-500 leading-relaxed">
+              <h4 class="font-bold text-ocean text-sm mb-1">4. Tes Potensi Akademik (TPA)</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
                 Mengukur logika berpikir, Matematika dasar, pemahaman Bahasa Indonesia, serta kemampuan analisis verbal calon santri.
               </p>
             </div>
 
             <!-- 5. Psikotes -->
-            <div class="p-5 border border-gray-100 rounded-2xl bg-[#FAF8F5] hover:bg-white hover:border-gold hover:shadow-md transition-all group">
-              <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+            <div class="p-5 border border-slate-200 rounded-2xl bg-slate-50/50 hover:bg-white hover:border-gold hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform shadow-sm">
                 <i class="fas fa-user-check"></i>
               </div>
-              <h4 class="font-bold text-gray-800 text-sm mb-1">5. Psikotes & Kesiapan Mental</h4>
-              <p class="text-xs text-gray-500 leading-relaxed">
-                Pemetaan karakter, tingkat kemandirian, minat talent, kesiapan tinggal di asrama pesantren (mondok), dan ketahanan emosional.
+              <h4 class="font-bold text-ocean text-sm mb-1">5. Psikotes &amp; Kesiapan Mental</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Pemetaan karakter, tingkat kemandirian, minat bakat, kesiapan tinggal di asrama pesantren (mondok), dan ketahanan emosional.
               </p>
             </div>
 
             <!-- 6. Wawancara Santri & Orang Tua -->
-            <div class="p-5 border border-gray-100 rounded-2xl bg-[#FAF8F5] hover:bg-white hover:border-gold hover:shadow-md transition-all group">
-              <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform">
+            <div class="p-5 border border-slate-200 rounded-2xl bg-slate-50/50 hover:bg-white hover:border-gold hover:shadow-md transition-all group">
+              <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-xl mb-3 group-hover:scale-110 transition-transform shadow-sm">
                 <i class="fas fa-comments"></i>
               </div>
-              <h4 class="font-bold text-gray-800 text-sm mb-1">6. Wawancara Orang Tua & Santri</h4>
-              <p class="text-xs text-gray-500 leading-relaxed">
+              <h4 class="font-bold text-ocean text-sm mb-1">6. Wawancara Orang Tua &amp; Santri</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
                 Sesi dialog bersama pengasuh pesantren untuk menyelaraskan komitmen wali murid dan motivasi belajar calon santri.
               </p>
             </div>
@@ -248,55 +345,55 @@
         </div>
 
         <!-- TAHAPAN LENGKAP PENERIMAAN SANTRI -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 space-y-6">
-          <h3 class="text-lg font-bold font-serif-custom text-coklat-logo flex items-center gap-2">
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 space-y-6">
+          <h3 class="text-lg font-bold font-serif-custom text-ocean flex items-center gap-2">
             <i class="fas fa-stream text-gold"></i> Alur Tahapan SPMB Pesantren
           </h3>
 
-          <div class="relative border-l-2 border-gold/30 ml-4 pl-6 space-y-6">
+          <div class="relative border-l-2 border-gold/40 ml-4 pl-6 space-y-6">
             
             <!-- Tahap 1 -->
             <div class="relative">
-              <span class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-green-500 text-white text-xs flex items-center justify-center font-bold">
+              <span class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-emerald-600 text-white text-xs flex items-center justify-center font-bold shadow-sm">
                 <i class="fas fa-check"></i>
               </span>
-              <h4 class="font-bold text-gray-800 text-sm">Tahap 1: Pengisian Biodata & Pendaftaran Online</h4>
-              <p class="text-xs text-gray-500 mt-1">Calon santri melengkapi formulir identitas diri, orang tua, dan pilihan jenjang pendidikan.</p>
+              <h4 class="font-bold text-ocean text-sm">Tahap 1: Pengisian Biodata &amp; Pendaftaran Online</h4>
+              <p class="text-xs text-slate-500 mt-0.5">Calon santri melengkapi formulir identitas diri, orang tua, dan pilihan jenjang pendidikan.</p>
             </div>
 
             <!-- Tahap 2 -->
             <div class="relative">
-              <span class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-green-500 text-white text-xs flex items-center justify-center font-bold">
+              <span class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-emerald-600 text-white text-xs flex items-center justify-center font-bold shadow-sm">
                 <i class="fas fa-check"></i>
               </span>
-              <h4 class="font-bold text-gray-800 text-sm">Tahap 2: Syarat Administrasi & Biaya Tes</h4>
-              <p class="text-xs text-gray-500 mt-1">Penyelesaian pendaftaran administrasi dan konfirmasi via WhatsApp Panitia.</p>
+              <h4 class="font-bold text-ocean text-sm">Tahap 2: Syarat Administrasi &amp; Biaya Tes</h4>
+              <p class="text-xs text-slate-500 mt-0.5">Penyelesaian pendaftaran administrasi dan konfirmasi via WhatsApp Panitia.</p>
             </div>
 
             <!-- Tahap 3 -->
             <div class="relative">
-              <span class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-gold text-white text-xs flex items-center justify-center font-bold ring-4 ring-gold/20">
+              <span class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-gold text-ocean text-xs flex items-center justify-center font-bold ring-4 ring-gold/20 shadow-sm">
                 3
               </span>
-              <h4 class="font-bold text-coklat-logo text-sm">Tahap 3: Pelaksanaan Tes Seleksi & Wawancara</h4>
-              <p class="text-xs text-gray-600 mt-1">Peserta hadir di kompleks Pesantren Motivasi Indonesia untuk mengikuti tes 6 materi seleksi di atas.</p>
+              <h4 class="font-bold text-ocean text-sm">Tahap 3: Pelaksanaan Tes Seleksi &amp; Wawancara</h4>
+              <p class="text-xs text-slate-600 mt-0.5">Peserta hadir di kompleks Pesantren Motivasi Indonesia untuk mengikuti tes 6 materi seleksi di atas.</p>
             </div>
 
             <!-- Tahap 4 -->
             <div class="relative">
-              <span class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-gray-200 text-gray-600 text-xs flex items-center justify-center font-bold">
+              <span class="absolute -left-[31px] top-0 w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-xs flex items-center justify-center font-bold">
                 4
               </span>
-              <h4 class="font-bold text-gray-400 text-sm">Tahap 4: Pengumuman Hasil Kelulusan & Daftar Ulang</h4>
-              <p class="text-xs text-gray-400 mt-1">Pengumuman resmi santri yang diterima akan ditampilkan secara berkala di portal ini.</p>
+              <h4 class="font-bold text-slate-400 text-sm">Tahap 4: Pengumuman Hasil Kelulusan &amp; Daftar Ulang</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Pengumuman resmi santri yang diterima akan ditampilkan secara berkala di portal ini.</p>
             </div>
 
           </div>
         </div>
 
         <!-- PETUNJUK TEKNIS SAAT HADIR TES -->
-        <div class="bg-amber-50/60 border border-amber-200 rounded-2xl p-6 flex flex-col md:flex-row items-start gap-4">
-          <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-xl shrink-0">
+        <div class="bg-amber-50/80 border border-amber-200/80 rounded-2xl p-6 flex flex-col md:flex-row items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
             <i class="fas fa-info-circle"></i>
           </div>
           <div class="space-y-2 text-xs text-amber-900">
@@ -310,15 +407,15 @@
         </div>
 
         <!-- KOTAK BANTUAN WHATSAPP PANITIA -->
-        <div class="bg-coklat-logo text-white p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
+        <div class="bg-gradient-to-r from-ocean to-ocean-dark text-white p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg border border-gold/30">
           <div>
             <span class="text-xs font-bold text-gold uppercase tracking-wider">Layanan Informasi SPMB</span>
-            <h4 class="font-bold text-white text-lg font-serif-custom mt-1">Butuh Bantuan mengenai Jadwal & Lokasi Tes?</h4>
-            <p class="text-xs text-gray-300 mt-1 max-w-xl">
+            <h4 class="font-bold text-white text-lg font-serif-custom mt-1">Butuh Bantuan mengenai Jadwal &amp; Lokasi Tes?</h4>
+            <p class="text-xs text-slate-300 mt-1 max-w-xl">
               Tim Panitia Penerimaan Santri Baru siap melayani pertanyaan Anda seputar alur ujian, lokasi pesantren, dan pendaftaran.
             </p>
           </div>
-          <a href="https://wa.me/6285880883675?text=Assalamu'alaikum%20Panitia%20SPMB%20Pesantren%20Motivasi%20Indonesia,%20saya%20ingin%20bertanya%20mengenai%20jadwal%20dan%20pelaksanaan%20tes%20seleksi." target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-xs font-bold px-6 py-3.5 rounded-xl transition-all flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-green-600/30">
+          <a href="https://wa.me/6285880883675?text=Assalamu'alaikum%20Panitia%20SPMB%20Pesantren%20Motivasi%20Indonesia,%20saya%20ingin%20bertanya%20mengenai%20jadwal%20dan%20pelaksanaan%20tes%20seleksi." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-6 py-3.5 rounded-xl transition-all flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-emerald-600/30">
             <i class="fab fa-whatsapp text-lg"></i> Hubungi Panitia via WA
           </a>
         </div>
@@ -327,6 +424,7 @@
     </div>
   </main>
 
+  <!-- LOGIKA SINKRONISASI DATA & SIDEBAR MOBILE -->
   <script>
     // 1. FUNGSI TOGGLE SIDEBAR MOBILE
     function toggleSidebar() {
